@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/python3
 
 def print_squares(n: int) -> None:
     s = '\n'.join((str(x**2) for x in range(n)))
