@@ -19,13 +19,17 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 
-def is_leap(year: int) -> str:
-    """
-    :param year:
-    :return:
-    """
-    return f'{"True"}' if ((year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))) else f'{"False"}'
+class IsLeapYear:
+    """ Class to check if a given year is a leap year """
+    @classmethod
+    def is_leap_year(cls, year: int) -> str:
+        """
+        Check if a year (integer) is a leap year
+        :param year:
+        :return: 'True' if year is a leap year, otherwise 'False'
+        """
+        return f'{"True"}' if ((year % 4 == 0) and ((year % 100 != 0) or (year % 400 == 0))) else f'{"False"}'
 
 
 if __name__ == '__main__':
-    print(is_leap(int(input())))
+    print(IsLeapYear.is_leap_year(int(input())))
