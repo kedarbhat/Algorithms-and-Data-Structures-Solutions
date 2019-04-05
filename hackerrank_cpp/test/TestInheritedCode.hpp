@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-#include "AbstractClasses.hpp"
+#include "InheritedCode.hpp"
 
 namespace {
 TEST(TestAbstractClasses, NeverPass) {

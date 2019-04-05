@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/challenges/inherited-code/problem
+
 #pragma once
 
 #include <exception>
