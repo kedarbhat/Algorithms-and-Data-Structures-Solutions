@@ -1,5 +1,6 @@
+#include <gtest/gtest.h>
+
 #include "CountingValleys.hpp"
-#include "gtest/gtest.h"
 
 namespace {
 TEST(TestCountingValleys, NoValleys) {

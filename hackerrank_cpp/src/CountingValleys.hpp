@@ -5,7 +5,7 @@
 #include <string>
 
 namespace CountingValleys {
-int countingValleys(int /*n*/, const std::string& s) noexcept {
+int countingValleys(int /*n*/, const std::string &s) noexcept {
   int currentDepth = 0;
   int numValleys = 0;
   for (auto step : s) {

@@ -1,5 +1,6 @@
-#include "AbstractClasses.hpp"
 #include <gtest/gtest.h>
+
+#include "AbstractClasses.hpp"
 
 namespace {
 using namespace std::literals;
