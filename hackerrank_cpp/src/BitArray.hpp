@@ -19,12 +19,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include <algorithm>
-#include <cmath>
-#include <cstdio>
-#include <iostream>
-#include <vector>
-
 namespace bit_array {
 std::size_t GenerateSequence(unsigned n, unsigned s, unsigned p, unsigned q) {
   static constexpr auto modulo_m_1{(1u << 31u) - 1u};
