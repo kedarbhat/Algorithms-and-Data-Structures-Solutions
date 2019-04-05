@@ -5,7 +5,6 @@
 #include "AbstractClasses.hpp"
 
 namespace {
-using namespace std::literals;
 TEST(TestAbstractClasses, NeverPass) {
   AbstractClasses::StringLengthChecker checker{std::string::npos};
   EXPECT_THROW(checker.isValid("Should Be Valid"),
