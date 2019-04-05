@@ -15,28 +15,15 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/counting-valleys/problem?h_l=interview&playlist_slugs%5B%5D=interview-preparation-kit&playlist_slugs%5B%5D=warmup
-
 #pragma once
 
-#include <string>
+#include "BitArray.hpp"
 
-namespace counting_valleys {
-unsigned countingValleys(const std::string &s) {
-  int current_depth = 0;
-  unsigned num_valleys = 0;
-  for (auto step : s) {
-    if (step == 'D') {
-      if (current_depth == 0) {
-        ++num_valleys;
-      }
-      --current_depth;
-    } else if (step == 'U') {
-      ++current_depth;
-    } else {
-      throw std::invalid_argument(std::addressof(step));
-    }
-  }
-  return num_valleys;
+namespace { // NOLINT
+TEST(TestBitArray, HackerRankTestCases) {
+  EXPECT_EQ(
+      bit_array::GenerateSequence(100000000, 178349423, 584642695, 2037647927),
+      100000000);
+  EXPECT_EQ(bit_array::GenerateSequence(3, 1, 1, 1), 3);
 }
-}  // namespace counting_valleys
+}  // namespace
