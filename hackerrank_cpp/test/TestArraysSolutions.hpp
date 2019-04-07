@@ -22,6 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "ReverseArray.hpp"
 #include "RotateLeft.hpp"
 
+namespace { // NOLINT
 TEST(TestArraySolutions, RotateLeft) {
   std::vector<int> vec{1, 2, 3, 4, 5};
   int64_t numRotations = 4;
@@ -49,3 +50,4 @@ TEST(TestArraySolutions, DynamicArray) {
       {1, 0, 5}, {1, 1, 7}, {1, 0, 3}, {2, 1, 0}, {2, 1, 1}};
   ASSERT_EQ(dynamicArray::dynamicArray(2, data), ((std::vector<int>{7, 3})));
 }
+}  // namespace
