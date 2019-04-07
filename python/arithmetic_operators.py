@@ -24,6 +24,9 @@ class ArithmeticOperators:
     class for integral arithmetic operations
     """
 
+    def __init__(self):
+        pass
+
     @classmethod
     def add(cls, lhs: int, rhs: int) -> int:
         """

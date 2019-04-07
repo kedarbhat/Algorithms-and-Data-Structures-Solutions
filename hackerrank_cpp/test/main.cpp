@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <gtest/gtest.h>
 
+#include "TestArraysSolutions.hpp"
 #include "TestBitArray.hpp"
 #include "TestCountingValleys.hpp"
 #include "TestInheritedCode.hpp"

@@ -32,7 +32,8 @@ struct BadLengthException : std::exception {
 
 class StringLengthChecker final {
  public:
-  explicit StringLengthChecker(std::size_t min_length) : min_length_(min_length) {}
+  explicit StringLengthChecker(std::size_t min_length)
+      : min_length_(min_length) {}
   std::string IsValid(const std::string &s) {
     return CheckStringLength(s) ? "Valid" : "Invalid";
   }

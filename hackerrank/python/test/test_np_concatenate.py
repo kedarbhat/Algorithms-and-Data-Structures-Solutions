@@ -5,7 +5,7 @@ import numpy as np
 from hackerrank.python.src import np_concatenate
 
 
-class HackerrankTestCase(unittest.TestCase):
+class HackerRankTestCase(unittest.TestCase):
     def test(self):
         n, m = 4, 3
         n_data = tuple([(1, 2)] * n)

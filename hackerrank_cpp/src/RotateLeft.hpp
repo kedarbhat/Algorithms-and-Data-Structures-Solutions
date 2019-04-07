@@ -15,21 +15,15 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// https://www.hackerrank.com/challenges/array-left-rotation/problem
+
 #pragma once
 
-#include "CountingValleys.hpp"
-
-namespace {  // NOLINT
-TEST(TestCountingValleys, NoValleys) {
-  EXPECT_EQ(0, counting_valleys::countingValleys("UUUUU"));
+namespace rotateLeft {
+std::vector<int> rotateLeft(std::vector<int> arr, long rotations) {
+  reverse(begin(arr), begin(arr) + rotations);
+  reverse(begin(arr) + rotations, end(arr));
+  reverse(begin(arr), end(arr));
+  return arr;
 }
-
-TEST(TestCountingValleys, HackerRankExample) {
-  EXPECT_EQ(1, counting_valleys::countingValleys("UDDDUDUU"));
-}
-
-TEST(TestCountingValleys, InvalidInput) {
-  EXPECT_THROW(counting_valleys::countingValleys("UXDDDUE"),
-               std::invalid_argument);
-}
-}  // namespace
+}  // namespace rotateLeft

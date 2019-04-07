@@ -5,7 +5,7 @@ import numpy as np
 from hackerrank.python.src import np_transpose_and_flatten
 
 
-class HackerrankTestCase(unittest.TestCase):
+class HackerRankTestCase(unittest.TestCase):
     def test(self):
         data = (["1", "2"], ["3", "4"])
         transposed, flattened = np_transpose_and_flatten.transpose_and_flatten(data)

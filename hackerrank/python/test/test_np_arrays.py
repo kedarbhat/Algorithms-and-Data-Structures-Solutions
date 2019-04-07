@@ -5,7 +5,7 @@ import numpy as np
 from hackerrank.python.src import np_arrays
 
 
-class HackerrankTestCase(unittest.TestCase):
+class HackerRankTestCase(unittest.TestCase):
     def test(self):
         self.assertTrue(
             np.array_equal(np_arrays.arrays("1 2 3 4 -8 -10"),

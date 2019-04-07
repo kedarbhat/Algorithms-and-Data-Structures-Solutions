@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "TemplateSpecialization.hpp"
 
-namespace { // NOLINT
+namespace {  // NOLINT
 TEST(TestTemplateSpecialization, TestBothEnums) {
   using FruitTraits =
       template_specialization::Traits<template_specialization::Fruit>;

@@ -15,21 +15,15 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// https://www.hackerrank.com/challenges/arrays-ds/problem
+
 #pragma once
 
-#include "CountingValleys.hpp"
-
-namespace {  // NOLINT
-TEST(TestCountingValleys, NoValleys) {
-  EXPECT_EQ(0, counting_valleys::countingValleys("UUUUU"));
+namespace reverseArray {
+std::vector<int> reverseArray(std::vector<int> a) {
+  for (std::size_t idx = 0; 2 * idx < a.size(); ++idx) {
+    std::swap(a[idx], a[a.size() - 1 - idx]);
+  }
+  return a;
 }
-
-TEST(TestCountingValleys, HackerRankExample) {
-  EXPECT_EQ(1, counting_valleys::countingValleys("UDDDUDUU"));
-}
-
-TEST(TestCountingValleys, InvalidInput) {
-  EXPECT_THROW(counting_valleys::countingValleys("UXDDDUE"),
-               std::invalid_argument);
-}
-}  // namespace
+}  // namespace reverseArray

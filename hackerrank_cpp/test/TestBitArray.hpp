@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "BitArray.hpp"
 
-namespace { // NOLINT
+namespace {  // NOLINT
 TEST(TestBitArray, HackerRankTestCases) {
   EXPECT_EQ(
       bit_array::GenerateSequence(100000000, 178349423, 584642695, 2037647927),
