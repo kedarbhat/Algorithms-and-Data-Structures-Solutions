@@ -22,32 +22,32 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "ArraysSolutions/ReverseArray.hpp"
 #include "ArraysSolutions/RotateLeft.hpp"
 
-namespace { // NOLINT
+namespace {  // NOLINT
 TEST(TestArraySolutions, RotateLeft) {
   std::vector<int> vec{1, 2, 3, 4, 5};
-  int64_t numRotations = 4;
-  auto rotatedVec = arrays::rotateLeft(vec, numRotations);
-  std::rotate(std::begin(vec), std::begin(vec) + numRotations, std::end(vec));
-  ASSERT_EQ(rotatedVec, vec);
+  int64_t num_rotations = 4;
+  auto rotated_vec = arrays::RotateLeft(vec, num_rotations);
+  std::rotate(std::begin(vec), std::begin(vec) + num_rotations, std::end(vec));
+  ASSERT_EQ(rotated_vec, vec);
 }
 
 TEST(TestArraySolutions, ReverseArray) {
   std::vector<int> vec{1, 4, 3, 2};
-  auto reversedVec = arrays::reverseArray(vec);
+  auto reversed_vec = arrays::ReverseArray(vec);
   std::reverse(std::begin(vec), std::end(vec));
-  ASSERT_EQ(reversedVec, vec);
+  ASSERT_EQ(reversed_vec, vec);
 }
 
 TEST(TestArraySolutions, HouseGlassSum) {
   std::vector<std::vector<int>> data{{1, 1, 1, 0, 0, 0}, {0, 1, 0, 0, 0, 0},
                                      {1, 1, 1, 0, 0, 0}, {0, 0, 2, 4, 4, 0},
                                      {0, 0, 0, 2, 0, 0}, {0, 0, 1, 2, 4, 0}};
-  ASSERT_EQ(arrays::hourglassSum(data), 19);
+  ASSERT_EQ(arrays::HourglassSum(data), 19);
 }
 
 TEST(TestArraySolutions, DynamicArray) {
   std::vector<std::vector<int>> data{
       {1, 0, 5}, {1, 1, 7}, {1, 0, 3}, {2, 1, 0}, {2, 1, 1}};
-  ASSERT_EQ(arrays::dynamicArray(2, data), ((std::vector<int>{7, 3})));
+  ASSERT_EQ(arrays::DynamicArray(2, data), ((std::vector<int>{7, 3})));
 }
 }  // namespace

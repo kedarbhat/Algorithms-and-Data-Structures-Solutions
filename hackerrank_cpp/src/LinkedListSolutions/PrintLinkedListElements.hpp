@@ -15,16 +15,23 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <gtest/gtest.h>
+// https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
 
-#include "TestArraysSolutions.hpp"
-#include "TestBitArray.hpp"
-#include "TestCountingValleys.hpp"
-#include "TestInheritedCode.hpp"
-#include "TestLinkedListSolutions.hpp"
-#include "TestTemplateSpecialization.hpp"
+#pragma once
 
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+#include "detail/SinglyLinkedListNode.hpp"
+
+namespace linked_lists {
+std::string PrintLinkedList(
+    std::unique_ptr<detail::SinglyLinkedListNode>& head) {
+  std::string ret;
+  while (head != nullptr) {
+    ret += std::to_string(head->data_);
+    if (head->next_ != nullptr) {
+      ret += ' ';
+    }
+    head = std::move(head->next_);
+  }
+  return ret;
 }
+}  // namespace linked_lists

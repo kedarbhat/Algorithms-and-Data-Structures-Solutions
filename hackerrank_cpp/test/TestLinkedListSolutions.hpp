@@ -15,16 +15,15 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-#include <gtest/gtest.h>
+#pragma once
 
-#include "TestArraysSolutions.hpp"
-#include "TestBitArray.hpp"
-#include "TestCountingValleys.hpp"
-#include "TestInheritedCode.hpp"
-#include "TestLinkedListSolutions.hpp"
-#include "TestTemplateSpecialization.hpp"
+#include "LinkedListSolutions/PrintLinkedListElements.hpp"
 
-int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+namespace {  // NOLINT
+TEST(TestLinkedListSolutions, PrintListedListElements) {
+  std::unique_ptr<detail::SinglyLinkedListNode> head =
+      std::make_unique<detail::SinglyLinkedListNode>(16);
+  head->next_ = std::make_unique<detail::SinglyLinkedListNode>(13);
+  ASSERT_EQ(linked_lists::PrintLinkedList(head), std::string("16 13"));
 }
+}  // namespace

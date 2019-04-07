@@ -20,21 +20,21 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
 namespace arrays {
-std::vector<int> dynamicArray(int n,
+std::vector<int> DynamicArray(std::size_t n,
                               const std::vector<std::vector<int>> &queries) {
   std::vector<int> result;
-  std::vector<std::vector<int>> seqList(n);
-  int lastAnswer = 0;
+  std::vector<std::vector<int>> seq_list(n);
+  int last_answer = 0;
   for (const auto &query : queries) {
     // casting to unsigned due to bitwise operation
-    auto &seq = seqList[(static_cast<unsigned>(query[1]) ^
-                         static_cast<unsigned>(lastAnswer)) %
-                        n];
+    auto &seq = seq_list[(static_cast<unsigned>(query[1]) ^
+                          static_cast<unsigned>(last_answer)) %
+                         n];
     if (query[0] == 1) {
       seq.emplace_back(query[2]);
     } else {
-      lastAnswer = seq[query[2] % seq.size()];
-      result.emplace_back(lastAnswer);
+      last_answer = seq[query[2] % seq.size()];
+      result.emplace_back(last_answer);
     }
   }
   return result;

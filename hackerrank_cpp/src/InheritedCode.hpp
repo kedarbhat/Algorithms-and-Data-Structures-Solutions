@@ -26,7 +26,7 @@ namespace abstract_classes {
 
 struct BadLengthException : std::exception {
   explicit BadLengthException(std::size_t n) : n_(std::to_string(n)) {}
-  const char *what() const noexcept override { return n_.c_str(); }
+  const char *what() const noexcept override { return n_.c_str(); }  // NOLINT
   std::string n_;
 };
 

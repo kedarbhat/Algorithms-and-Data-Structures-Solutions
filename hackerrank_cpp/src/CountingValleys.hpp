@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <string>
 
 namespace counting_valleys {
-unsigned countingValleys(const std::string &s) {
+unsigned CountingValleys(const std::string &s) {
   int current_depth = 0;
   unsigned num_valleys = 0;
   for (auto step : s) {
