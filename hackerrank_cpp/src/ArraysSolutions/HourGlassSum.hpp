@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-namespace hourGlassSum {
+namespace arrays {
 int hourglassSum(const std::vector<std::vector<int>>& arr,
                  const std::pair<std::size_t, std::size_t>& center) {
   auto x = center.first;
@@ -37,4 +37,4 @@ int hourglassSum(const std::vector<std::vector<int>>& arr) {
   }
   return max_sum;
 }
-}  // namespace hourGlassSum
+}  // namespace arrays

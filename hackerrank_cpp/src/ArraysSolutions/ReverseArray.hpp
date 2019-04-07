@@ -19,11 +19,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-namespace reverseArray {
+namespace arrays {
 std::vector<int> reverseArray(std::vector<int> a) {
   for (std::size_t idx = 0; 2 * idx < a.size(); ++idx) {
     std::swap(a[idx], a[a.size() - 1 - idx]);
   }
   return a;
 }
-}  // namespace reverseArray
+}  // namespace arrays

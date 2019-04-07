@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-namespace dynamicArray {
+namespace arrays {
 std::vector<int> dynamicArray(int n,
                               const std::vector<std::vector<int>> &queries) {
   std::vector<int> result;
@@ -39,4 +39,4 @@ std::vector<int> dynamicArray(int n,
   }
   return result;
 }
-}  // namespace dynamicArray
+}  // namespace arrays
