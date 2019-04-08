@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD 14)
 if ("x{CMAKE_CXX_COMPILER_ID}" STREQUAL "xCLANG")
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Weverything -Wall -Wextra -Wpedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic")
 elseif("x{CMAKE_CXX_COMPILER_ID}" STREQUAL "xGNU")
-    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic")
+    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Wall -O0 --coverage")
 endif()
 
 add_library(HackerRank INTERFACE)
