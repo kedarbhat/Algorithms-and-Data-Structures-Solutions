@@ -11,20 +11,21 @@ endif()
 
 set(CMAKE_CXX_STANDARD 14)
 
+
 if ("x{CMAKE_CXX_COMPILER_ID}" STREQUAL "xCLANG")
-    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Weverything -Wall -Wextra -Wpedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic")
+    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-v -Weverything -Wall -Wextra -Wpedantic -Wno-c++98-compat -Wno-c++98-compat-pedantic")
 elseif("x{CMAKE_CXX_COMPILER_ID}" STREQUAL "xGNU")
-    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Wall -O0 --coverage")
+    set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-v -Wall -Wextra -Wpedantic -Wall -O0")
 endif()
 
 add_library(HackerRank INTERFACE)
 target_include_directories(HackerRank INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
 target_include_directories(HackerRank SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
-target_compile_options(HackerRank INTERFACE
-        -O0        # no optimization
-        -g         # generate debug info
-        --coverage # sets all required flags
-        )
+option(CODE_COVERAGE "Enable coverage reporting" OFF)
+if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(HackerRank ${INTERFACE_COMPILE_OPTIONS} -O0 -g --coverage)
+endif(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+
 include_directories(src)
 
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -61,9 +62,7 @@ endif()
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS} SYSTEM)
 include(GoogleTest)
-
+enable_testing()
 add_executable(test_everything test/main.cpp)
 target_link_libraries(test_everything ${GTEST_LIBRARIES} pthread)
-set_target_properties(test_everything PROPERTIES COMPILE_FLAGS "-ftest-coverage -fprofile-arcs" LINK_FLAGS "-lgcov --coverage")
 gtest_discover_tests(test_everything)
-enable_testing()

@@ -15,7 +15,6 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-7
-            - lcov
             - libgtest-dev
             - cmake
             - cmake-data
@@ -38,14 +37,14 @@ install:
   - cd -
 
 script:
-  - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
-  - export CXX_STD="c++14"
   - cmake -DCMAKE_BUILD_TYPE=Debug .
   - cmake --build . --config Debug --target test_everything
 
 after_success:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
+  - cmake -DCMAKE_BUILD_TYPE=Debug .
+  - cmake --build . --config Debug --target test_everything
   - ./test_everything
-  - ./.codecov -f coverage.info -X gcov -x "gcov-7"
+  - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
