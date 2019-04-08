@@ -21,9 +21,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace {
 TEST(TestBitArray, HackerRankTestCases) {
-  EXPECT_EQ(
+  ASSERT_EQ(
       bit_array::GenerateSequence(100000000, 178349423, 584642695, 2037647927),
       100000000);
-  EXPECT_EQ(bit_array::GenerateSequence(3, 1, 1, 1), 3);
+  ASSERT_EQ(bit_array::GenerateSequence(3, 1, 1, 1), 3);
 }
 }  // namespace

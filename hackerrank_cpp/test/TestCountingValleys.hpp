@@ -21,15 +21,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace {  // NOLINT
 TEST(TestCountingValleys, NoValleys) {
-  EXPECT_EQ(0, counting_valleys::CountingValleys("UUUUU"));
+  ASSERT_EQ(0, counting_valleys::CountingValleys("UUUUU"));
 }
 
 TEST(TestCountingValleys, HackerRankExample) {
-  EXPECT_EQ(1, counting_valleys::CountingValleys("UDDDUDUU"));
+  ASSERT_EQ(1, counting_valleys::CountingValleys("UDDDUDUU"));
 }
 
 TEST(TestCountingValleys, InvalidInput) {
-  EXPECT_THROW(counting_valleys::CountingValleys("UXDDDUE"),
+  ASSERT_THROW(counting_valleys::CountingValleys("UXDDDUE"),
                std::invalid_argument);
 }
 }  // namespace

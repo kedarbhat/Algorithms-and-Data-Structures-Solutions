@@ -47,8 +47,8 @@ TEST(TestLinkedListSolutions, InsertNodeAtTail) {
   }
 
   for (auto i : {141, 302, 164, 530, 474}) {
-    EXPECT_FALSE(head == nullptr);
-    EXPECT_EQ(head->data_, i); // NOLINT(clang-analyzer-core.NonNullParamChecker)
+    ASSERT_FALSE(head == nullptr);
+    ASSERT_EQ(head->data_, i); // NOLINT(clang-analyzer-core.NonNullParamChecker)
     head = head->next_;
   }
   DeleteLinkedList(head);
@@ -61,8 +61,8 @@ TEST(TestLinkedListSolutions, InsertNodeAtHead) {
   }
 
   for (auto i : {321, 975, 392, 484, 383}) {
-    EXPECT_FALSE(head == nullptr);
-    EXPECT_EQ(head->data_, i); // NOLINT(clang-analyzer-core.NonNullParamChecker)
+    ASSERT_FALSE(head == nullptr);
+    ASSERT_EQ(head->data_, i); // NOLINT(clang-analyzer-core.NonNullParamChecker)
     head = head->next_;
   }
   DeleteLinkedList(head);

@@ -24,19 +24,19 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace {
 TEST(TestAbstractClasses, NeverPass) {
   abstract_classes::StringLengthChecker checker{std::string::npos};
-  EXPECT_THROW(checker.IsValid("Should Be Valid"),
+  ASSERT_THROW(checker.IsValid("Should Be Valid"),
                abstract_classes::BadLengthException);
 }
 
 TEST(TestAbstractClasses, AlwaysPass) {
   abstract_classes::StringLengthChecker checker{0};
-  EXPECT_EQ("Valid", checker.IsValid(""));
+  ASSERT_EQ("Valid", checker.IsValid(""));
 }
 
 TEST(TestAbstractClasses, HackerRankExample) {
   abstract_classes::StringLengthChecker checker{3};
-  EXPECT_EQ("Valid", checker.IsValid("Peter"));
-  EXPECT_THROW(checker.IsValid("Me"), abstract_classes::BadLengthException);
-  EXPECT_EQ("Invalid", checker.IsValid("Arxwwz"));
+  ASSERT_EQ("Valid", checker.IsValid("Peter"));
+  ASSERT_THROW(checker.IsValid("Me"), abstract_classes::BadLengthException);
+  ASSERT_EQ("Invalid", checker.IsValid("Arxwwz"));
 }
 }  // namespace
