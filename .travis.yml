@@ -17,6 +17,8 @@ matrix:
             - lcov
             - g++-7
             - libgtest-dev
+            - cmake
+            - cmake-data
       env:
         - MATRIX_EVAL="CXX_COMPILER=g++-7"
 
