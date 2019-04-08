@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "LinkedListSolutions/DeleteNodeAtPosition.hpp"
 #include "LinkedListSolutions/InsertNodeAtHead.hpp"
 #include "LinkedListSolutions/InsertNodeAtPosition.hpp"
 #include "LinkedListSolutions/InsertNodeAtTail.hpp"
@@ -86,4 +87,23 @@ TEST(TestLinkedListSolutions, InsertNodeAtPosition) {
   }
   DeleteLinkedList(head);
 }
+
+TEST(TestLinkedListSolutions, DeleteNodeAtPosition) {
+  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+  for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
+    head = linked_lists::InsertNodeAtTail(head, i);
+  }
+
+  head = linked_lists::deleteNode(head, 3);
+
+  for (auto i : {20, 6, 2, 7, 4, 15, 9}) {
+    ASSERT_FALSE(head == nullptr);
+    ASSERT_EQ(head->data_,
+              i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+    head = head->next_;
+  }
+  DeleteLinkedList(head);
+}
+
+
 }  // namespace
