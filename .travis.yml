@@ -43,7 +43,7 @@ script:
   - export CXX_STD="c++14"
   - cmake -DCMAKE_BUILD_TYPE=Debug .
   - cmake --build . --config Debug --target test_everything
-  - $CMAKE_CURRENT_BINARY_DIR/test_everything
+  - ./test_everything
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
