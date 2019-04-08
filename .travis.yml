@@ -42,7 +42,7 @@ script:
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
   - export CXXSTD="c++14"
-  - $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -isystem ${GTEST_ROOT}/include -pthread lib/libgtest.a -Wall -pedantic -O0 --coverage -o test_hackerrank
+  - $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -isystem ${GTEST_ROOT}/include -pthread libgtest.a -Wall -pedantic -O0 --coverage -o test_hackerrank
   - ./test_hackerrank
 
 after_success:
