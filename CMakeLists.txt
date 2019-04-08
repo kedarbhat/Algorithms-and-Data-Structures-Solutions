@@ -25,7 +25,7 @@ target_compile_options(HackerRank INTERFACE
         -g         # generate debug info
         --coverage # sets all required flags
         )
-include_directories(BEFORE src)
+include_directories(src)
 
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
