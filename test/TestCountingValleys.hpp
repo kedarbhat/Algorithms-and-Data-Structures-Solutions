@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "CountingValleys.hpp"
 
-namespace {  // NOLINT
+namespace {
 TEST(TestCountingValleys, NoValleys) {
   ASSERT_EQ(0, counting_valleys::CountingValleys("UUUUU"));
 }

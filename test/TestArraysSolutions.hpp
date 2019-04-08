@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "ArraysSolutions/ReverseArray.hpp"
 #include "ArraysSolutions/RotateLeft.hpp"
 
-namespace {  // NOLINT
+namespace {
 TEST(TestArraySolutions, RotateLeft) {
   std::vector<int> vec{1, 2, 3, 4, 5};
   int64_t num_rotations = 4;
