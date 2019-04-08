@@ -15,7 +15,7 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem
+// https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem
 
 #pragma once
 
