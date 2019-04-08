@@ -63,6 +63,6 @@ include_directories(${GTEST_INCLUDE_DIRS} SYSTEM)
 include(GoogleTest)
 
 add_executable(test_everything test/main.cpp)
-target_link_libraries(test_everything gtest_main)
+target_link_libraries(test_everything GTest::GTest)
 gtest_discover_tests(test_everything)
 enable_testing()
