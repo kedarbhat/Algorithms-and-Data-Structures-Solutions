@@ -42,8 +42,10 @@ script:
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
   - export CXX_STD="c++14"
-  - cmake .
-  - if make -j4 -o ./test_everything; then ./test_everything; fi
+  - $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -Wall -pedantic -O0 --coverage -o test_hackerrank
+  - ./test_hackerrank
+
+after_success:
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
 
 
