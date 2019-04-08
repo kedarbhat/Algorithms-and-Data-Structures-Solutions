@@ -23,7 +23,7 @@ target_include_directories(HackerRank INTERFACE $<BUILD_INTERFACE:${CMAKE_CURREN
 target_include_directories(HackerRank SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
 if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(HackerRank ${INTERFACE_COMPILE_OPTIONS} -O0 -g --coverage)
+    target_compile_options(HackerRank ${CMAKE_CXX_FLAGS} -O0 -g --coverage)
 endif(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 
 include_directories(src)
