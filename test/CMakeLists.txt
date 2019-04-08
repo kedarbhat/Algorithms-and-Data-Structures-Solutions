@@ -3,10 +3,7 @@ find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS} SYSTEM)
 
 add_executable(test_everything main.cpp)
-target_link_libraries(test_everything ${GTEST_LIBRARIES} pthread)
-set_target_properties(test_everything
-        PROPERTIES
-        LINK_FLAGS    "-lgcov --coverage"
-        )
+target_link_libraries(test_everything gtest_main)
+set_target_properties(test_everything PROPERTIES LINK_FLAGS "--coverage")
 enable_testing()
 

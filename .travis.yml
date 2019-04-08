@@ -3,7 +3,6 @@
 sudo: false
 language: cpp
 dist: xenial
-compiler: gcc
 notifications:
   email: false
 
@@ -41,9 +40,9 @@ script:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
-  - export CXXSTD="c++14"
-  - $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -isystem ${GTEST_ROOT}/include -pthread libgtest.a -Wall -pedantic -O0 --coverage -o test_hackerrank
-  - ./test_hackerrank
+  - export CXX_STD="c++14"
+  - cmake .
+  - if make -j4 -o test/test_everything; then test/test_everything; fi
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
