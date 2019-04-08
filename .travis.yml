@@ -23,8 +23,6 @@ matrix:
 
 before_install:
   - eval "${MATRIX_EVAL}"
-#  - PARENTDIR=$(pwd)
-#  - mkdir $PARENTDIR/build
 
 install:
   - mkdir ~/gtest && cd ~/gtest
