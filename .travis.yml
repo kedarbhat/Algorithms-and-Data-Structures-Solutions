@@ -19,22 +19,22 @@ matrix:
             - cmake
             - cmake-data
       env:
-        - MATRIX_EVAL="CXX_COMPILER=g++-7 && CXX=g++-7 && CC=gcc-7"
+        - MATRIX_EVAL="CXX_COMPILER=g++-7 && CXX=g++-7 && CC=gcc-7 && CXXSTD=c++14"
 
 before_install:
   - eval "${MATRIX_EVAL}"
-  - PARENTDIR=$(pwd)
-  - mkdir $PARENTDIR/build
+#  - PARENTDIR=$(pwd)
+#  - mkdir $PARENTDIR/build
 
-install: 
-  - mkdir ~/gtest && cd ~/gtest
-  - export LIBRARY_PATH=$(pwd)
-  - cp -r /usr/src/gtest/* ./
-  - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
-  - make
-  - mkdir include && cp -r /usr/include/gtest include
-  - mkdir lib && cp libgtest* lib
-  - cd -
+#install:
+#  - mkdir ~/gtest && cd ~/gtest
+#  - export LIBRARY_PATH=$(pwd)
+#  - cp -r /usr/src/gtest/* ./
+#  - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
+#  - make
+#  - mkdir include && cp -r /usr/include/gtest include
+#  - mkdir lib && cp libgtest* lib
+#  - cd -
 
 script:
   - export GTEST_COLOR=1
@@ -44,7 +44,5 @@ script:
 
 after_success:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
-  - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON .
-  - cmake --build . --config Debug --target test_everything
-  - ./test_everything
+  - if $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -Wall -pedantic -O0 --coverage -o test_everything; then ./test_everything; fi
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
