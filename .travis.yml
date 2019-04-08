@@ -3,6 +3,7 @@
 sudo: false
 language: cpp
 dist: xenial
+compiler: gcc
 notifications:
   email: false
 
@@ -14,7 +15,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - lcov
             - g++-7
             - libgtest-dev
             - cmake
@@ -44,8 +44,6 @@ script:
   - export CXX_STD="c++14"
   - cmake .
   - if make -j4 -o test/test_everything; then test/test_everything; fi
-
-after_success:
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
 
 
