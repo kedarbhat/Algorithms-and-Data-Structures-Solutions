@@ -21,19 +21,29 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace {
 TEST(TestTemplateSpecialization, TestBothEnums) {
+  using FruitType = template_specialization::Fruit;
+  using ColorType = template_specialization::Color;
   using FruitTraits =
-      template_specialization::Traits<template_specialization::Fruit>;
+      template_specialization::Traits<FruitType>;
   using ColorTraits =
-      template_specialization::Traits<template_specialization::Color>;
+      template_specialization::Traits<ColorType>;
 
   ASSERT_STREQ(FruitTraits::name(0), "apple");
   ASSERT_STREQ(FruitTraits::name(1), "orange");
   ASSERT_STREQ(FruitTraits::name(2), "pear");
   ASSERT_STREQ(FruitTraits::name(3), "unknown");
+  ASSERT_STREQ(FruitTraits::name(FruitType::APPLE), "apple");
+  ASSERT_STREQ(FruitTraits::name(FruitType::ORANGE), "orange");
+  ASSERT_STREQ(FruitTraits::name(FruitType::PEAR), "pear");
+  ASSERT_STREQ(FruitTraits::name(FruitType::MAX), "unknown");
 
   ASSERT_STREQ(ColorTraits::name(0), "red");
   ASSERT_STREQ(ColorTraits::name(1), "green");
   ASSERT_STREQ(ColorTraits::name(2), "orange");
   ASSERT_STREQ(ColorTraits::name(3), "unknown");
+  ASSERT_STREQ(ColorTraits::name(ColorType::RED), "red");
+  ASSERT_STREQ(ColorTraits::name(ColorType::GREEN), "green");
+  ASSERT_STREQ(ColorTraits::name(ColorType::ORANGE), "orange");
+  ASSERT_STREQ(ColorTraits::name(ColorType::MAX), "unknown");
 }
 }  // namespace

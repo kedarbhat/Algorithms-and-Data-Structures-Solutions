@@ -60,6 +60,10 @@ struct Traits {
   static constexpr const char *name(std::size_t idx) noexcept {  // NOLINT
     return Name<T>::s_names_[idx];
   }
+  static constexpr const char *name(T enumVal) noexcept {  // NOLINT
+    using underlying_t = typename std::underlying_type<T>::type;
+    return Name<T>::s_names_[static_cast<underlying_t>(enumVal)];
+  }
 #pragma clang diagnostic pop
 };
 }  // namespace template_specialization
