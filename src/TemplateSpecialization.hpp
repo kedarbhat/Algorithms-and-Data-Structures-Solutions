@@ -23,21 +23,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <type_traits>
 
 namespace template_specialization {
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 enum class Fruit { APPLE, ORANGE, PEAR, MAX };
 enum class Color { RED, GREEN, ORANGE, MAX };
-#pragma clang diagnostic pop
 
 
 template <typename T>
 using array_t = std::array<const char *, static_cast<std::size_t>(T::MAX) + 1u>;
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedStructInspection"
 template <typename T>
 struct Name;
-#pragma clang diagnostic pop
 
 template <>
 struct Name<Fruit> {
@@ -55,8 +49,6 @@ constexpr array_t<Color> Name<Color>::s_names_;  // ODR rule deprecated in C++17
 
 template <typename T>
 struct Traits {
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCInconsistentNamingInspection"
   static constexpr const char *name(std::size_t idx) noexcept {  // NOLINT
     return Name<T>::s_names_[idx];
   }
@@ -64,6 +56,5 @@ struct Traits {
     using underlying_t = typename std::underlying_type<T>::type;
     return Name<T>::s_names_[static_cast<underlying_t>(enumVal)];
   }
-#pragma clang diagnostic pop
 };
 }  // namespace template_specialization
