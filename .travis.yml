@@ -26,15 +26,15 @@ before_install:
 #  - PARENTDIR=$(pwd)
 #  - mkdir $PARENTDIR/build
 
-#install:
-#  - mkdir ~/gtest && cd ~/gtest
-#  - export LIBRARY_PATH=$(pwd)
-#  - cp -r /usr/src/gtest/* ./
-#  - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
-#  - make
-#  - mkdir include && cp -r /usr/include/gtest include
-#  - mkdir lib && cp libgtest* lib
-#  - cd -
+install:
+  - mkdir ~/gtest && cd ~/gtest
+  - export LIBRARY_PATH=$(pwd)
+  - cp -r /usr/src/gtest/* ./
+  - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
+  - make
+  - mkdir include && cp -r /usr/include/gtest include
+  - mkdir lib && cp libgtest* lib
+  - cd -
 
 script:
   - export GTEST_COLOR=1
