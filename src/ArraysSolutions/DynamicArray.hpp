@@ -19,6 +19,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include <vector>
+
 namespace arrays {
 std::vector<int> DynamicArray(std::size_t n,
                               const std::vector<std::vector<int>> &queries) {

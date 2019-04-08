@@ -19,11 +19,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include <algorithm>
+#include <vector>
+
 namespace arrays {
-std::vector<int> RotateLeft(std::vector<int> arr, long rotations) {
-  reverse(begin(arr), begin(arr) + rotations);
-  reverse(begin(arr) + rotations, end(arr));
-  reverse(begin(arr), end(arr));
+std::vector<int> RotateLeft(std::vector<int> arr, int64_t rotations) {
+  std::reverse(std::begin(arr), std::begin(arr) + rotations);
+  std::reverse(std::begin(arr) + rotations, std::end(arr));
+  std::reverse(std::begin(arr), std::end(arr));
   return arr;
 }
 }  // namespace arrays

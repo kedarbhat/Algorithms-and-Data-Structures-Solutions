@@ -19,6 +19,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include <vector>
+
 namespace arrays {
 std::vector<int> ReverseArray(std::vector<int> a) {
   for (std::size_t idx = 0; 2 * idx < a.size(); ++idx) {

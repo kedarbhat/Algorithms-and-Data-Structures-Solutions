@@ -19,6 +19,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include <algorithm>
+#include <limits>
+#include <utility>
+#include <vector>
+
 namespace arrays {
 int HourglassSum(const std::vector<std::vector<int>>& arr,
                  const std::pair<std::size_t, std::size_t>& center) {
