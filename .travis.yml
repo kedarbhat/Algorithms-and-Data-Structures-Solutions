@@ -44,7 +44,7 @@ script:
 
 after_success:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
-  - cmake -DCMAKE_BUILD_TYPE=Debug .
+  - cmake -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON .
   - cmake --build . --config Debug --target test_everything
   - ./test_everything
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
