@@ -1,3 +1,3 @@
 # HackerRank
 HackerRank Solutions
-[![Build Status](https://travis-ci.com/kedarbhat/HackerRank.svg?branch=master)](https://travis-ci.com/kedarbhat/HackerRank)
+[![Build Status](https://travis-ci.org/kedarbhat/HackerRank.svg?branch=master)](https://travis-ci.org/kedarbhat/HackerRank)
