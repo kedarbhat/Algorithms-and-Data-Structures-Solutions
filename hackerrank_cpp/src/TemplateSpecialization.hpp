@@ -23,33 +23,43 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <type_traits>
 
 namespace template_specialization {
-enum class Fruit { APPLE, ORANGE, PEAR, MAX };  // NOLINT
-enum class Color { RED, GREEN, ORANGE, MAX };   // NOLINT
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+enum class Fruit { APPLE, ORANGE, PEAR, MAX };
+enum class Color { RED, GREEN, ORANGE, MAX };
+#pragma clang diagnostic pop
+
 
 template <typename T>
 using array_t = std::array<const char *, static_cast<std::size_t>(T::MAX) + 1u>;
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedStructInspection"
 template <typename T>
 struct Name;
+#pragma clang diagnostic pop
 
 template <>
 struct Name<Fruit> {
-  static constexpr array_t<Fruit> s_names{
+  static constexpr array_t<Fruit> s_names_{
       {"apple", "orange", "pear", "unknown"}};
 };
-constexpr array_t<Fruit> Name<Fruit>::s_names;  // ODR rule deprecated in C++17
+constexpr array_t<Fruit> Name<Fruit>::s_names_;  // ODR rule deprecated in C++17
 
 template <>
 struct Name<Color> {
-  static constexpr array_t<Color> s_names{
+  static constexpr array_t<Color> s_names_{
       {"red", "green", "orange", "unknown"}};
 };
-constexpr array_t<Color> Name<Color>::s_names;  // ODR rule deprecated in C++17
+constexpr array_t<Color> Name<Color>::s_names_;  // ODR rule deprecated in C++17
 
 template <typename T>
 struct Traits {
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCInconsistentNamingInspection"
   static constexpr const char *name(std::size_t idx) noexcept {  // NOLINT
-    return Name<T>::s_names[idx];
+    return Name<T>::s_names_[idx];
   }
+#pragma clang diagnostic pop
 };
 }  // namespace template_specialization

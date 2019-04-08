@@ -21,16 +21,23 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "detail/SinglyLinkedListNode.hpp"
 
-namespace linked_lists {
-std::string PrintLinkedList(detail::SinglyLinkedListNode* head) {
-  std::string ret;
-  while (head != nullptr) {
-    ret += std::to_string(head->data_);
-    if (head->next_ != nullptr) {
-      ret += ' ';
+namespace linked_lists { // NOLINT
+detail::SinglyLinkedListNode* GetTail(detail::SinglyLinkedListNode* node) {
+  if (node != nullptr) {
+    while (node->next_ != nullptr) {
+      node = node->next_;
     }
-    head = head->next_;
   }
-  return ret;
+  return node;
+}
+
+detail::SinglyLinkedListNode* InsertNodeAtTail(detail::SinglyLinkedListNode* head, int data) {
+  if (head == nullptr) {
+    head = new detail::SinglyLinkedListNode(data);
+  } else {
+    auto* tail = GetTail(head);
+    tail->next_ = new detail::SinglyLinkedListNode(data);
+  }
+  return head;
 }
 }  // namespace linked_lists

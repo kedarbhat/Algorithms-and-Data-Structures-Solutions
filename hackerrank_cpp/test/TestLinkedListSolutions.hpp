@@ -17,13 +17,39 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "LinkedListSolutions/InsertTailAtNode.hpp"
 #include "LinkedListSolutions/PrintLinkedListElements.hpp"
 
-namespace {  // NOLINT
+namespace {
+  void DeleteLinkedList(linked_lists::detail::SinglyLinkedListNode* head) {
+    while (head != nullptr) {
+      auto* tmp = head->next_;
+      delete head;
+      head = tmp;
+    }
+  }
+} // namespace
+
+namespace {
 TEST(TestLinkedListSolutions, PrintListedListElements) {
-  std::unique_ptr<detail::SinglyLinkedListNode> head =
-      std::make_unique<detail::SinglyLinkedListNode>(16);
-  head->next_ = std::make_unique<detail::SinglyLinkedListNode>(13);
+  auto *head =
+      new linked_lists::detail::SinglyLinkedListNode(16);
+  head->next_ = new linked_lists::detail::SinglyLinkedListNode(13);
   ASSERT_EQ(linked_lists::PrintLinkedList(head), std::string("16 13"));
+  DeleteLinkedList(head);
+}
+
+TEST(TestLinkedListSolutions, InsertNodeAtLinkedList) {
+  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+  for (auto i : {141, 302,  164, 530, 474}) {
+    head = linked_lists::InsertNodeAtTail(head, i);
+  }
+
+  for (auto i : {141, 302, 164, 530, 474}) {
+    EXPECT_FALSE(head == nullptr);
+    EXPECT_EQ(head->data_, i);
+    head = head->next_;
+  }
+  DeleteLinkedList(head);
 }
 }  // namespace

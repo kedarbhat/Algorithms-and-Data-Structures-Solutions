@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <string>
 
-namespace {  // NOLINT
+namespace {
 TEST(TestAbstractClasses, NeverPass) {
   abstract_classes::StringLengthChecker checker{std::string::npos};
   EXPECT_THROW(checker.IsValid("Should Be Valid"),

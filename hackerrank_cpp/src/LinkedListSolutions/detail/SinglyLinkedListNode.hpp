@@ -1,15 +1,17 @@
 // Implementation provided by HackerRank
 #pragma once
 
+namespace linked_lists {
 namespace detail {
 struct SinglyLinkedListNode {
   explicit SinglyLinkedListNode(int data)
-      : SinglyLinkedListNode(data, std::unique_ptr<SinglyLinkedListNode>{}) {}
+      : SinglyLinkedListNode(data, nullptr) {}
   explicit SinglyLinkedListNode(int data,
-                                std::unique_ptr<SinglyLinkedListNode>&& next)
-      : data_(data), next_(std::move(next)) {}
+                                SinglyLinkedListNode *next)
+      : data_(data), next_(next) {}
 
   int data_;
-  std::unique_ptr<SinglyLinkedListNode> next_;
+  SinglyLinkedListNode *next_;
 };
 }  // namespace detail
+}  // namespace linked_lists
