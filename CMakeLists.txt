@@ -64,5 +64,6 @@ include(GoogleTest)
 
 add_executable(test_everything test/main.cpp)
 target_link_libraries(test_everything ${GTEST_LIBRARIES} pthread)
+set_target_properties(test_everything PROPERTIES COMPILE_FLAGS "-ftest-coverage -fprofile-arcs" LINK_FLAGS "-lgcov --coverage")
 gtest_discover_tests(test_everything)
 enable_testing()
