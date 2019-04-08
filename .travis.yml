@@ -26,17 +26,22 @@ before_install:
   - mkdir $PARENTDIR/build
 
 install: 
-  - cd $PARENTDIR/build
-  - cmake $PARENTDIR -DCMAKE_BUILD_TYPE=Coverage -DCMAKE_CXX_COMPILER=$CXX_COMPILER
+  - mkdir ~/gtest && cd ~/gtest
+  - export LIBRARY_PATH=$(pwd)
+  - cp -r /usr/src/gtest/* ./
+  - cmake -D CMAKE_INSTALL_PREFIX:PATH=./ ./
   - make
+  - mkdir include && cp -r /usr/include/gtest include
+  - mkdir lib && cp libgtest* lib
+  - cd -
 
 script:
-  - make coverage
-
-after_success:
-  - cd $PARENTDIR/build
-  - lcov --list coverage_out.info.cleaned  # Show test report in travis log.
-  # Install coverals gem for uploading coverage to coveralls.
-  - gem install coveralls-lcov
-  - coveralls-lcov coverage_out.info.cleaned  # uploads to coveralls
-  - bash <(curl -s https://codecov.io/bash) -f coverage_out.info.cleaned || echo "Codecov did not collect coverage reports"
+  - export GTEST_COLOR=1
+  - export GTEST_ROOT="~/gtest"
+  - export CC="${CC}-${COMPILER_VERSION}"
+  - export CXX="${CXX}-${COMPILER_VERSION}"
+  - export CXX_STD="c++14"
+  - cmake .
+  - make -j4
+  - ctest -VV
+  
