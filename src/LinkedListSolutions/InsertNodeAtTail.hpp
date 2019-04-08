@@ -15,17 +15,30 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem
+// https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem
 
 #pragma once
 
-#include "detail/SinglyLinkedListNode.hpp"
+#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-detail::SinglyLinkedListNode *insertNodeAtHead(
-    detail::SinglyLinkedListNode *llist, int data) {
-  auto *newNode = new detail::SinglyLinkedListNode(data);
-  newNode->next_ = llist;
-  return newNode;
+detail::SinglyLinkedListNode* GetTail(detail::SinglyLinkedListNode* node) {
+  if (node != nullptr) {
+    while (node->next_ != nullptr) {
+      node = node->next_;
+    }
+  }
+  return node;
+}
+
+detail::SinglyLinkedListNode* InsertNodeAtTail(
+    detail::SinglyLinkedListNode* head, int data) {
+  if (head == nullptr) {
+    head = new detail::SinglyLinkedListNode(data);
+  } else {
+    auto* tail = GetTail(head);
+    tail->next_ = new detail::SinglyLinkedListNode(data);
+  }
+  return head;
 }
 }  // namespace linked_lists

@@ -15,29 +15,26 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem
+// https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem
 
 #pragma once
 
-#include "detail/SinglyLinkedListNode.hpp"
+#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-detail::SinglyLinkedListNode* GetTail(detail::SinglyLinkedListNode* node) {
-  if (node != nullptr) {
-    while (node->next_ != nullptr) {
-      node = node->next_;
+detail::SinglyLinkedListNode* insertNodeAtPosition(
+    detail::SinglyLinkedListNode* head, int data, int position) {
+  int counter = 0;
+  auto* node = head;
+  while (node != nullptr) {
+    if (position == counter + 1) {
+      auto* tmp = node->next_;
+      node->next_ = new detail::SinglyLinkedListNode(data);
+      node->next_->next_ = tmp;
+      break;
     }
-  }
-  return node;
-}
-
-detail::SinglyLinkedListNode* InsertNodeAtTail(
-    detail::SinglyLinkedListNode* head, int data) {
-  if (head == nullptr) {
-    head = new detail::SinglyLinkedListNode(data);
-  } else {
-    auto* tail = GetTail(head);
-    tail->next_ = new detail::SinglyLinkedListNode(data);
+    node = node->next_;
+    ++counter;
   }
   return head;
 }
