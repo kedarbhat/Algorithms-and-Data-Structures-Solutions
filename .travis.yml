@@ -20,7 +20,7 @@ matrix:
             - cmake
             - cmake-data
       env:
-        - MATRIX_EVAL="CXX_COMPILER=g++-7"
+        - MATRIX_EVAL="CXX_COMPILER=g++-7 && CXX=g++-7 && CC=gcc-7"
 
 before_install:
   - eval "${MATRIX_EVAL}"
