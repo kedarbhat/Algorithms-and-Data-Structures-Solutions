@@ -42,6 +42,6 @@ script:
   - export GTEST_ROOT="~/gtest"  
   - export CXX_STD="c++14"
   - cmake .
-  - make -j4
-  - ctest -VV
-  
+  - if make -j4 -o test/test_everything; then test/test_everything; fi
+
+
