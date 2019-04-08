@@ -20,7 +20,11 @@ endif()
 add_library(HackerRank INTERFACE)
 target_include_directories(HackerRank INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
 target_include_directories(HackerRank SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
-
+target_compile_options(HackerRank INTERFACE
+        -O0        # no optimization
+        -g         # generate debug info
+        --coverage # sets all required flags
+        )
 include_directories(BEFORE src)
 
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)

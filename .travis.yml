@@ -41,8 +41,8 @@ script:
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
   - export CXX_STD="c++14"
-  - cmake .
-  - if make -j4 -o test/test_everything; then test/test_everything; fi
+  - cmake -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug .
+  - cmake --build . --config Debug
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
