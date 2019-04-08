@@ -1,0 +1,17 @@
+# borrowed from http://david-grs.github.io/cpp-clang-travis-cmake-gtest-coveralls-appveyor/
+
+dist: xenial
+sudo: false
+language: cpp
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-6 
+
+script:
+  - git submodule add git@github.com:google/googletest.git gtest
+  - CXX=/usr/bin/g++-6 CC=/usr/bin/gcc-6 cmake .
+  - cmake --build .
