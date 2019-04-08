@@ -41,7 +41,7 @@ script:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
-  - export CXX_STD="c++14"
+  - export CXXSTD="c++14"
   - $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -Wall -pedantic -O0 --coverage -o test_hackerrank
   - ./test_hackerrank
 
