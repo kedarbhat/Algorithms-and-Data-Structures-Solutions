@@ -17,7 +17,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "LinkedListSolutions/InsertTailAtNode.hpp"
+#include "LinkedListSolutions/InsertNodeAtHead.hpp"
+#include "LinkedListSolutions/InsertNodeAtTail.hpp"
 #include "LinkedListSolutions/PrintLinkedListElements.hpp"
 
 namespace {
@@ -39,7 +40,7 @@ TEST(TestLinkedListSolutions, PrintListedListElements) {
   DeleteLinkedList(head);
 }
 
-TEST(TestLinkedListSolutions, InsertNodeAtLinkedList) {
+TEST(TestLinkedListSolutions, InsertNodeAtTail) {
   linked_lists::detail::SinglyLinkedListNode *head = nullptr;
   for (auto i : {141, 302,  164, 530, 474}) {
     head = linked_lists::InsertNodeAtTail(head, i);
@@ -47,7 +48,21 @@ TEST(TestLinkedListSolutions, InsertNodeAtLinkedList) {
 
   for (auto i : {141, 302, 164, 530, 474}) {
     EXPECT_FALSE(head == nullptr);
-    EXPECT_EQ(head->data_, i);
+    EXPECT_EQ(head->data_, i); // NOLINT(clang-analyzer-core.NonNullParamChecker)
+    head = head->next_;
+  }
+  DeleteLinkedList(head);
+}
+
+TEST(TestLinkedListSolutions, InsertNodeAtHead) {
+  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+  for (auto i : {383, 484, 392, 975, 321}) {
+    head = linked_lists::insertNodeAtHead(head, i);
+  }
+
+  for (auto i : {321, 975, 392, 484, 383}) {
+    EXPECT_FALSE(head == nullptr);
+    EXPECT_EQ(head->data_, i); // NOLINT(clang-analyzer-core.NonNullParamChecker)
     head = head->next_;
   }
   DeleteLinkedList(head);
