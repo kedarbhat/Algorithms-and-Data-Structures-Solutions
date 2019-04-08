@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(HackerRank)
+project(HackerRank CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 if (${CXX})
@@ -22,25 +22,4 @@ target_include_directories(HackerRank INTERFACE $<BUILD_INTERFACE:${CMAKE_CURREN
 target_include_directories(HackerRank SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
 
 include_directories(BEFORE src)
-
-add_custom_target(git_update
-    COMMAND git submodule init
-    COMMAND git submodule update
-    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
-)
-add_library( googletest
-    ${PROJECT_SOURCE_DIR}/external/googletest/src/gtest-all.cc
-    ${PROJECT_SOURCE_DIR}/external/googletest/src/gtest_main.cc
-)
-target_include_directories(googletest 
-    PUBLIC ${PROJECT_SOURCE_DIR}/external/googletest/include 
-           ${PROJECT_SOURCE_DIR}/external/googletest
-)
-add_dependencies(googletest git_update)
-set_source_files_properties(
-    ${PROJECT_SOURCE_DIR}/external/googletest/src/gtest-all.cc  
-    ${PROJECT_SOURCE_DIR}/external/googletest/src/gtest_main.cc
-    PROPERTIES GENERATED 1
-)
-
 add_subdirectory(test)

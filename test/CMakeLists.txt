@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
-find_package(GTest)
+cmake_minimum_required(VERSION 3.12)
+find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS} SYSTEM)
 
 add_executable(test_everything main.cpp)
