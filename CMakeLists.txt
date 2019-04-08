@@ -58,4 +58,11 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-add_subdirectory(test)
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS} SYSTEM)
+include(GoogleTest)
+
+add_executable(test_everything test/main.cpp)
+target_link_libraries(test_everything gtest_main)
+gtest_discover_tests(test_everything)
+enable_testing()

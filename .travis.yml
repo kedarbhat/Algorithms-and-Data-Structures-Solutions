@@ -41,7 +41,7 @@ script:
   - export GTEST_COLOR=1
   - export GTEST_ROOT="~/gtest"  
   - export CXX_STD="c++14"
-  - cmake -DCODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug .
+  - cmake -DCMAKE_BUILD_TYPE=Debug .
   - cmake --build . --config Debug
 
 after_success:
