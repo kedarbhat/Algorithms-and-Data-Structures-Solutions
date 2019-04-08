@@ -43,7 +43,7 @@ script:
   - export GTEST_ROOT="~/gtest"  
   - export CXX_STD="c++14"
   - cmake .
-  - if make -j4 -o test_everything; then test_everything; fi
+  - if make -j4 -o ./test_everything; then ./test_everything; fi
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
 
 
