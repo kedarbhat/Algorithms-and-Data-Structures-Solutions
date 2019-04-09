@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "InheritedCode.hpp"
+#include "Other/InheritedCode.hpp"
 
 #include <string>
 

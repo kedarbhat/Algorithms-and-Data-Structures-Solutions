@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "CountingValleys.hpp"
+#include "Other/CountingValleys.hpp"
 
 namespace {
 TEST(TestCountingValleys, NoValleys) {

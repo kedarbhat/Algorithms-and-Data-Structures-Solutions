@@ -17,13 +17,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "BitArray.hpp"
+#include "Other/BitArray.hpp"
 
 namespace {
 TEST(TestBitArray, HackerRankTestCases) {
   ASSERT_EQ(
       bit_array::GenerateSequence(100000000, 178349423, 584642695, 2037647927),
       100000000);
+  ASSERT_EQ(
+      bit_array::GenerateSequence(100000000, 569099406, 1607140150, 823906344),
+      31);
   ASSERT_EQ(bit_array::GenerateSequence(3, 1, 1, 1), 3);
 }
 }  // namespace
