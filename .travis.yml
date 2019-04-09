@@ -42,5 +42,5 @@ script:
 
 after_success:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
-  - if $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -Wall -pedantic -O0 --coverage -ftest-coverage -fprofile-arcs -lgcov -o test_everything; then ./test_everything; fi
+  - if $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -I~gtest/include -Wall -pedantic -O0 --coverage -ftest-coverage -fprofile-arcs -lgcov -g -L~gtest/lib -lgtest -lgtest_main -lpthread -o test_everything; then ./test_everything; fi
   - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
