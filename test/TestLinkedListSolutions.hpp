@@ -89,21 +89,36 @@ TEST(TestLinkedListSolutions, InsertNodeAtPosition) {
 }
 
 TEST(TestLinkedListSolutions, DeleteNodeAtPosition) {
-  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
-  for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
-    head = linked_lists::InsertNodeAtTail(head, i);
-  }
+  {
+    linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+    for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
+      head = linked_lists::InsertNodeAtTail(head, i);
+    }
 
-  head = linked_lists::deleteNode(head, 3);
+    head = linked_lists::deleteNode(head, 3);
 
-  for (auto i : {20, 6, 2, 7, 4, 15, 9}) {
-    ASSERT_FALSE(head == nullptr);
-    ASSERT_EQ(head->data_,
-              i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
-    head = head->next_;
+    for (auto i : {20, 6, 2, 7, 4, 15, 9}) {
+      ASSERT_FALSE(head == nullptr);
+      ASSERT_EQ(head->data_,
+                i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+      head = head->next_;
+    }
+    DeleteLinkedList(head);
   }
-  DeleteLinkedList(head);
+  {
+    linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+    for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
+      head = linked_lists::InsertNodeAtTail(head, i);
+    }
+    head = linked_lists::deleteNode(head, 0);
+    for (auto i : {6, 2, 19, 7, 4, 15, 9}) {
+      ASSERT_FALSE(head == nullptr);
+      ASSERT_EQ(head->data_,
+                i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+      head = head->next_;
+    }
+    DeleteLinkedList(head);
+  }
 }
-
 
 }  // namespace
