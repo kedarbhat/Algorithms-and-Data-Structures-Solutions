@@ -22,10 +22,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-detail::SinglyLinkedListNode *insertNodeAtHead(
-    detail::SinglyLinkedListNode *llist, int data) {
-  auto *newNode = new detail::SinglyLinkedListNode(data);
-  newNode->next_ = llist;
+SinglyLinkedListNode<int> *insertNodeAtHead(
+    SinglyLinkedListNode<int> *node, int data) {
+  auto *newNode = new SinglyLinkedListNode<int>(data);
+  newNode->next_ = node;
   return newNode;
 }
 }  // namespace linked_lists

@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-detail::SinglyLinkedListNode* GetTail(detail::SinglyLinkedListNode* node) {
+SinglyLinkedListNode<int>* GetTail(SinglyLinkedListNode<int>* node) {
   if (node != nullptr) {
     while (node->next_ != nullptr) {
       node = node->next_;
@@ -31,13 +31,13 @@ detail::SinglyLinkedListNode* GetTail(detail::SinglyLinkedListNode* node) {
   return node;
 }
 
-detail::SinglyLinkedListNode* InsertNodeAtTail(
-    detail::SinglyLinkedListNode* head, int data) {
+SinglyLinkedListNode<int>* InsertNodeAtTail(
+    SinglyLinkedListNode<int>* head, int data) {
   if (head == nullptr) {
-    head = new detail::SinglyLinkedListNode(data);
+    head = new SinglyLinkedListNode<int>(data);
   } else {
     auto* tail = GetTail(head);
-    tail->next_ = new detail::SinglyLinkedListNode(data);
+    tail->next_ = new SinglyLinkedListNode<int>(data);
   }
   return head;
 }

@@ -22,9 +22,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "LinkedListSolutions/InsertNodeAtPosition.hpp"
 #include "LinkedListSolutions/InsertNodeAtTail.hpp"
 #include "LinkedListSolutions/PrintLinkedListElements.hpp"
+#include "LinkedListSolutions/PrintLinkedListElementsReverse.hpp"
 
 namespace {
-void DeleteLinkedList(linked_lists::detail::SinglyLinkedListNode *head) {
+void DeleteLinkedList(linked_lists::SinglyLinkedListNode<int> *head) {
   while (head != nullptr) {
     auto *tmp = head->next_;
     delete head;
@@ -35,44 +36,42 @@ void DeleteLinkedList(linked_lists::detail::SinglyLinkedListNode *head) {
 
 namespace {
 TEST(TestLinkedListSolutions, PrintListedListElements) {
-  auto *head = new linked_lists::detail::SinglyLinkedListNode(16);
-  head->next_ = new linked_lists::detail::SinglyLinkedListNode(13);
+  auto *head = new linked_lists::SinglyLinkedListNode<int>(16);
+  head->next_ = new linked_lists::SinglyLinkedListNode<int>(13);
   ASSERT_EQ(linked_lists::PrintLinkedList(head), std::string("16 13"));
   DeleteLinkedList(head);
 }
 
 TEST(TestLinkedListSolutions, InsertNodeAtTail) {
-  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+  linked_lists::SinglyLinkedListNode<int> *head = nullptr;
   for (auto i : {141, 302, 164, 530, 474}) {
     head = linked_lists::InsertNodeAtTail(head, i);
   }
 
   for (auto i : {141, 302, 164, 530, 474}) {
     ASSERT_FALSE(head == nullptr);
-    ASSERT_EQ(head->data_,
-              i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+    ASSERT_EQ(head->data_, i);
     head = head->next_;
   }
   DeleteLinkedList(head);
 }
 
 TEST(TestLinkedListSolutions, InsertNodeAtHead) {
-  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+  linked_lists::SinglyLinkedListNode<int> *head = nullptr;
   for (auto i : {383, 484, 392, 975, 321}) {
     head = linked_lists::insertNodeAtHead(head, i);
   }
 
   for (auto i : {321, 975, 392, 484, 383}) {
     ASSERT_FALSE(head == nullptr);
-    ASSERT_EQ(head->data_,
-              i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+    ASSERT_EQ(head->data_, i);
     head = head->next_;
   }
   DeleteLinkedList(head);
 }
 
 TEST(TestLinkedListSolutions, InsertNodeAtPosition) {
-  linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+  linked_lists::SinglyLinkedListNode<int> *head = nullptr;
   for (auto i : {16, 13, 7}) {
     head = linked_lists::InsertNodeAtTail(head, i);
   }
@@ -90,7 +89,7 @@ TEST(TestLinkedListSolutions, InsertNodeAtPosition) {
 
 TEST(TestLinkedListSolutions, DeleteNodeAtPosition) {
   {
-    linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+    linked_lists::SinglyLinkedListNode<int> *head = nullptr;
     for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
       head = linked_lists::InsertNodeAtTail(head, i);
     }
@@ -99,25 +98,47 @@ TEST(TestLinkedListSolutions, DeleteNodeAtPosition) {
 
     for (auto i : {20, 6, 2, 7, 4, 15, 9}) {
       ASSERT_FALSE(head == nullptr);
-      ASSERT_EQ(head->data_,
-                i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+      ASSERT_EQ(head->data_, i);
       head = head->next_;
     }
     DeleteLinkedList(head);
   }
   {
-    linked_lists::detail::SinglyLinkedListNode *head = nullptr;
+    linked_lists::SinglyLinkedListNode<int> *head = nullptr;
     for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
       head = linked_lists::InsertNodeAtTail(head, i);
     }
     head = linked_lists::deleteNode(head, 0);
     for (auto i : {6, 2, 19, 7, 4, 15, 9}) {
       ASSERT_FALSE(head == nullptr);
-      ASSERT_EQ(head->data_,
-                i);  // NOLINT(clang-analyzer-core.NonNullParamChecker)
+      ASSERT_EQ(head->data_, i);
       head = head->next_;
     }
     DeleteLinkedList(head);
+  }
+}
+
+TEST(TestLinkedListSolutions, PrintListedListElementsReverse) {
+  {
+    linked_lists::SinglyLinkedListNode<int> *head = nullptr;
+    for (auto i : {16, 12, 4, 2, 5}) {
+      head = linked_lists::InsertNodeAtTail(head, i);
+    }
+    ASSERT_EQ(linked_lists::PrintLinkedListReverse(head), "5 2 4 12 16");
+  }
+  {
+    linked_lists::SinglyLinkedListNode<int> *head = nullptr;
+    for (auto i : {7, 3, 9}) {
+      head = linked_lists::InsertNodeAtTail(head, i);
+    }
+    ASSERT_EQ(linked_lists::PrintLinkedListReverse(head), "9 3 7");
+  }
+  {
+    linked_lists::SinglyLinkedListNode<int> *head = nullptr;
+    for (auto i : {5, 1, 18, 3, 13}) {
+      head = linked_lists::InsertNodeAtTail(head, i);
+    }
+    ASSERT_EQ(linked_lists::PrintLinkedListReverse(head), "13 3 18 1 5");
   }
 }
 

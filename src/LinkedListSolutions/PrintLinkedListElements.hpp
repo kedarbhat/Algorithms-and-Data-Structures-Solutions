@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-std::string PrintLinkedList(detail::SinglyLinkedListNode* head) {
+std::string PrintLinkedList(SinglyLinkedListNode<int>* head) {
   std::string ret;
   while (head != nullptr) {
     ret += std::to_string(head->data_);
