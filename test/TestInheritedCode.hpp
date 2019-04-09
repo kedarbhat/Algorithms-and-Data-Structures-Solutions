@@ -38,5 +38,11 @@ TEST(TestAbstractClasses, HackerRankExample) {
   ASSERT_EQ("Valid", checker.IsValid("Peter"));
   ASSERT_THROW(checker.IsValid("Me"), abstract_classes::BadLengthException);
   ASSERT_EQ("Invalid", checker.IsValid("Arxwwz"));
+  try {
+    checker.IsValid("Me");
+  } catch (const abstract_classes::BadLengthException& e) {
+    std::cout << e.what() << '\n';
+  }
+  std::cout << std::endl;
 }
 }  // namespace
