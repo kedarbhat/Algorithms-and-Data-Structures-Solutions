@@ -17,6 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include "ArraysSolutions/ArrayManipulation.hpp"
 #include "ArraysSolutions/DynamicArray.hpp"
 #include "ArraysSolutions/HourGlassSum.hpp"
 #include "ArraysSolutions/ReverseArray.hpp"
@@ -49,5 +50,10 @@ TEST(TestArraySolutions, DynamicArray) {
   std::vector<std::vector<int>> data{
       {1, 0, 5}, {1, 1, 7}, {1, 0, 3}, {2, 1, 0}, {2, 1, 1}};
   ASSERT_EQ(arrays::DynamicArray(2, data), ((std::vector<int>{7, 3})));
+}
+
+TEST(TestArraySolutions, ArrayManipulation) {
+  std::vector<std::vector<int>> data{{1, 2, 100}, {2, 5, 100}, {3, 4, 100}};
+  ASSERT_EQ(arrays::ArrayManipulation(5, data), 200);
 }
 }  // namespace
