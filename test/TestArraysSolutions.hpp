@@ -17,7 +17,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include <string>
+
 #include "ArraysSolutions/ArrayManipulation.hpp"
+#include "ArraysSolutions/BalancedSums.hpp"
 #include "ArraysSolutions/DynamicArray.hpp"
 #include "ArraysSolutions/HourGlassSum.hpp"
 #include "ArraysSolutions/ReverseArray.hpp"
@@ -55,5 +58,16 @@ TEST(TestArraySolutions, DynamicArray) {
 TEST(TestArraySolutions, ArrayManipulation) {
   std::vector<std::vector<int>> data{{1, 2, 100}, {2, 5, 100}, {3, 4, 100}};
   ASSERT_EQ(arrays::ArrayManipulation(5, data), 200);
+}
+
+TEST(TestArraySolutions, BalancedSums) {
+  using namespace std::literals::string_literals;
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{1, 2, 3, 3}), "YES"s);
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{0, 0, 2, 0}), "YES"s);
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{}), "NO"s);
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{1}), "YES"s);
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{2, 0, 0, 0}), "YES"s);
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{1, 1, 4, 1, 1}), "YES"s);
+  ASSERT_EQ(arrays::BalancedSums(std::vector<int>{1, 2, 3}), "NO"s);
 }
 }  // namespace
