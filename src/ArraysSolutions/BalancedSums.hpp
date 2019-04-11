@@ -25,8 +25,8 @@ namespace arrays {
 std::string BalancedSums(std::vector<int> arr) {
   // Note: this is not an ideal solution; memory is wasted on the second array,
   // and we do 3 passes instead of 1. A 1 pass solution involves some indexing
-  // arithmetic that can quickly become messy, so I opted for this in the
-  // interests of time.
+  // arithmetic (using both a right-to-left and a left-to-right index that can
+  // quickly become messy, so I opted for this in the interests of time.
   std::vector<int> rightToLeft_arr(begin(arr), end(arr));
   for (auto idx = 1u; idx < arr.size(); ++idx) {
     arr[idx] += arr[idx - 1];
