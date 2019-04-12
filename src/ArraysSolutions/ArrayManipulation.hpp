@@ -32,8 +32,8 @@ int64_t ArrayManipulation(int n, std::vector<std::vector<int>> queries) {
     vec[finishIdx] -= query[2];
   }
   auto maxSum = vec[0];
-  for (auto idx = 1; idx < vec.size(); ++idx) {
-    vec[idx] += vec[idx - 1];
+  for (auto idx = 1u; idx < vec.size(); ++idx) {
+    vec[idx] += vec[idx - 1u];
     maxSum = std::max(maxSum, vec[idx]);
   }
   return maxSum;

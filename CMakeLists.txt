@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(HackerRank CXX)
+project(AlgosAndDS CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 if (${CXX})
@@ -18,12 +18,12 @@ elseif("x{CMAKE_CXX_COMPILER_ID}" STREQUAL "xGNU")
     set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-v -Wall -Wextra -Wpedantic -Wall -O0")
 endif()
 
-add_library(HackerRank INTERFACE)
-target_include_directories(HackerRank INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
-target_include_directories(HackerRank SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
+add_library(AlgosAndDS INTERFACE)
+target_include_directories(AlgosAndDS INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
+target_include_directories(AlgosAndDS SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
 option(CODE_COVERAGE "Enable coverage reporting" OFF)
 if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(HackerRank ${CMAKE_CXX_FLAGS} -O0 -g --coverage)
+    target_compile_options(AlgosAndDS ${CMAKE_CXX_FLAGS} -O0 -g --coverage)
 endif(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 
 include_directories(src)
