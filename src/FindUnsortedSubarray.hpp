@@ -35,6 +35,10 @@ using size_type = typename std::vector<T>::size_type;
 
 template <typename T>
 std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(const std::vector<T> &vec) noexcept {
+  if (vec.empty()) {
+    return std::make_pair(std::numeric_limits<size_type<T>>::max(), std::numeric_limits<size_type<T>>::max());
+  }
+
   auto i = size_type<T>{0};
   auto j = vec.size() - 1;
   for (auto idx = 0; idx + 1 < vec.size(); ++idx) {
