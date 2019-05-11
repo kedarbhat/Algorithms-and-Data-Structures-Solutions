@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include <detail/SinglyLinkedListNode.hpp>
+#include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
 SinglyLinkedListNode<int> *deleteNode(SinglyLinkedListNode<int> *head, int position) {

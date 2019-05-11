@@ -1,9 +1,21 @@
-//
-// Created by parallels on 5/10/19.
-//
+/*
+Copyright (C) 2019 Kedar R. Bhat
 
-#ifndef INTERVIEWCAMP_SRC_REVERSESENTENCE_HPP_
-#define INTERVIEWCAMP_SRC_REVERSESENTENCE_HPP_
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+#pragma once
 
 #include <algorithm>
 #include <string>
@@ -38,4 +50,3 @@ void reverseString(std::string &str) noexcept {
   std::reverse(std::begin(str), std::end(str));
 }
 } // namespace
-#endif // INTERVIEWCAMP_SRC_REVERSESENTENCE_HPP_

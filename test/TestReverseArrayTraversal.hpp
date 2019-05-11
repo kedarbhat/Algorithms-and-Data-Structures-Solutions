@@ -1,4 +1,4 @@
-#include "../src/ReverseArrayTraversal.hpp"
+#include "ReverseArrayTraversal.hpp"
 namespace {
 TEST(EmptyVector, TestReverseArrayTraversal) {
   std::vector<int64_t> vec(0);
