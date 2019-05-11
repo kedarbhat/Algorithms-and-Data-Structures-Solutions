@@ -33,8 +33,7 @@ void reverseString(std::string &str) noexcept {
   }
 
   auto wordEndIdx = str.size();
-  auto spaceIdx = 0;
-  for (spaceIdx = str.rfind(' '); spaceIdx != 0 && spaceIdx != std::string::npos; spaceIdx = str.rfind(' ', wordEndIdx-1)) {
+  for (auto spaceIdx = str.rfind(' '); spaceIdx != 0 && spaceIdx != std::string::npos; spaceIdx = str.rfind(' ', wordEndIdx-1)) {
     std::reverse(std::begin(str) + spaceIdx + 1,
                  std::begin(str) + wordEndIdx);
     wordEndIdx = spaceIdx;
