@@ -36,8 +36,8 @@ TEST(OneEven, TestReverseArrayTraversal) {
 }
 
 TEST(Mixed, TestReverseArrayTraversal) {
-  std::vector<int64_t> vec{1,2,3,4,5};
-  const auto expected = std::vector<int64_t>{1,2,2,3,4,4,5};
+  std::vector<int64_t> vec{1,2,5,6,8};
+  const auto expected = std::vector<int64_t>{1,2,2,5,6,6,8,8};
   reverseArrayTraversal(vec);
   GTEST_ASSERT_EQ(vec, expected);
 }

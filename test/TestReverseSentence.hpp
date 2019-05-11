@@ -22,10 +22,33 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace {
 TEST(EmptyString, TestReverseSentence) {
   std::string str;
-  const auto expected = str;
-
-  EXPECT_EQ(str, expected);
+  EXPECT_EQ(str, std::string{});
 }
+
+TEST(SingleSpace, TestReverseSentence) {
+  std::string str = " ";
+  reverseString(str);
+  EXPECT_EQ(str, " ");
+}
+
+TEST(SingleLetter, TestReverseSentence) {
+  std::string str = "a";
+  reverseString(str);
+  EXPECT_EQ(str, "a");
+}
+
+TEST(BeginsWithASpace, TestReverseSentence) {
+  std::string str = " a";
+  reverseString(str);
+  EXPECT_EQ(str, "a ");
+}
+
+TEST(EndsWithASpace, TestReverseSentence) {
+  std::string str = "a ";
+  reverseString(str);
+  EXPECT_EQ(str, " a");
+}
+
 TEST(NormalSentence, TestReverseSentence) {
   std::string str = "i live in a house";
   auto expected = "house a in live i";

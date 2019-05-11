@@ -32,20 +32,12 @@ void reverseString(std::string &str) noexcept {
     return;
   }
 
-  auto endOfWordIdx = str.find_last_not_of(' ');
-  if (endOfWordIdx == std::string::npos) {
-    return;
-  } else {
-    ++endOfWordIdx;
-  }
-
-  auto spaceIdx = str.rfind(' ');
-  while (spaceIdx != std::string::npos) {
-    assert(spaceIdx <= endOfWordIdx);
+  auto wordEndIdx = str.size();
+  auto spaceIdx = 0;
+  for (spaceIdx = str.rfind(' '); spaceIdx != 0 && spaceIdx != std::string::npos; spaceIdx = str.rfind(' ', wordEndIdx-1)) {
     std::reverse(std::begin(str) + spaceIdx + 1,
-                 std::begin(str) + std::min(str.size(), endOfWordIdx + 1));
-    endOfWordIdx = str.find_last_not_of(' ', spaceIdx);
-    spaceIdx = str.rfind(' ', endOfWordIdx);
+                 std::begin(str) + wordEndIdx);
+    wordEndIdx = spaceIdx;
   }
   std::reverse(std::begin(str), std::end(str));
 }
