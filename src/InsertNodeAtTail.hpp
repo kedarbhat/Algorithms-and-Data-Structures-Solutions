@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
+#include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
 SinglyLinkedListNode<int>* GetTail(SinglyLinkedListNode<int>* node) {

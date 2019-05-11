@@ -15,22 +15,37 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
+// https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list/problem
 
 #pragma once
 
-#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
+#include <detail/SinglyLinkedListNode.hpp>
 
 namespace linked_lists {
-std::string PrintLinkedList(SinglyLinkedListNode<int>* head) {
-  std::string ret;
-  while (head != nullptr) {
-    ret += std::to_string(head->data_);
-    if (head->next_ != nullptr) {
-      ret += ' ';
-    }
-    head = head->next_;
+SinglyLinkedListNode<int> *deleteNode(SinglyLinkedListNode<int> *head, int position) {
+  int counter = 0;
+
+  if (position == 0 && head != nullptr) {
+    auto *tmp = head->next_;
+    delete head;
+    head = tmp;
+    return head;
   }
-  return ret;
+
+  auto *node = head;
+  while (node != nullptr) {
+    if (position == counter + 1) {
+      if (node->next_ != nullptr && node->next_->next_ != nullptr) {
+        auto *tmp = node->next_->next_;
+        delete node->next_;
+        node->next_ = tmp;
+        break;
+      }
+    } else {
+      node = node->next_;
+      ++counter;
+    }
+  }
+  return head;
 }
 }  // namespace linked_lists

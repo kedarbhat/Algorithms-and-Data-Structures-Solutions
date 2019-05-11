@@ -15,36 +15,26 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list/problem
+// https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem
 
 #pragma once
 
-#include <LinkedListSolutions/detail/SinglyLinkedListNode.hpp>
+#include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-SinglyLinkedListNode<int> *deleteNode(SinglyLinkedListNode<int> *head, int position) {
+SinglyLinkedListNode<int>* insertNodeAtPosition(
+    SinglyLinkedListNode<int>* head, int data, int position) {
   int counter = 0;
-
-  if (position == 0 && head != nullptr) {
-    auto *tmp = head->next_;
-    delete head;
-    head = tmp;
-    return head;
-  }
-
-  auto *node = head;
+  auto* node = head;
   while (node != nullptr) {
     if (position == counter + 1) {
-      if (node->next_ != nullptr && node->next_->next_ != nullptr) {
-        auto *tmp = node->next_->next_;
-        delete node->next_;
-        node->next_ = tmp;
-        break;
-      }
-    } else {
-      node = node->next_;
-      ++counter;
+      auto* tmp = node->next_;
+      node->next_ = new SinglyLinkedListNode<int>(data);
+      node->next_->next_ = tmp;
+      break;
     }
+    node = node->next_;
+    ++counter;
   }
   return head;
 }

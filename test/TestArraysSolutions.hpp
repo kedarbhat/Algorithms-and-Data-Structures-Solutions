@@ -19,12 +19,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <string>
 
-#include "ArraysSolutions/ArrayManipulation.hpp"
-#include "ArraysSolutions/BalancedSums.hpp"
-#include "ArraysSolutions/DynamicArray.hpp"
-#include "ArraysSolutions/HourGlassSum.hpp"
-#include "ArraysSolutions/ReverseArray.hpp"
-#include "ArraysSolutions/RotateLeft.hpp"
+#include "ArrayManipulation.hpp"
+#include "BalancedSums.hpp"
+#include "DynamicArray.hpp"
+#include "HourGlassSum.hpp"
+#include "ReverseArray.hpp"
+#include "RotateLeft.hpp"
 
 namespace {
 TEST(TestArraySolutions, RotateLeft) {
@@ -57,7 +57,9 @@ TEST(TestArraySolutions, DynamicArray) {
 
 TEST(TestArraySolutions, ArrayManipulation) {
   std::vector<std::vector<int>> data{{1, 2, 100}, {2, 5, 100}, {3, 4, 100}};
-  ASSERT_EQ(arrays::ArrayManipulation(5, data), 200);
+  auto expected = int64_t(200);
+  auto result = arrays::ArrayManipulation(5, data);
+  ASSERT_EQ(result, expected);
 }
 
 TEST(TestArraySolutions, BalancedSums) {

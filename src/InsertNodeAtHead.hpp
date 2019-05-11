@@ -15,27 +15,17 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/crush/problem
+// https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem
 
 #pragma once
 
-#include <algorithm>
-#include <vector>
+#include "detail/SinglyLinkedListNode.hpp"
 
-namespace arrays {
-int64_t ArrayManipulation(int n, std::vector<std::vector<int>> queries) {
-  std::vector<int64_t> vec(n, 0);
-  for (auto &&query : queries) {
-    auto startIdx = query[0] - 1;
-    auto finishIdx = query[1];
-    vec[startIdx] += query[2];
-    vec[finishIdx] -= query[2];
-  }
-  auto maxSum = vec[0];
-  for (auto idx = 1u; idx < vec.size(); ++idx) {
-    vec[idx] += vec[idx - 1u];
-    maxSum = std::max(maxSum, vec[idx]);
-  }
-  return maxSum;
+namespace linked_lists {
+SinglyLinkedListNode<int> *insertNodeAtHead(
+    SinglyLinkedListNode<int> *node, int data) {
+  auto *newNode = new SinglyLinkedListNode<int>(data);
+  newNode->next_ = node;
+  return newNode;
 }
-}  // namespace arrays
+}  // namespace linked_lists

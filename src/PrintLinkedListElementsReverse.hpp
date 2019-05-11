@@ -15,27 +15,28 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem
+// https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
 
 #pragma once
 
-#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
+#include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-SinglyLinkedListNode<int>* insertNodeAtPosition(
-    SinglyLinkedListNode<int>* head, int data, int position) {
-  int counter = 0;
+std::string PrintLinkedListReverse(SinglyLinkedListNode<int>* head) {
+  std::string ret;
   auto* node = head;
+  std::vector<SinglyLinkedListNode<int>*> nodes;
   while (node != nullptr) {
-    if (position == counter + 1) {
-      auto* tmp = node->next_;
-      node->next_ = new SinglyLinkedListNode<int>(data);
-      node->next_->next_ = tmp;
-      break;
-    }
+    nodes.push_back(node);
     node = node->next_;
-    ++counter;
   }
-  return head;
+
+  for (auto iter = std::rbegin(nodes); iter != std::rend(nodes); std::advance(iter, 1)) {
+    ret += std::to_string((*iter)->data_);
+    if (*iter != head) {
+      ret += ' ';
+    }
+  }
+  return ret;
 }
 }  // namespace linked_lists

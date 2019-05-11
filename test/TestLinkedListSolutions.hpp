@@ -17,12 +17,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "LinkedListSolutions/DeleteNodeAtPosition.hpp"
-#include "LinkedListSolutions/InsertNodeAtHead.hpp"
-#include "LinkedListSolutions/InsertNodeAtPosition.hpp"
-#include "LinkedListSolutions/InsertNodeAtTail.hpp"
-#include "LinkedListSolutions/PrintLinkedListElements.hpp"
-#include "LinkedListSolutions/PrintLinkedListElementsReverse.hpp"
+#include "DeleteNodeAtPosition.hpp"
+#include "InsertNodeAtHead.hpp"
+#include "InsertNodeAtPosition.hpp"
+#include "InsertNodeAtTail.hpp"
+#include "PrintLinkedListElements.hpp"
+#include "PrintLinkedListElementsReverse.hpp"
 
 namespace {
 void DeleteLinkedList(linked_lists::SinglyLinkedListNode<int> *head) {

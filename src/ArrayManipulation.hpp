@@ -15,28 +15,27 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
+// https://www.hackerrank.com/challenges/crush/problem
 
 #pragma once
 
-#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
+#include <algorithm>
+#include <vector>
 
-namespace linked_lists {
-std::string PrintLinkedListReverse(SinglyLinkedListNode<int>* head) {
-  std::string ret;
-  auto* node = head;
-  std::vector<SinglyLinkedListNode<int>*> nodes;
-  while (node != nullptr) {
-    nodes.push_back(node);
-    node = node->next_;
+namespace arrays {
+int64_t ArrayManipulation(int n, std::vector<std::vector<int>> queries) {
+  std::vector<int64_t> vec(n+1, 0); //TODO(kbhat): wasted space
+  for (auto &&query : queries) {
+    auto startIdx = query[0] - 1;
+    auto finishIdx = query[1];
+    vec[startIdx] += query[2];
+    vec[finishIdx] -= query[2];
   }
-
-  for (auto iter = std::rbegin(nodes); iter != std::rend(nodes); std::advance(iter, 1)) {
-    ret += std::to_string((*iter)->data_);
-    if (*iter != head) {
-      ret += ' ';
-    }
+  auto maxSum = vec[0];
+  for (auto idx = 1u; idx < vec.size(); ++idx) {
+    vec[idx] += vec[idx - 1u];
+    maxSum = std::max(maxSum, vec[idx]);
   }
-  return ret;
+  return maxSum;
 }
-}  // namespace linked_lists
+}  // namespace arrays

@@ -15,17 +15,22 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem
+// https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list/problem
 
 #pragma once
 
-#include "LinkedListSolutions/detail/SinglyLinkedListNode.hpp"
+#include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-SinglyLinkedListNode<int> *insertNodeAtHead(
-    SinglyLinkedListNode<int> *node, int data) {
-  auto *newNode = new SinglyLinkedListNode<int>(data);
-  newNode->next_ = node;
-  return newNode;
+std::string PrintLinkedList(SinglyLinkedListNode<int>* head) {
+  std::string ret;
+  while (head != nullptr) {
+    ret += std::to_string(head->data_);
+    if (head->next_ != nullptr) {
+      ret += ' ';
+    }
+    head = head->next_;
+  }
+  return ret;
 }
 }  // namespace linked_lists
