@@ -27,50 +27,53 @@ namespace {
 // results in the entire array being sorted. For example: A = [0,2,5,3,1,8,6,9],
 // result is the subarray [2,5,3,1,8,6]
 
-template<typename T>
+template <typename T>
 using diff_t = typename std::vector<T>::difference_type;
 
-template<typename T>
+template <typename T>
 using size_type = typename std::vector<T>::size_type;
 
 template <typename T>
-std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(const std::vector<T> &vec) noexcept {
+std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(
+    const std::vector<T> &vec) noexcept {
   if (vec.empty()) {
-    return std::make_pair(std::numeric_limits<size_type<T>>::max(), std::numeric_limits<size_type<T>>::max());
+    return std::make_pair(std::numeric_limits<size_type<T>>::max(),
+                          std::numeric_limits<size_type<T>>::max());
   }
 
   auto i = size_type<T>(0);
-  auto j = size_type<T>(vec.size())-1;
+  auto j = size_type<T>(vec.size()) - 1;
   assert(i <= j);
 
   // check for "unsortedness" (assuming non-decreasing order is correct)
-  while (i+1 < vec.size() && vec[i] <= vec[i+1]) {
+  while (i + 1 < vec.size() && vec[i] <= vec[i + 1]) {
     ++i;
   }
 
   // check for "unsortedness" (assuming non-decreasing order is correct)
-  while (j >= 1 && vec[j] >= vec[j-1]) {
+  while (j >= 1 && vec[j] >= vec[j - 1]) {
     --j;
   }
 
-  if (i == vec.size()-1) {
+  if (i == vec.size() - 1) {
     assert(j == 0);
-    return std::make_pair(std::numeric_limits<size_type<T>>::max(), std::numeric_limits<size_type<T>>::max());
+    return std::make_pair(i, j);
   }
 
   assert(i <= j);
-  auto subrangeMinMaxIters = std::minmax_element(std::begin(vec)+diff_t<T>(i), std::begin(vec)+diff_t<T>(j)+1);
+  auto subrangeMinMaxIters = std::minmax_element(
+      std::begin(vec) + diff_t<T>(i), std::begin(vec) + diff_t<T>(j) + 1);
   auto subrangeMinElement = *subrangeMinMaxIters.first;
   auto subrangeMaxElement = *subrangeMinMaxIters.second;
-  while (i > 0 && vec[i-1] > subrangeMinElement) {
+  while (i > 0 && vec[i - 1] > subrangeMinElement) {
     --i;
   }
 
-  while (j+1 < vec.size() && vec[j+1] < subrangeMaxElement) {
+  while (j + 1 < vec.size() && vec[j + 1] < subrangeMaxElement) {
     ++j;
   }
 
   return std::make_pair(i, j);
 }
 
-} // namespace
+}  // namespace
