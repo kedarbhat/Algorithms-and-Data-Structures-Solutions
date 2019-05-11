@@ -22,6 +22,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 namespace {
 TEST(EmptyString, TestReverseSentence) {
   std::string str;
+  EXPECT_TRUE(str.empty());
+  reverseString(str);
   EXPECT_EQ(str, std::string{});
 }
 
