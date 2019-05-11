@@ -39,30 +39,35 @@ std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(const std::vector<T> 
     return std::make_pair(std::numeric_limits<size_type<T>>::max(), std::numeric_limits<size_type<T>>::max());
   }
 
-  auto i = size_type<T>{0};
-  auto j = vec.size() - 1;
-  for (auto idx = 0; idx + 1 < vec.size(); ++idx) {
-    if (vec[idx] > vec[idx + 1]) {
-      i = idx;
-      break;
-    }
+  auto i = size_type<T>(0);
+  auto j = size_type<T>(vec.size())-1;
+  assert(i <= j);
+
+  // check for "unsortedness" (assuming non-decreasing order is correct)
+  while (i+1 < vec.size() && vec[i] <= vec[i+1]) {
+    ++i;
   }
 
-  for (auto idx = vec.size() - 1u; idx > 0u; --idx) {
-    if (vec[idx] < vec[idx - 1]) {
-      j = idx;
-      break;
-    }
+  // check for "unsortedness" (assuming non-decreasing order is correct)
+  while (j >= 1 && vec[j] >= vec[j-1]) {
+    --j;
   }
 
-  auto minmaxPair =
-      std::minmax_element(std::begin(vec) + i, std::begin(vec) + j + 1);
-  while (i > 0 && vec[i - 1] > *(minmaxPair.first)) {
+  if (i == vec.size()-1) {
+    assert(j == 0);
+    return std::make_pair(std::numeric_limits<size_type<T>>::max(), std::numeric_limits<size_type<T>>::max());
+  }
+
+  assert(i <= j);
+  auto subrangeMinMaxIters = std::minmax_element(std::begin(vec)+diff_t<T>(i), std::begin(vec)+diff_t<T>(j)+1);
+  auto subrangeMinElement = *subrangeMinMaxIters.first;
+  auto subrangeMaxElement = *subrangeMinMaxIters.second;
+  while (i > 0 && vec[i-1] > subrangeMinElement) {
     --i;
   }
 
-  while (j < (vec.size() - 1) && vec[j + 1] < *(minmaxPair.second)) {
-    --j;
+  while (j+1 < vec.size() && vec[j+1] < subrangeMaxElement) {
+    ++j;
   }
 
   return std::make_pair(i, j);
