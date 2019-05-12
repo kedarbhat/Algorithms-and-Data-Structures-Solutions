@@ -11,6 +11,7 @@
 #include "TestReverseArrayTraversal.hpp"
 #include "TestReverseContainer.hpp"
 #include "TestReverseSentence.hpp"
+#include "TestSortThreeEnumArrays.hpp"
 #include "TestTemplateSpecialization.hpp"
 
 int main(int argc, char **argv) {
