@@ -58,4 +58,4 @@ TEST(NormalSentence, TestReverseSentence) {
   EXPECT_EQ(str, expected);
 }
 
-}
+}  // namespace

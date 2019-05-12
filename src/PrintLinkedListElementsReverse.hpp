@@ -31,7 +31,8 @@ std::string PrintLinkedListReverse(SinglyLinkedListNode<int>* head) {
     node = node->next_;
   }
 
-  for (auto iter = std::rbegin(nodes); iter != std::rend(nodes); std::advance(iter, 1)) {
+  for (auto iter = std::rbegin(nodes); iter != std::rend(nodes);
+       std::advance(iter, 1)) {
     ret += std::to_string((*iter)->data_);
     if (*iter != head) {
       ret += ' ';

@@ -88,4 +88,4 @@ reverseArrayTraversal(std::vector<T> &vec) noexcept {
   }
 }
 
-} // namespace
+}  // namespace

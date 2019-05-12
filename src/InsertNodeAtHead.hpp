@@ -22,8 +22,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-SinglyLinkedListNode<int> *insertNodeAtHead(
-    SinglyLinkedListNode<int> *node, int data) {
+SinglyLinkedListNode<int> *insertNodeAtHead(SinglyLinkedListNode<int> *node,
+                                            int data) {
   auto *newNode = new SinglyLinkedListNode<int>(data);
   newNode->next_ = node;
   return newNode;

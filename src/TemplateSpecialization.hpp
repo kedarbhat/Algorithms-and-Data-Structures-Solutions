@@ -26,7 +26,6 @@ namespace template_specialization {
 enum class Fruit { APPLE, ORANGE, PEAR, MAX };
 enum class Color { RED, GREEN, ORANGE, MAX };
 
-
 template <typename T>
 using array_t = std::array<const char *, static_cast<std::size_t>(T::MAX) + 1u>;
 

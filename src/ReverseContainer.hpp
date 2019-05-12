@@ -18,7 +18,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
 namespace {
-template <typename T> void reverseContainer(std::vector<T> &vec) noexcept {
+template <typename T>
+void reverseContainer(std::vector<T> &vec) noexcept {
   auto fwdIter = std::begin(vec);
   auto revIter = std::prev(std::end(vec), 1);
   while (std::distance(fwdIter, revIter) > 0) {
@@ -27,4 +28,4 @@ template <typename T> void reverseContainer(std::vector<T> &vec) noexcept {
     std::advance(revIter, -1);
   }
 }
-} // namespace
+}  // namespace

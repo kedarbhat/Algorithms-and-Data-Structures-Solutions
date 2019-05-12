@@ -23,10 +23,8 @@ namespace {
 TEST(TestTemplateSpecialization, TestBothEnums) {
   using FruitType = template_specialization::Fruit;
   using ColorType = template_specialization::Color;
-  using FruitTraits =
-      template_specialization::Traits<FruitType>;
-  using ColorTraits =
-      template_specialization::Traits<ColorType>;
+  using FruitTraits = template_specialization::Traits<FruitType>;
+  using ColorTraits = template_specialization::Traits<ColorType>;
 
   ASSERT_STREQ(FruitTraits::name(0), "apple");
   ASSERT_STREQ(FruitTraits::name(1), "orange");

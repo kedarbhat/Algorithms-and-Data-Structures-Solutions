@@ -15,7 +15,7 @@
 
 #pragma once
 #include "DutchNationalFlagPartition.hpp"
-
+namespace {
 TEST(EmptyArray, TestDutchNationalFlag) {
   std::vector<int> vec;
   std::vector<int> expected;
@@ -73,3 +73,4 @@ TEST(NormalArrayPivot4, TestDutchNationalFlag) {
   dnfPartition(vec, 5);
   EXPECT_EQ(vec, expected);
 }
+}  // namespace

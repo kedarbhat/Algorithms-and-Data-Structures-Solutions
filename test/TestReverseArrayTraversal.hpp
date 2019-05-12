@@ -8,15 +8,15 @@ TEST(EmptyVector, TestReverseArrayTraversal) {
 }
 
 TEST(AllOdd, TestReverseArrayTraversal) {
-  std::vector<int64_t> vec{1,3,5};
+  std::vector<int64_t> vec{1, 3, 5};
   const auto expected = vec;
   reverseArrayTraversal(vec);
   GTEST_ASSERT_EQ(vec, expected);
 }
 
 TEST(AllEven, TestReverseArrayTraversal) {
-  std::vector<int64_t> vec{2,4,6};
-  const auto expected = std::vector<int64_t>{2,2,4,4,6,6};
+  std::vector<int64_t> vec{2, 4, 6};
+  const auto expected = std::vector<int64_t>{2, 2, 4, 4, 6, 6};
   reverseArrayTraversal(vec);
   GTEST_ASSERT_EQ(vec, expected);
 }
@@ -30,16 +30,16 @@ TEST(OneOdd, TestReverseArrayTraversal) {
 
 TEST(OneEven, TestReverseArrayTraversal) {
   std::vector<int64_t> vec{2};
-  const auto expected = std::vector<int64_t>{2,2};
+  const auto expected = std::vector<int64_t>{2, 2};
   reverseArrayTraversal(vec);
   GTEST_ASSERT_EQ(vec, expected);
 }
 
 TEST(Mixed, TestReverseArrayTraversal) {
-  std::vector<int64_t> vec{1,2,5,6,8};
-  const auto expected = std::vector<int64_t>{1,2,2,5,6,6,8,8};
+  std::vector<int64_t> vec{1, 2, 5, 6, 8};
+  const auto expected = std::vector<int64_t>{1, 2, 2, 5, 6, 6, 8, 8};
   reverseArrayTraversal(vec);
   GTEST_ASSERT_EQ(vec, expected);
 }
 
-}
+}  // namespace

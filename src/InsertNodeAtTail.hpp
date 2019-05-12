@@ -31,8 +31,8 @@ SinglyLinkedListNode<int>* GetTail(SinglyLinkedListNode<int>* node) {
   return node;
 }
 
-SinglyLinkedListNode<int>* InsertNodeAtTail(
-    SinglyLinkedListNode<int>* head, int data) {
+SinglyLinkedListNode<int>* InsertNodeAtTail(SinglyLinkedListNode<int>* head,
+                                            int data) {
   if (head == nullptr) {
     head = new SinglyLinkedListNode<int>(data);
   } else {

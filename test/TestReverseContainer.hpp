@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
 #include "ReverseContainer.hpp"
-
+namespace {
 TEST(EmptyContainer, TestReverseContainer) {
   std::vector<int> vec;
   const auto expected = vec;
@@ -27,10 +27,10 @@ TEST(EmptyContainer, TestReverseContainer) {
 }
 
 TEST(NormalContainer, TestReverseContainer) {
-  std::vector<std::string> vec {"Hello", "my", "name", "is", "sew"};
+  std::vector<std::string> vec{"Hello", "my", "name", "is", "sew"};
   auto expected = vec;
   std::reverse(std::begin(expected), std::end(expected));
   reverseContainer(vec);
   EXPECT_EQ(vec, expected);
 }
-
+}  // namespace

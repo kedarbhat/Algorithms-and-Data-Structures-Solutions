@@ -22,7 +22,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-SinglyLinkedListNode<int> *deleteNode(SinglyLinkedListNode<int> *head, int position) {
+SinglyLinkedListNode<int> *deleteNode(SinglyLinkedListNode<int> *head,
+                                      int position) {
   int counter = 0;
 
   if (position == 0 && head != nullptr) {
