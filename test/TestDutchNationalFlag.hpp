@@ -69,7 +69,7 @@ TEST(NormalArrayPivot6, TestDutchNationalFlag) {
 TEST(NormalArrayPivot4, TestDutchNationalFlag) {
   std::vector<int> vec{3, 5, 2, 6, 8, 4, 4, 6, 4, 4, 3};
   std::vector<int> expected{3, 3, 2, 4, 4, 4, 4, 6, 8, 6, 5};
-
+  EXPECT_EQ(vec[5], 4);
   dnfPartition(vec, 5);
   EXPECT_EQ(vec, expected);
 }
