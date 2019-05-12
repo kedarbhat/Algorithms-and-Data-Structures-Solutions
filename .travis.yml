@@ -14,12 +14,12 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-7
+            - g++-8
             - libgtest-dev
             - cmake
             - cmake-data
       env:
-        - MATRIX_EVAL="CXX_COMPILER=g++-7 && CXX=g++-7 && CC=gcc-7 && CXXSTD=c++14"
+        - MATRIX_EVAL="CXX_COMPILER=g++-8 && CXX=g++-8 && CC=gcc-8 && CXXSTD=c++14"
 
 before_install:
   - eval "${MATRIX_EVAL}"
@@ -43,4 +43,4 @@ script:
 after_success:
   - if pyenv shell 3.6.3; then pip3 install --user codecov; fi
   - if $CXX_COMPILER test/main.cpp -std=$CXXSTD -Isrc -I~gtest/include -Wall -pedantic -O0 --coverage -ftest-coverage -fprofile-arcs -lgcov -g -L~gtest/lib -lgtest -lgtest_main -lpthread -o tests; then ./tests; fi
-  - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-7 -a --relative-only
+  - bash <(curl -s https://codecov.io/bash) -X coveragepy -x gcov-8 -a --relative-only
