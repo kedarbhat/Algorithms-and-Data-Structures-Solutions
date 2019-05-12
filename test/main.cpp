@@ -7,6 +7,7 @@
 #include "TestFindUnsortedSubarray.hpp"
 #include "TestInheritedCode.hpp"
 #include "TestLinkedListSolutions.hpp"
+#include "TestMaximumContiguousSum.hpp"
 #include "TestMoveAllZerosToTheEnd.hpp"
 #include "TestReverseArrayTraversal.hpp"
 #include "TestReverseContainer.hpp"
