@@ -3,6 +3,7 @@
 #include "TestArraysSolutions.hpp"
 #include "TestBitArray.hpp"
 #include "TestCountingValleys.hpp"
+#include "TestDutchNationalFlag.hpp"
 #include "TestFindUnsortedSubarray.hpp"
 #include "TestInheritedCode.hpp"
 #include "TestLinkedListSolutions.hpp"
