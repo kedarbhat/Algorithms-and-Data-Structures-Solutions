@@ -15,6 +15,7 @@
 #include "TestReverseSentence.hpp"
 #include "TestSortThreeEnumArrays.hpp"
 #include "TestTemplateSpecialization.hpp"
+#include "TestTwoSumInwardIteration.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
