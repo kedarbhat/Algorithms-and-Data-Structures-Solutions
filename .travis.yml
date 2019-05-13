@@ -11,14 +11,16 @@ matrix:
     - os: linux
       addons:
         apt:
+          update: true
           sources:
             - ubuntu-toolchain-r-test
+            - sourceline: 'ppa:mhier/libboost-latest'
           packages:
             - g++-8
             - libgtest-dev
             - cmake
             - cmake-data
-            - libboost-dev
+            - boost1.68
       env:
         - MATRIX_EVAL="CXX_COMPILER=g++-8 && CXX=g++-8 && CC=gcc-8 && CXXSTD=c++14"
 
