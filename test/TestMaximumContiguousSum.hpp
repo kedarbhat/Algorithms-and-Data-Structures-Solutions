@@ -62,4 +62,82 @@ TEST(TestMaximumContiguousSum, NormalArray2) {
   std::vector<int> vec{-2, -3, 4, -1, -2, 1, 5, -1};
   EXPECT_EQ(getMaximumContiguousSum(vec), 7);
 }
+
+TEST(TestMaximumContiguousSumWithTarget, EmptyArray) {
+  std::vector<int> vec;
+  EXPECT_EQ(getMaximumContiguousSum(vec, 10),
+            std::make_pair(std::size_t{0}, std::size_t{0}));
+}
+
+TEST(TestMaximumContiguousSumWithTarget, SingleElementPositiveExistingSum) {
+  std::vector<int> vec{10};
+  EXPECT_EQ(getMaximumContiguousSum(vec, 10),
+            std::make_pair(std::size_t{0}, std::size_t{1}));
+}
+
+TEST(TestMaximumContiguousSumWithTarget, SingleElementPositiveNonexistingSum) {
+  std::vector<int> vec{10};
+  EXPECT_EQ(getMaximumContiguousSum(vec, 11),
+            std::make_pair(std::size_t{1}, std::size_t{2}));
+}
+
+TEST(TestMaximumContiguousSumWithTarget, MultipleElementPositiveExistingSum) {
+  std::vector<int> vec{2, 1, 4, 5, 3, 5, 1, 2, 4};
+  EXPECT_EQ(getMaximumContiguousSum(vec, 13),
+            std::make_pair(std::size_t{1}, std::size_t{5}));
+}
+
+TEST(TestMaximumContiguousSumWithTarget,
+     MultipleElementPositiveNonexistingSum) {
+  std::vector<int> vec{2, 1, 4, 5, 3, 5, 1, 2, 4};
+  EXPECT_EQ(getMaximumContiguousSum(vec, 90),
+            std::make_pair(vec.size(), vec.size() + 1));
+}
+
+TEST(TestMaximumContiguousSumWithTargetZero, EmptyArray) {
+  std::vector<int> vec;
+  EXPECT_EQ(getMaximumContiguousSumTargetZero(vec),
+            std::make_pair(std::size_t{0}, std::size_t{0}));
+}
+
+TEST(TestMaximumContiguousSumWithTargetZero, SingleElementPositiveExistingSum) {
+  std::vector<int> vec{0};
+  EXPECT_EQ(getMaximumContiguousSumTargetZero(vec),
+            std::make_pair(std::size_t{0}, std::size_t{1}));
+}
+
+TEST(TestMaximumContiguousSumWithTargetZero,
+     SingleElementPositiveNonexistingSum) {
+  std::vector<int> vec{1};
+  EXPECT_EQ(getMaximumContiguousSumTargetZero(vec),
+            std::make_pair(std::size_t{1}, std::size_t{2}));
+}
+
+TEST(TestMaximumContiguousSumWithTargetZero,
+     MultipleElementPositiveExistingSum) {
+  std::vector<int> vec{-1, -1, 2, 1, -4, 2, 3, -1, 2};
+  EXPECT_EQ(getMaximumContiguousSumTargetZero(vec),
+            std::make_pair(std::size_t{0}, std::size_t{3}));
+}
+
+TEST(TestMaximumContiguousSumWithTargetZero,
+     MultipleElementPositiveNonexistingSum) {
+  std::vector<int> vec{-1, -1, -1, -1, -1, -1, -1, -1};
+  EXPECT_EQ(getMaximumContiguousSumTargetZero(vec),
+            std::make_pair(vec.size(), vec.size() + 1));
+}
+
+TEST(TestMaximumContiguousSumWithTargetZero, MultipleElementCommonDiff) {
+  {
+    std::vector<int> vec{-1, -1, -4, 1, 2, -2, 3, -1, 2};
+    EXPECT_EQ(getMaximumContiguousSumTargetZero(vec),
+              std::make_pair(std::size_t{4}, std::size_t{6}));
+  }
+  {
+    std::vector<int> vec{-1, -1, -4, 1, 2, -2, 3, -1, 2};
+    EXPECT_EQ(std::accumulate(std::cbegin(vec) + 4, std::cbegin(vec) + 6, 0),
+              0);
+  }
+}
+
 }  // namespace

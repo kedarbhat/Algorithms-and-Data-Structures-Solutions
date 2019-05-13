@@ -27,7 +27,7 @@ std::pair<std::size_t, std::size_t> twoSumInwardIteration(
   }
 
   auto startIter = std::begin(vec);
-  auto finishIter = std::end(vec);
+  auto finishIter = std::prev(std::end(vec));
   while (startIter != finishIter) {
     auto sum = *startIter + *finishIter;
     if (sum < target) {
