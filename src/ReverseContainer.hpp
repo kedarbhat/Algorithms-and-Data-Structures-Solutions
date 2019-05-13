@@ -16,7 +16,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #pragma once
-
+#include <boost/type_traits/is_nothrow_swappable.hpp>
+#include <type_traits>
 namespace {
 /**
  * Given an array, reverse the order of its elements. For
@@ -24,9 +25,9 @@ namespace {
  * "hello"] \tparam T a swappable type \param vec Vector holding the elements to
  * be reversed
  */
-template <typename T>
-std::enable_if_t<std::is_swappable<T>::value> reverseContainer(
-    std::vector<T> &vec) noexcept {
+template <typename T, typename = std::enable_if_t<
+                          boost::is_nothrow_swappable<std::decay_t<T>>::value>>
+void reverseContainer(std::vector<T> &vec) noexcept {
   auto fwdIter = std::begin(vec);
   auto revIter = std::prev(std::end(vec), 1);
   while (std::distance(fwdIter, revIter) > 0) {
