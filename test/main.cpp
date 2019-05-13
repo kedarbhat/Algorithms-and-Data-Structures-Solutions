@@ -8,6 +8,7 @@
 #include "TestInheritedCode.hpp"
 #include "TestLinkedListSolutions.hpp"
 #include "TestMakeChange.hpp"
+#include "TestMatrixProduct.hpp"
 #include "TestMaximumContiguousSum.hpp"
 #include "TestMoveAllZerosToTheEnd.hpp"
 #include "TestReverseArrayTraversal.hpp"
