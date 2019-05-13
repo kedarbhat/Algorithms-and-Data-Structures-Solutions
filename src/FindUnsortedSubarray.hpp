@@ -42,7 +42,7 @@ std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(
   }
 
   auto i = size_type<T>(0);
-  auto j = size_type<T>(vec.size()) - 1;
+  auto j = vec.size() - 1;
   assert(i <= j);
 
   // check for "unsortedness" (assuming non-decreasing order is correct)

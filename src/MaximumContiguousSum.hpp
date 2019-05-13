@@ -21,8 +21,8 @@
 namespace {
 
 // Given an array of integers that can be both +ve and -ve, find the contiguous
-// subarraywith the largest sum.e.g, [1,2,-1,2,-3,2,-5]  -> the first 4 elements
-// have the largest sum.
+// subarray with the largest sum.e.g, [1,2,-1,2,-3,2,-5]  -> the first 4
+// elements have the largest sum.
 
 template <typename T>
 T getMaximumContiguousSum(std::vector<T>& vec) {

@@ -18,14 +18,14 @@
 #include "SortThreeEnumArrays.hpp"
 
 namespace {
-TEST(EmptyArray, TestSortThreeEnumArrays) {
+TEST(TestSortThreeEnumArrays, EmptyArray) {
   std::vector<Colors> vec;
   std::vector<Colors> expected;
   sortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(NormalArray, TestSortThreeEnumArrays) {
+TEST(TestSortThreeEnumArrays, NormalArray) {
   std::vector<Colors> vec{Colors::White, Colors::Red,   Colors::White,
                           Colors::Blue,  Colors::White, Colors::Red,
                           Colors::White, Colors::Blue};
@@ -36,7 +36,7 @@ TEST(NormalArray, TestSortThreeEnumArrays) {
   EXPECT_EQ(vec, expected);
 }
 
-TEST(SortedArray, TestSortThreeEnumArrays) {
+TEST(TestSortThreeEnumArrays, SortedArray) {
   std::vector<Colors> vec{Colors::Red,   Colors::Red,   Colors::White,
                           Colors::White, Colors::White, Colors::White,
                           Colors::Blue,  Colors::Blue};

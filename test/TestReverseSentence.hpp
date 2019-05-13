@@ -20,38 +20,38 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "ReverseSentence.hpp"
 
 namespace {
-TEST(EmptyString, TestReverseSentence) {
+TEST(TestReverseSentence, EmptyString) {
   std::string str;
   EXPECT_TRUE(str.empty());
   reverseString(str);
   EXPECT_EQ(str, std::string{});
 }
 
-TEST(SingleSpace, TestReverseSentence) {
+TEST(TestReverseSentence, SingleSpace) {
   std::string str = " ";
   reverseString(str);
   EXPECT_EQ(str, " ");
 }
 
-TEST(SingleLetter, TestReverseSentence) {
+TEST(TestReverseSentence, SingleLetter) {
   std::string str = "a";
   reverseString(str);
   EXPECT_EQ(str, "a");
 }
 
-TEST(BeginsWithASpace, TestReverseSentence) {
+TEST(TestReverseSentence, BeginsWithASpace) {
   std::string str = " a";
   reverseString(str);
   EXPECT_EQ(str, "a ");
 }
 
-TEST(EndsWithASpace, TestReverseSentence) {
+TEST(TestReverseSentence, EndsWithASpace) {
   std::string str = "a ";
   reverseString(str);
   EXPECT_EQ(str, " a");
 }
 
-TEST(NormalSentence, TestReverseSentence) {
+TEST(TestReverseSentence, NormalSentence) {
   std::string str = "i live in a house";
   auto expected = "house a in live i";
   reverseString(str);

@@ -6,12 +6,12 @@ namespace detail {
 template <typename T>
 struct SinglyLinkedListNode_t {
   template <typename U>
-  explicit SinglyLinkedListNode_t(U&& data)
-      : SinglyLinkedListNode_t(std::forward<U>(data), nullptr) {}
+  explicit SinglyLinkedListNode_t(const U& data)
+      : SinglyLinkedListNode_t(data, nullptr) {}
   template <typename U>
-  explicit SinglyLinkedListNode_t(U&& data, SinglyLinkedListNode_t* next)
-      : data_(std::forward<T>(static_cast<T>(data))), next_(next) {}
-  T data_;
+  explicit SinglyLinkedListNode_t(const U& data, SinglyLinkedListNode_t* next)
+      : data_(static_cast<T>(data)), next_(next) {}
+  const T data_;
   SinglyLinkedListNode_t* next_;
 };
 

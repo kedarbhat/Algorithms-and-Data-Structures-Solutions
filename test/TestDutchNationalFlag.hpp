@@ -16,49 +16,49 @@
 #pragma once
 #include "DutchNationalFlagPartition.hpp"
 namespace {
-TEST(EmptyArray, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, EmptyArray) {
   std::vector<int> vec;
   std::vector<int> expected;
   dnfPartition(vec, 3);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(PivotOutOfBounds, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, PivotOutOfBounds) {
   std::vector<int> vec{0, 10};
   std::vector<int> expected{0, 10};
   dnfPartition(vec, 3);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(SingleElementArray, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, SingleElementArray) {
   std::vector<int> vec{10};
   std::vector<int> expected{10};
   dnfPartition(vec, 0);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(TwoElementsLargerPivot, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, TwoElementsLargerPivot) {
   std::vector<int> vec{10, 0};
   std::vector<int> expected{0, 10};
   dnfPartition(vec, 0);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(TwoElementsSmallerPivot, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, TwoElementsSmallerPivot) {
   std::vector<int> vec{10, 0};
   std::vector<int> expected{0, 10};
   dnfPartition(vec, 1);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(TwoElementsEqualToPivot, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, TwoElementsEqualToPivot) {
   std::vector<int> vec{10, 10};
   std::vector<int> expected{10, 10};
   dnfPartition(vec, 1);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(NormalArrayPivot6, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, NormalArrayPivot6) {
   std::vector<int> vec{3, 5, 2, 6, 8, 4, 4, 6, 4, 4, 3};
   EXPECT_EQ(vec[vec.size() / 3], 6);
   dnfPartition(vec, vec.size() / 3);
@@ -66,7 +66,7 @@ TEST(NormalArrayPivot6, TestDutchNationalFlag) {
   EXPECT_EQ(vec, expected);
 }
 
-TEST(NormalArrayPivot4, TestDutchNationalFlag) {
+TEST(TestDutchNationalFlag, NormalArrayPivot4) {
   std::vector<int> vec{3, 5, 2, 6, 8, 4, 4, 6, 4, 4, 3};
   std::vector<int> expected{3, 3, 2, 4, 4, 4, 4, 6, 8, 6, 5};
   EXPECT_EQ(vec[5], 4);

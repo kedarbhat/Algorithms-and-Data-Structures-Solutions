@@ -18,8 +18,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
 namespace {
+/**
+ * Given an array, reverse the order of its elements. For
+ * example,[3,5,2,5,2,3,9] --> [9,3,2,5,2,5,3]["hello", "world"] --> ["world",
+ * "hello"] \tparam T a swappable type \param vec Vector holding the elements to
+ * be reversed
+ */
 template <typename T>
-void reverseContainer(std::vector<T> &vec) noexcept {
+std::enable_if_t<std::is_swappable<T>::value> reverseContainer(
+    std::vector<T> &vec) noexcept {
   auto fwdIter = std::begin(vec);
   auto revIter = std::prev(std::end(vec), 1);
   while (std::distance(fwdIter, revIter) > 0) {

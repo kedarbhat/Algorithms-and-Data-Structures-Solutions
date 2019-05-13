@@ -25,10 +25,9 @@ namespace {
  * Function object used to determine if a given integral value is even or not
  */
 struct IsEven_t {
-  template <typename T>
-  constexpr typename std::enable_if<std::is_integral<std::decay_t<T>>::value,
-                                    bool>::type
-  operator()(T &&i) noexcept {
+  template <typename T, typename = std::enable_if_t<
+                            std::is_integral<std::decay_t<T>>::value>>
+  constexpr bool operator()(T &&i) noexcept {
     return std::forward<T>(i) % 2 == 0;
   }
 };
@@ -39,10 +38,9 @@ struct IsEven_t {
  * \param vec vector of integral types
  * \return the number of \param vec elements that are even
  */
-template <typename T>
-static typename std::enable_if<std::is_integral<std::decay_t<T>>::value,
-                               int64_t>::type
-numberOfEvenNumbers(const std::vector<T> &vec) noexcept {
+template <typename T,
+          typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
+static int64_t numberOfEvenNumbers(const std::vector<T> &vec) noexcept {
   IsEven_t isEven;
   return std::count_if(std::begin(vec), std::end(vec), isEven);
 }
@@ -53,19 +51,18 @@ numberOfEvenNumbers(const std::vector<T> &vec) noexcept {
  * \param vec Vector of integral values
  * \return void
  */
-template <typename T>
-typename std::enable_if<std::is_integral<std::decay_t<T>>::value>::type
-reverseArrayTraversal(std::vector<T> &vec) noexcept {
+template <typename T,
+          typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
+void reverseArrayTraversal(std::vector<T> &vec) noexcept {
   using diff_t = typename std::vector<T>::difference_type;
   using size_type = typename std::vector<T>::size_type;
-  IsEven_t isEven;
 
   auto originalSize = static_cast<diff_t>(vec.size());
   auto numEvenNumbers = numberOfEvenNumbers(vec);
   auto neededCapacity = numEvenNumbers + static_cast<diff_t>(vec.size()) -
                         static_cast<diff_t>(vec.capacity());
   if (neededCapacity == 0) {
-    assert(std::none_of(std::begin(vec), std::end(vec), isEven));
+    assert(std::none_of(std::begin(vec), std::end(vec), IsEven_t{}));
     return;
   }
 
@@ -80,7 +77,7 @@ reverseArrayTraversal(std::vector<T> &vec) noexcept {
     assert(std::distance(writeIter, readIter) >= 0);
     *writeIter = *readIter;
     std::advance(writeIter, 1);
-    if (writeIter != std::rend(vec) && isEven(*readIter)) {
+    if (writeIter != std::rend(vec) && IsEven_t{}(*readIter)) {
       *writeIter = *readIter;
       std::advance(writeIter, 1);
     }

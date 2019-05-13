@@ -20,6 +20,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 
 #include <algorithm>
+#include <boost/range/irange.hpp>
 #include <vector>
 
 namespace arrays {
@@ -32,7 +33,8 @@ int64_t ArrayManipulation(int n, std::vector<std::vector<int>> queries) {
     vec[finishIdx] -= query[2];
   }
   auto maxSum = vec[0];
-  for (auto idx = 1u; idx < vec.size(); ++idx) {
+
+  for (auto idx : boost::irange<std::size_t>(1u, vec.size())) {
     vec[idx] += vec[idx - 1u];
     maxSum = std::max(maxSum, vec[idx]);
   }

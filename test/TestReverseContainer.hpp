@@ -19,18 +19,27 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "ReverseContainer.hpp"
 namespace {
-TEST(EmptyContainer, TestReverseContainer) {
+TEST(TestReverseContainer, EmptyContainer) {
   std::vector<int> vec;
   const auto expected = vec;
   reverseContainer(vec);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(NormalContainer, TestReverseContainer) {
-  std::vector<std::string> vec{"Hello", "my", "name", "is", "sew"};
+TEST(TestReverseContainer, ContainerOfStrings) {
+  std::vector<std::string> vec{"Hello", "world"};
   auto expected = vec;
   std::reverse(std::begin(expected), std::end(expected));
   reverseContainer(vec);
   EXPECT_EQ(vec, expected);
 }
+
+TEST(TestReverseContainer, ContainerOfInts) {
+  std::vector<int> vec{3, 5, 2, 5, 2, 3, 9};
+  auto expected = vec;
+  std::reverse(std::begin(expected), std::end(expected));
+  reverseContainer(vec);
+  EXPECT_EQ(vec, expected);
+}
+
 }  // namespace

@@ -19,12 +19,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
+#include <boost/range/irange.hpp>
+
 namespace bit_array {
 std::size_t GenerateSequence(unsigned n, unsigned s, unsigned p, unsigned q) {
   static constexpr auto modulo_m_1{(1u << 31u) - 1u};
   auto prev = s;
   std::size_t counter{1u};
-  for (std::size_t i = 1u; i < n; ++i) {
+
+  for (auto i : boost::irange<std::size_t>(1u, n)) {
+    std::ignore = i;
     auto current = (prev * p + q) & modulo_m_1;
     if (current == prev) {
       return counter;

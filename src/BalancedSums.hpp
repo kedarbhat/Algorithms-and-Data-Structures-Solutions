@@ -18,6 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // https://www.hackerrank.com/challenges/sherlock-and-array/problem?utm_campaign=challenge-recommendation&utm_medium=email&utm_source=24-hour-campaign
 
 #pragma once
+#include <boost/range/irange.hpp>
 #include <string>
 #include <vector>
 
@@ -27,8 +28,12 @@ std::string BalancedSums(std::vector<int> arr) {
   // and we do 3 passes instead of 1. A 1 pass solution involves some indexing
   // arithmetic (using both a right-to-left and a left-to-right index that can
   // quickly become messy, so I opted for this in the interests of time.
+  if (arr.empty()) {
+    return "NO";
+  }
+
   std::vector<int> rightToLeft_arr(begin(arr), end(arr));
-  for (auto idx = 1u; idx < arr.size(); ++idx) {
+  for (auto idx : boost::irange<std::size_t>(1u, arr.size())) {
     arr[idx] += arr[idx - 1];
     rightToLeft_arr[arr.size() - 1u - idx] += rightToLeft_arr[arr.size() - idx];
   }

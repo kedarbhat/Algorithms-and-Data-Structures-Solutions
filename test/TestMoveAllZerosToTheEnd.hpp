@@ -17,28 +17,28 @@
 
 #include "MoveAllZerosToTheEnd.hpp"
 namespace {
-TEST(EmptyArray, TestMoveAllZerosToTheEnd) {
+TEST(TestMoveAllZerosToTheEnd, EmptyArray) {
   std::vector<int> vec;
   std::vector<int> expected;
   moveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(AllZerosArray, TestMoveAllZerosToTheEnd) {
+TEST(TestMoveAllZerosToTheEnd, AllZerosArray) {
   std::vector<int> vec{0, 0, 0, 0, 0};
   std::vector<int> expected{0, 0, 0, 0, 0};
   moveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(NoZerosArray, TestMoveAllZerosToTheEnd) {
+TEST(TestMoveAllZerosToTheEnd, NoZerosArray) {
   std::vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8};
   const auto expected = vec;
   moveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
-TEST(NormalArray, TestMoveAllZerosToTheEnd) {
+TEST(TestMoveAllZerosToTheEnd, NormalArray) {
   std::vector<int> vec{2, 3, 0, 3, 0, 1, 0};
   std::vector<int> expected{2, 3, 1, 3, 0, 0, 0};
   moveAllZerosToTheEnd(vec);

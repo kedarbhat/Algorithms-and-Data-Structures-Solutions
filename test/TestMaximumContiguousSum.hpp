@@ -18,47 +18,47 @@
 #include "MaximumContiguousSum.hpp"
 
 namespace {
-TEST(EmptyArray, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, EmptyArray) {
   std::vector<int> vec;
   EXPECT_EQ(getMaximumContiguousSum(vec), 0);
 }
 
-TEST(SingleElementNegative, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, SingleElementNegative) {
   std::vector<int> vec{-10};
   EXPECT_EQ(getMaximumContiguousSum(vec), -10);
 }
 
-TEST(SingleElementZero, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, SingleElementZero) {
   std::vector<int> vec{0};
   EXPECT_EQ(getMaximumContiguousSum(vec), 0);
 }
 
-TEST(SingleElementPositive, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, SingleElementPositive) {
   std::vector<int> vec{10};
   EXPECT_EQ(getMaximumContiguousSum(vec), 10);
 }
 
-TEST(AllNegativeElements, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, AllNegativeElements) {
   std::vector<int> vec{-10, -9, -8, -1};
   EXPECT_EQ(getMaximumContiguousSum(vec), -1);
 }
 
-TEST(AllZeroElements, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, AllZeroElements) {
   std::vector<int> vec{0, 0, 0, 0};
   EXPECT_EQ(getMaximumContiguousSum(vec), 0);
 }
 
-TEST(AllPositiveElements, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, AllPositiveElements) {
   std::vector<int> vec{10, 9, 8, 1};
   EXPECT_EQ(getMaximumContiguousSum(vec), 28);
 }
 
-TEST(NormalArray1, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, NormalArray1) {
   std::vector<int> vec{1, 2, -1, 2, -3, 2, -5};
   EXPECT_EQ(getMaximumContiguousSum(vec), 4);
 }
 
-TEST(NormalArray2, TestMaximumContiguousSum) {
+TEST(TestMaximumContiguousSum, NormalArray2) {
   std::vector<int> vec{-2, -3, 4, -1, -2, 1, 5, -1};
   EXPECT_EQ(getMaximumContiguousSum(vec), 7);
 }

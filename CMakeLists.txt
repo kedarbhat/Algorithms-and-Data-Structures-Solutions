@@ -23,7 +23,7 @@ add_library(AlgosAndDS INTERFACE)
 target_include_directories(AlgosAndDS INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
 target_include_directories(AlgosAndDS SYSTEM INTERFACE $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/src>)
 include_directories(src)
-
+find_package(Boost)
 find_package(GTest)
 add_executable(tests test/main.cpp)
 target_link_libraries(tests GTest::GTest)
