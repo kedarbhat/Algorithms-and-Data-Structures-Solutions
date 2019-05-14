@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "detail/SinglyLinkedListNode.hpp"
 
 namespace linked_lists {
-SinglyLinkedListNode<int>* insertNodeAtPosition(SinglyLinkedListNode<int>* head,
+SinglyLinkedListNode<int>* InsertNodeAtPosition(SinglyLinkedListNode<int>* head,
                                                 int data, int position) {
   int counter = 0;
   auto* node = head;

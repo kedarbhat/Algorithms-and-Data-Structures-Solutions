@@ -1,5 +1,3 @@
-#include <gtest/gtest.h>
-
 #include "TestArraysSolutions.hpp"
 #include "TestBitArray.hpp"
 #include "TestCountingValleys.hpp"

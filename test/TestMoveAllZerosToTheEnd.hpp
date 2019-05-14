@@ -14,34 +14,35 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
+#include <gtest/gtest.h>
 
 #include "MoveAllZerosToTheEnd.hpp"
 namespace {
 TEST(TestMoveAllZerosToTheEnd, EmptyArray) {
   std::vector<int> vec;
   std::vector<int> expected;
-  moveAllZerosToTheEnd(vec);
+  MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestMoveAllZerosToTheEnd, AllZerosArray) {
   std::vector<int> vec{0, 0, 0, 0, 0};
   std::vector<int> expected{0, 0, 0, 0, 0};
-  moveAllZerosToTheEnd(vec);
+  MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestMoveAllZerosToTheEnd, NoZerosArray) {
   std::vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8};
   const auto expected = vec;
-  moveAllZerosToTheEnd(vec);
+  MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestMoveAllZerosToTheEnd, NormalArray) {
   std::vector<int> vec{2, 3, 0, 3, 0, 1, 0};
   std::vector<int> expected{2, 3, 1, 3, 0, 0, 0};
-  moveAllZerosToTheEnd(vec);
+  MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 }  // namespace

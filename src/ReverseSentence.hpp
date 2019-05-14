@@ -27,17 +27,18 @@ namespace {
  * this is to practice reverse iteration. \param str string to be reversed
  */
 
-void reverseString(std::string &str) noexcept {
+void ReverseString(std::string &str) noexcept {
   if (str.empty()) {
     return;
   }
 
-  auto wordEndIdx = str.size();
-  for (auto spaceIdx = str.rfind(' ');
-       spaceIdx != 0 && spaceIdx != std::string::npos;
-       spaceIdx = str.rfind(' ', wordEndIdx - 1)) {
-    std::reverse(std::begin(str) + spaceIdx + 1, std::begin(str) + wordEndIdx);
-    wordEndIdx = spaceIdx;
+  auto word_end_idx = str.size();
+  for (auto space_idx = str.rfind(' ');
+       space_idx != 0 && space_idx != std::string::npos;
+       space_idx = str.rfind(' ', word_end_idx - 1)) {
+    std::reverse(std::begin(str) + space_idx + 1,
+                 std::begin(str) + word_end_idx);
+    word_end_idx = space_idx;
   }
   std::reverse(std::begin(str), std::end(str));
 }

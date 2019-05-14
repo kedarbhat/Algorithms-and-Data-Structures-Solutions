@@ -29,31 +29,34 @@ enum class Color { RED, GREEN, ORANGE, MAX };
 template <typename T>
 using array_t = std::array<const char *, static_cast<std::size_t>(T::MAX) + 1u>;
 
-template <typename T>
-struct Name;
+template <typename>
+struct NameType;
 
 template <>
-struct Name<Fruit> {
+struct NameType<Fruit> {
   static constexpr array_t<Fruit> s_names_{
       {"apple", "orange", "pear", "unknown"}};
 };
-constexpr array_t<Fruit> Name<Fruit>::s_names_;  // ODR rule deprecated in C++17
+constexpr array_t<Fruit>
+    NameType<Fruit>::s_names_;  // ODR rule deprecated in C++17
 
 template <>
-struct Name<Color> {
+struct NameType<Color> {
   static constexpr array_t<Color> s_names_{
       {"red", "green", "orange", "unknown"}};
 };
-constexpr array_t<Color> Name<Color>::s_names_;  // ODR rule deprecated in C++17
+constexpr array_t<Color>
+    NameType<Color>::s_names_;  // ODR rule deprecated in C++17
 
 template <typename T>
 struct Traits {
-  static constexpr const char *name(std::size_t idx) noexcept {  // NOLINT
-    return Name<T>::s_names_[idx];
+  static constexpr const char *Name(std::size_t idx) noexcept {
+    return NameType<T>::s_names_[idx];
   }
-  static constexpr const char *name(T enumVal) noexcept {  // NOLINT
+
+  static constexpr const char *Name(T enum_val) noexcept {
     using underlying_t = typename std::underlying_type<T>::type;
-    return Name<T>::s_names_[static_cast<underlying_t>(enumVal)];
+    return NameType<T>::s_names_[static_cast<underlying_t>(enum_val)];
   }
 };
 }  // namespace template_specialization

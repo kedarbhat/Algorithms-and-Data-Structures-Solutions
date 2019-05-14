@@ -14,54 +14,56 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
+#include <gtest/gtest.h>
+
 #include "DutchNationalFlagPartition.hpp"
 namespace {
 TEST(TestDutchNationalFlag, EmptyArray) {
   std::vector<int> vec;
   std::vector<int> expected;
-  dnfPartition(vec, 3);
+  DnfPartition(vec, 3);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestDutchNationalFlag, PivotOutOfBounds) {
   std::vector<int> vec{0, 10};
   std::vector<int> expected{0, 10};
-  dnfPartition(vec, 3);
+  DnfPartition(vec, 3);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestDutchNationalFlag, SingleElementArray) {
   std::vector<int> vec{10};
   std::vector<int> expected{10};
-  dnfPartition(vec, 0);
+  DnfPartition(vec, 0);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestDutchNationalFlag, TwoElementsLargerPivot) {
   std::vector<int> vec{10, 0};
   std::vector<int> expected{0, 10};
-  dnfPartition(vec, 0);
+  DnfPartition(vec, 0);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestDutchNationalFlag, TwoElementsSmallerPivot) {
   std::vector<int> vec{10, 0};
   std::vector<int> expected{0, 10};
-  dnfPartition(vec, 1);
+  DnfPartition(vec, 1);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestDutchNationalFlag, TwoElementsEqualToPivot) {
   std::vector<int> vec{10, 10};
   std::vector<int> expected{10, 10};
-  dnfPartition(vec, 1);
+  DnfPartition(vec, 1);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestDutchNationalFlag, NormalArrayPivot6) {
   std::vector<int> vec{3, 5, 2, 6, 8, 4, 4, 6, 4, 4, 3};
   EXPECT_EQ(vec[vec.size() / 3], 6);
-  dnfPartition(vec, vec.size() / 3);
+  DnfPartition(vec, vec.size() / 3);
   std::vector<int> expected{3, 5, 2, 3, 4, 4, 4, 4, 6, 6, 8};
   EXPECT_EQ(vec, expected);
 }
@@ -70,7 +72,7 @@ TEST(TestDutchNationalFlag, NormalArrayPivot4) {
   std::vector<int> vec{3, 5, 2, 6, 8, 4, 4, 6, 4, 4, 3};
   std::vector<int> expected{3, 3, 2, 4, 4, 4, 4, 6, 8, 6, 5};
   EXPECT_EQ(vec[5], 4);
-  dnfPartition(vec, 5);
+  DnfPartition(vec, 5);
   EXPECT_EQ(vec, expected);
 }
 }  // namespace

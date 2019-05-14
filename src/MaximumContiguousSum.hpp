@@ -27,30 +27,30 @@ namespace {
 // elements have the largest sum.
 
 template <typename T>
-T getMaximumContiguousSum(std::vector<T> &vec) noexcept {
+T GetMaximumContiguousSum(std::vector<T> &vec) noexcept {
   if (vec.empty()) {
     return 0;
   }
 
-  auto numNegativeElements = std::count_if(std::begin(vec), std::end(vec),
-                                           [](auto &&i) { return i < 0; });
-  if (numNegativeElements == vec.size()) {
+  auto num_negative_elements = std::count_if(std::begin(vec), std::end(vec),
+                                             [](auto &&i) { return i < 0; });
+  if (num_negative_elements == vec.size()) {
     return *std::max_element(std::begin(vec), std::end(vec));
   }
 
-  auto currentMaximum = std::max(0, vec[0]);
+  auto current_maximum = std::max(0, vec[0]);
   for (auto idx = 1; idx < vec.size(); ++idx) {
     vec[idx] = std::max(vec[idx - 1] + vec[idx], 0);
-    currentMaximum = std::max(currentMaximum, vec[idx]);
+    current_maximum = std::max(current_maximum, vec[idx]);
   }
 
-  return currentMaximum;
+  return current_maximum;
 }
 
 // Given an array of positive integers, find a subarray that sums to a given
 // number X.
 template <typename T>
-std::pair<std::size_t, std::size_t> getMaximumContiguousSum(
+std::pair<std::size_t, std::size_t> GetMaximumContiguousSum(
     const std::vector<T> &vec, const T &target) noexcept {
   if (vec.empty()) {
     return std::make_pair(std::size_t{0}, std::size_t{0});
@@ -84,29 +84,29 @@ std::pair<std::size_t, std::size_t> getMaximumContiguousSum(
 }
 
 template <typename T>
-std::pair<std::size_t, std::size_t> getMaximumContiguousSumTargetZero(
+std::pair<std::size_t, std::size_t> GetMaximumContiguousSumTargetZero(
     std::vector<T> &vec) noexcept {
   if (vec.empty()) {
     return std::make_pair(std::size_t{0}, std::size_t{0});
   }
 
-  auto maxSum = vec[0];
+  auto max_sum = vec[0];
   for (auto i : boost::irange<std::size_t>(1u, vec.size())) {
     vec[i] += vec[i - 1];
   }
-  auto zeroElementIter = std::find(std::cbegin(vec), std::cend(vec), T{0});
-  if (zeroElementIter != std::cend(vec)) {
+  auto zero_element_iter = std::find(std::cbegin(vec), std::cend(vec), T{0});
+  if (zero_element_iter != std::cend(vec)) {
     return std::make_pair(
         std::size_t{0},
         static_cast<std::size_t>(
-            std::distance(std::cbegin(vec), zeroElementIter) + 1));
+            std::distance(std::cbegin(vec), zero_element_iter) + 1));
   }
 
-  std::unordered_map<int, std::size_t> commonDiffMap;
+  std::unordered_map<int, std::size_t> common_diff_map;
   for (auto i : boost::irange<std::size_t>(vec.size())) {
-    auto iter = commonDiffMap.find(vec[i]);
-    if (iter == std::cend(commonDiffMap)) {
-      commonDiffMap[vec[i]] = i;
+    auto iter = common_diff_map.find(vec[i]);
+    if (iter == std::cend(common_diff_map)) {
+      common_diff_map[vec[i]] = i;
     } else {
       return std::make_pair(iter->second + 1, i + 1);
     }

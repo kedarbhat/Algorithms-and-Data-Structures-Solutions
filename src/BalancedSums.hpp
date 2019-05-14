@@ -20,7 +20,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 #include <boost/range/irange.hpp>
 #include <string>
-#include <vector>
 
 namespace arrays {
 std::string BalancedSums(std::vector<int> arr) {
@@ -32,13 +31,14 @@ std::string BalancedSums(std::vector<int> arr) {
     return "NO";
   }
 
-  std::vector<int> rightToLeft_arr(begin(arr), end(arr));
+  std::vector<int> right_to_left_arr(begin(arr), end(arr));
   for (auto idx : boost::irange<std::size_t>(1u, arr.size())) {
     arr[idx] += arr[idx - 1];
-    rightToLeft_arr[arr.size() - 1u - idx] += rightToLeft_arr[arr.size() - idx];
+    right_to_left_arr[arr.size() - 1u - idx] +=
+        right_to_left_arr[arr.size() - idx];
   }
   for (auto idx = 0u; idx < arr.size(); ++idx) {
-    arr[idx] -= rightToLeft_arr[idx];
+    arr[idx] -= right_to_left_arr[idx];
   }
 
   return std::find(begin(arr), end(arr), 0) == end(arr) ? "NO" : "YES";

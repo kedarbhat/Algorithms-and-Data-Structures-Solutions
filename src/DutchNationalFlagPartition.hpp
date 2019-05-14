@@ -22,36 +22,36 @@ using diff_t = typename std::vector<T>::difference_type;
 template <typename T>
 using size_type = typename std::vector<T>::size_type;
 
-void dnfPartition(std::vector<int>& vec, size_type<int> pivotIdx) {
-  if (vec.empty() || pivotIdx >= vec.size()) {
+void DnfPartition(std::vector<int>& vec, size_type<int> pivot_idx) {
+  if (vec.empty() || pivot_idx >= vec.size()) {
     return;
   }
 
-  auto pivot = vec[pivotIdx];
-  auto lowIdx = size_type<int>(0);
-  auto midIdx = size_type<int>(0);
-  auto highIdx = vec.size();
-  while (midIdx < highIdx) {
-    auto currentElement = vec[midIdx];
-    if (currentElement > pivot) {
-      std::swap(vec[highIdx - 1], vec[midIdx]);
-      --highIdx;
-    } else if (currentElement < pivot) {
-      if (lowIdx < midIdx) {
-        std::swap(vec[lowIdx], vec[midIdx]);
+  auto pivot = vec[pivot_idx];
+  auto low_idx = size_type<int>(0);
+  auto mid_idx = size_type<int>(0);
+  auto high_idx = vec.size();
+  while (mid_idx < high_idx) {
+    auto current_element = vec[mid_idx];
+    if (current_element > pivot) {
+      std::swap(vec[high_idx - 1], vec[mid_idx]);
+      --high_idx;
+    } else if (current_element < pivot) {
+      if (low_idx < mid_idx) {
+        std::swap(vec[low_idx], vec[mid_idx]);
       }
-      ++lowIdx;
-      ++midIdx;
+      ++low_idx;
+      ++mid_idx;
     } else {
-      assert(vec[midIdx] == pivot);
-      ++midIdx;
+      assert(vec[mid_idx] == pivot);
+      ++mid_idx;
     }
-    assert(std::all_of(std::begin(vec), std::begin(vec) + diff_t<int>(lowIdx),
+    assert(std::all_of(std::begin(vec), std::begin(vec) + diff_t<int>(low_idx),
                        [pivot](auto&& i) { return i < pivot; }));
-    assert(std::all_of(std::begin(vec) + diff_t<int>(lowIdx),
-                       std::begin(vec) + diff_t<int>(midIdx),
+    assert(std::all_of(std::begin(vec) + diff_t<int>(low_idx),
+                       std::begin(vec) + diff_t<int>(mid_idx),
                        [pivot](auto&& i) { return i == pivot; }));
-    assert(std::all_of(std::begin(vec) + diff_t<int>(highIdx), std::end(vec),
+    assert(std::all_of(std::begin(vec) + diff_t<int>(high_idx), std::end(vec),
                        [pivot](auto&& i) { return i > pivot; }));
   }
 }

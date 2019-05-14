@@ -16,6 +16,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include <gtest/gtest.h>
 
 #include "InheritedCode.hpp"
 
@@ -41,8 +42,8 @@ TEST(TestAbstractClasses, HackerRankExample) {
   try {
     checker.IsValid("Me");
   } catch (const abstract_classes::BadLengthException& e) {
-    std::cout << e.what() << '\n';
+    std::cerr << e.what() << '\n';
   }
-  std::cout << std::endl;
+  std::cerr << std::endl;
 }
 }  // namespace

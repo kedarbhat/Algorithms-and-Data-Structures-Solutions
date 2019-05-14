@@ -16,28 +16,28 @@
 #pragma once
 
 namespace {
-enum Colors { Red = 0, White = 1, Blue = 2 };
+enum Colors { RED = 0, WHITE = 1, BLUE = 2 };
 
-void sortThreeEnumArrays(std::vector<Colors>& vec) {
+void SortThreeEnumArrays(std::vector<Colors>& vec) {
   using size_type = typename std::vector<Colors>::size_type;
-  auto pivot = Colors::White;
+  auto pivot = Colors::WHITE;
 
-  auto lowIdx = size_type(0);
-  auto midIdx = size_type(0);
-  auto highIdx = vec.size();
-  while (midIdx < highIdx) {
-    auto current = vec[midIdx];
+  auto low_idx = size_type(0);
+  auto mid_idx = size_type(0);
+  auto high_idx = vec.size();
+  while (mid_idx < high_idx) {
+    auto current = vec[mid_idx];
     if (pivot < current) {
-      std::swap(vec[midIdx], vec[highIdx - 1]);
-      --highIdx;
+      std::swap(vec[mid_idx], vec[high_idx - 1]);
+      --high_idx;
     } else if (pivot > current) {
-      if (midIdx > lowIdx) {
-        std::swap(vec[lowIdx], vec[midIdx]);
+      if (mid_idx > low_idx) {
+        std::swap(vec[low_idx], vec[mid_idx]);
       }
-      ++lowIdx;
-      ++midIdx;
+      ++low_idx;
+      ++mid_idx;
     } else {
-      ++midIdx;
+      ++mid_idx;
     }
   }
 }

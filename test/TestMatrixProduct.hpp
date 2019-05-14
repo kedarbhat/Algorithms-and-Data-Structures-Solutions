@@ -14,33 +14,34 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
+#include <gtest/gtest.h>
 
 #include "MatrixProduct.hpp"
 
 namespace {
 TEST(TestMatrixProduct, EmptyMatrix) {
   matrix_type matrix;
-  ASSERT_THROW(matrixProduct(matrix), std::invalid_argument);
+  ASSERT_THROW(MatrixProduct(matrix), std::invalid_argument);
 }
 
 TEST(TestMatrixProduct, AllPositiveCells) {
   matrix_type matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-  ASSERT_EQ(matrixProduct(matrix), 2016);
+  ASSERT_EQ(MatrixProduct(matrix), 2016);
 }
 
 TEST(TestMatrixProduct, OneNegativeCell) {
   matrix_type matrix{{-1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-  ASSERT_EQ(matrixProduct(matrix), -324);
+  ASSERT_EQ(MatrixProduct(matrix), -324);
 }
 
 TEST(TestMatrixProduct, TwoNegativeCells) {
   matrix_type matrix{{-1, 2, 3}, {4, 5, -6}, {7, 8, 9}};
-  ASSERT_EQ(matrixProduct(matrix), 1080);
+  ASSERT_EQ(MatrixProduct(matrix), 1080);
 }
 
 TEST(TestMatrixProduct, AllNegativeCells) {
   matrix_type matrix{{-1, -2, -3, -4}, {-5, -6, -7, -8}, {-9, -10, -11, -12}};
-  ASSERT_EQ(matrixProduct(matrix), 59400);
+  ASSERT_EQ(MatrixProduct(matrix), 59400);
 }
 
 }  // namespace

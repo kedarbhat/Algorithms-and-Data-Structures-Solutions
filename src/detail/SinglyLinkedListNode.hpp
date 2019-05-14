@@ -4,19 +4,17 @@
 namespace linked_lists {
 namespace detail {
 template <typename T>
-struct SinglyLinkedListNode_t {
+struct SinglyLinkedListNodeT {
   template <typename U>
-  explicit SinglyLinkedListNode_t(const U& data)
-      : SinglyLinkedListNode_t(data, nullptr) {}
-  template <typename U>
-  explicit SinglyLinkedListNode_t(const U& data, SinglyLinkedListNode_t* next)
+  explicit SinglyLinkedListNodeT(const U& data,
+                                 SinglyLinkedListNodeT* next = nullptr)
       : data_(static_cast<T>(data)), next_(next) {}
   const T data_;
-  SinglyLinkedListNode_t* next_;
+  SinglyLinkedListNodeT* next_;
 };
 
 }  // namespace detail
 
 template <typename T>
-using SinglyLinkedListNode = detail::SinglyLinkedListNode_t<T>;
+using SinglyLinkedListNode = detail::SinglyLinkedListNodeT<T>;
 }  // namespace linked_lists

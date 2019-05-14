@@ -24,7 +24,7 @@ namespace {
 /**
  * Function object used to determine if a given integral value is even or not
  */
-struct IsEven_t {
+struct IsEvenT {
   template <typename T, typename = std::enable_if_t<
                             std::is_integral<std::decay_t<T>>::value>>
   constexpr bool operator()(T &&i) noexcept {
@@ -40,9 +40,9 @@ struct IsEven_t {
  */
 template <typename T,
           typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
-static int64_t numberOfEvenNumbers(const std::vector<T> &vec) noexcept {
-  IsEven_t isEven;
-  return std::count_if(std::begin(vec), std::end(vec), isEven);
+static int64_t NumberOfEvenNumbers(const std::vector<T> &vec) noexcept {
+  IsEvenT is_even;
+  return std::count_if(std::begin(vec), std::end(vec), is_even);
 }
 
 /**
@@ -53,35 +53,35 @@ static int64_t numberOfEvenNumbers(const std::vector<T> &vec) noexcept {
  */
 template <typename T,
           typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
-void reverseArrayTraversal(std::vector<T> &vec) noexcept {
+void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
   using diff_t = typename std::vector<T>::difference_type;
   using size_type = typename std::vector<T>::size_type;
 
-  auto originalSize = static_cast<diff_t>(vec.size());
-  auto numEvenNumbers = numberOfEvenNumbers(vec);
-  auto neededCapacity = numEvenNumbers + static_cast<diff_t>(vec.size()) -
-                        static_cast<diff_t>(vec.capacity());
-  if (neededCapacity == 0) {
-    assert(std::none_of(std::begin(vec), std::end(vec), IsEven_t{}));
+  auto original_size = static_cast<diff_t>(vec.size());
+  auto num_even_numbers = NumberOfEvenNumbers(vec);
+  auto needed_capacity = num_even_numbers + static_cast<diff_t>(vec.size()) -
+                         static_cast<diff_t>(vec.capacity());
+  if (needed_capacity == 0) {
+    assert(std::none_of(std::begin(vec), std::end(vec), IsEvenT{}));
     return;
   }
 
-  if (neededCapacity > 0) {
-    vec.resize(vec.capacity() + static_cast<size_type>(neededCapacity));
+  if (needed_capacity > 0) {
+    vec.resize(vec.capacity() + static_cast<size_type>(needed_capacity));
   }
 
-  auto writeIter = std::rbegin(vec);
-  auto readIter =
-      std::make_reverse_iterator(std::next(std::begin(vec), originalSize));
-  while (readIter != std::rend(vec) && writeIter != std::rend(vec)) {
-    assert(std::distance(writeIter, readIter) >= 0);
-    *writeIter = *readIter;
-    std::advance(writeIter, 1);
-    if (writeIter != std::rend(vec) && IsEven_t{}(*readIter)) {
-      *writeIter = *readIter;
-      std::advance(writeIter, 1);
+  auto write_iter = std::rbegin(vec);
+  auto read_iter =
+      std::make_reverse_iterator(std::next(std::begin(vec), original_size));
+  while (read_iter != std::rend(vec) && write_iter != std::rend(vec)) {
+    assert(std::distance(write_iter, read_iter) >= 0);
+    *write_iter = *read_iter;
+    std::advance(write_iter, 1);
+    if (write_iter != std::rend(vec) && IsEvenT{}(*read_iter)) {
+      *write_iter = *read_iter;
+      std::advance(write_iter, 1);
     }
-    std::advance(readIter, 1);
+    std::advance(read_iter, 1);
   }
 }
 

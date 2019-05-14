@@ -26,7 +26,10 @@ namespace abstract_classes {
 
 struct BadLengthException : std::exception {
   explicit BadLengthException(std::size_t n) : n_(std::to_string(n)) {}
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCInconsistentNamingInspection"
   const char *what() const noexcept override { return n_.c_str(); }
+#pragma clang diagnostic pop
   std::string n_;
 };
 

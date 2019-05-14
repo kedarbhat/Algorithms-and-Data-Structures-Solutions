@@ -27,13 +27,13 @@ namespace {
  */
 template <typename T, typename = std::enable_if_t<
                           boost::is_nothrow_swappable<std::decay_t<T>>::value>>
-void reverseContainer(std::vector<T> &vec) noexcept {
-  auto fwdIter = std::begin(vec);
-  auto revIter = std::prev(std::end(vec), 1);
-  while (std::distance(fwdIter, revIter) > 0) {
-    std::iter_swap(fwdIter, revIter);
-    std::advance(fwdIter, 1);
-    std::advance(revIter, -1);
+void ReverseContainer(std::vector<T> &vec) noexcept {
+  auto fwd_iter = std::begin(vec);
+  auto rev_iter = std::prev(std::end(vec), 1);
+  while (std::distance(fwd_iter, rev_iter) > 0) {
+    std::iter_swap(fwd_iter, rev_iter);
+    std::advance(fwd_iter, 1);
+    std::advance(rev_iter, -1);
   }
 }
 }  // namespace

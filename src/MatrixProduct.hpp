@@ -28,48 +28,50 @@ namespace {
 using row_type = std::vector<int>;
 using matrix_type = std::vector<row_type>;
 
-int matrixProduct(const matrix_type& matrix) {
+int MatrixProduct(const matrix_type& matrix) {
   if (matrix.empty() || matrix.front().empty()) {
     throw std::invalid_argument("Matrix must have valid dimensions!");
   }
 
-  const auto numRows = matrix.size();
-  const auto numColumns = matrix.front().size();
+  const auto num_rows = matrix.size();
+  const auto num_columns = matrix.front().size();
 
-  matrix_type maxProductMatrix(numRows, row_type(numColumns));
-  matrix_type minProductMatrix(numRows, row_type(numColumns));
+  matrix_type max_product_matrix(num_rows, row_type(num_columns));
+  matrix_type min_product_matrix(num_rows, row_type(num_columns));
 
-  for (auto i : boost::irange<std::size_t>(numRows)) {
-    for (auto j : boost::irange<std::size_t>(numColumns)) {
-      auto maxValue_ij =
+  for (auto i : boost::irange<std::size_t>(num_rows)) {
+    for (auto j : boost::irange<std::size_t>(num_columns)) {
+      auto max_value_ij =
           i == 0 && j == 0 ? matrix[i][j] : std::numeric_limits<int>::lowest();
-      auto minValue_ij =
+      auto min_value_ij =
           i == 0 && j == 0 ? matrix[i][j] : std::numeric_limits<int>::max();
 
       if (i > 0) {
         const auto& original_ij = matrix[i][j];
-        maxValue_ij = std::max(
-            maxValue_ij, std::max(original_ij * maxProductMatrix[i - 1][j],
-                                  original_ij * minProductMatrix[i - 1][j]));
-        minValue_ij = std::min(
-            minValue_ij, std::min(original_ij * maxProductMatrix[i - 1][j],
-                                  original_ij * minProductMatrix[i - 1][j]));
+        max_value_ij = std::max(
+            max_value_ij, std::max(original_ij * max_product_matrix[i - 1][j],
+                                   original_ij * min_product_matrix[i - 1][j]));
+        min_value_ij = std::min(
+            min_value_ij, std::min(original_ij * max_product_matrix[i - 1][j],
+                                   original_ij * min_product_matrix[i - 1][j]));
       }
 
       if (j > 0) {
-        maxValue_ij = std::max(
-            maxValue_ij, std::max(matrix[i][j] * maxProductMatrix[i][j - 1],
-                                  matrix[i][j] * minProductMatrix[i][j - 1]));
-        minValue_ij = std::min(
-            minValue_ij, std::min(matrix[i][j] * maxProductMatrix[i][j - 1],
-                                  matrix[i][j] * minProductMatrix[i][j - 1]));
+        max_value_ij =
+            std::max(max_value_ij,
+                     std::max(matrix[i][j] * max_product_matrix[i][j - 1],
+                              matrix[i][j] * min_product_matrix[i][j - 1]));
+        min_value_ij =
+            std::min(min_value_ij,
+                     std::min(matrix[i][j] * max_product_matrix[i][j - 1],
+                              matrix[i][j] * min_product_matrix[i][j - 1]));
       }
 
-      maxProductMatrix[i][j] = maxValue_ij;
-      minProductMatrix[i][j] = minValue_ij;
+      max_product_matrix[i][j] = max_value_ij;
+      min_product_matrix[i][j] = min_value_ij;
     }
   }
 
-  return maxProductMatrix.back().back();
+  return max_product_matrix.back().back();
 }
 }  // namespace

@@ -16,6 +16,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 #pragma once
+#include <gtest/gtest.h>
 
 #include "DeleteNodeAtPosition.hpp"
 #include "InsertNodeAtHead.hpp"
@@ -59,7 +60,7 @@ TEST(TestLinkedListSolutions, InsertNodeAtTail) {
 TEST(TestLinkedListSolutions, InsertNodeAtHead) {
   linked_lists::SinglyLinkedListNode<int> *head = nullptr;
   for (auto i : {383, 484, 392, 975, 321}) {
-    head = linked_lists::insertNodeAtHead(head, i);
+    head = linked_lists::InsertNodeAtHead(head, i);
   }
 
   for (auto i : {321, 975, 392, 484, 383}) {
@@ -76,7 +77,7 @@ TEST(TestLinkedListSolutions, InsertNodeAtPosition) {
     head = linked_lists::InsertNodeAtTail(head, i);
   }
 
-  head = linked_lists::insertNodeAtPosition(head, 1, 2);
+  head = linked_lists::InsertNodeAtPosition(head, 1, 2);
 
   for (auto i : {16, 13, 1, 7}) {
     ASSERT_FALSE(head == nullptr);
@@ -94,7 +95,7 @@ TEST(TestLinkedListSolutions, DeleteNodeAtPosition) {
       head = linked_lists::InsertNodeAtTail(head, i);
     }
 
-    head = linked_lists::deleteNode(head, 3);
+    head = linked_lists::DeleteNode(head, 3);
 
     for (auto i : {20, 6, 2, 7, 4, 15, 9}) {
       ASSERT_FALSE(head == nullptr);
@@ -108,7 +109,7 @@ TEST(TestLinkedListSolutions, DeleteNodeAtPosition) {
     for (auto i : {20, 6, 2, 19, 7, 4, 15, 9}) {
       head = linked_lists::InsertNodeAtTail(head, i);
     }
-    head = linked_lists::deleteNode(head, 0);
+    head = linked_lists::DeleteNode(head, 0);
     for (auto i : {6, 2, 19, 7, 4, 15, 9}) {
       ASSERT_FALSE(head == nullptr);
       ASSERT_EQ(head->data_, i);

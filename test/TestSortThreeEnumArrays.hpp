@@ -12,8 +12,8 @@
 
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
 #pragma once
+#include <gtest/gtest.h>
 
 #include "SortThreeEnumArrays.hpp"
 
@@ -21,29 +21,29 @@ namespace {
 TEST(TestSortThreeEnumArrays, EmptyArray) {
   std::vector<Colors> vec;
   std::vector<Colors> expected;
-  sortThreeEnumArrays(vec);
+  SortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestSortThreeEnumArrays, NormalArray) {
-  std::vector<Colors> vec{Colors::White, Colors::Red,   Colors::White,
-                          Colors::Blue,  Colors::White, Colors::Red,
-                          Colors::White, Colors::Blue};
-  std::vector<Colors> expected{Colors::Red,   Colors::Red,   Colors::White,
-                               Colors::White, Colors::White, Colors::White,
-                               Colors::Blue,  Colors::Blue};
-  sortThreeEnumArrays(vec);
+  std::vector<Colors> vec{Colors::WHITE, Colors::RED,   Colors::WHITE,
+                          Colors::BLUE,  Colors::WHITE, Colors::RED,
+                          Colors::WHITE, Colors::BLUE};
+  std::vector<Colors> expected{Colors::RED,   Colors::RED,   Colors::WHITE,
+                               Colors::WHITE, Colors::WHITE, Colors::WHITE,
+                               Colors::BLUE,  Colors::BLUE};
+  SortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestSortThreeEnumArrays, SortedArray) {
-  std::vector<Colors> vec{Colors::Red,   Colors::Red,   Colors::White,
-                          Colors::White, Colors::White, Colors::White,
-                          Colors::Blue,  Colors::Blue};
-  std::vector<Colors> expected{Colors::Red,   Colors::Red,   Colors::White,
-                               Colors::White, Colors::White, Colors::White,
-                               Colors::Blue,  Colors::Blue};
-  sortThreeEnumArrays(vec);
+  std::vector<Colors> vec{Colors::RED,   Colors::RED,   Colors::WHITE,
+                          Colors::WHITE, Colors::WHITE, Colors::WHITE,
+                          Colors::BLUE,  Colors::BLUE};
+  std::vector<Colors> expected{Colors::RED,   Colors::RED,   Colors::WHITE,
+                               Colors::WHITE, Colors::WHITE, Colors::WHITE,
+                               Colors::BLUE,  Colors::BLUE};
+  SortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
 }  // namespace

@@ -16,19 +16,19 @@
 #pragma once
 
 namespace {
-void moveAllZerosToTheEnd(std::vector<int>& vec) {
+void MoveAllZerosToTheEnd(std::vector<int>& vec) {
   using size_type = typename std::vector<int>::size_type;
-  auto lowIdx = size_type(0);
-  auto highIdx = vec.size();
-  while (lowIdx < highIdx) {
-    auto current = vec[lowIdx];
+  auto low_idx = size_type(0);
+  auto high_idx = vec.size();
+  while (low_idx < high_idx) {
+    auto current = vec[low_idx];
     if (current == 0) {
-      if (vec[highIdx - 1] != 0) {
-        std::swap(vec[lowIdx], vec[highIdx - 1]);
+      if (vec[high_idx - 1] != 0) {
+        std::swap(vec[low_idx], vec[high_idx - 1]);
       }
-      --highIdx;
+      --high_idx;
     } else {
-      ++lowIdx;
+      ++low_idx;
     }
   }
 }

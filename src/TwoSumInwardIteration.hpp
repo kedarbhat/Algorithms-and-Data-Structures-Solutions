@@ -15,31 +15,33 @@
 
 #pragma once
 
+#include <iterator>
+
 namespace {
 // 2 Sum Problem: Given a sorted array of integers, find two numbers in the
-// array that sum to aninteger X.For example, given a=[1,2,3,5,6,7] and X=11,
+// array that sum to an integer X.For example, given a=[1,2,3,5,6,7] and X=11,
 // the answer would be 5 and 6, which sum to 11.
-std::pair<std::size_t, std::size_t> twoSumInwardIteration(
+std::pair<std::size_t, std::size_t> TwoSumInwardIteration(
     const std::vector<int>& vec, const int target) noexcept {
   assert(std::is_sorted(std::cbegin(vec), std::cend(vec)));
   if (vec.size() < 2) {
     return std::make_pair(vec.size(), vec.size());
   }
 
-  auto startIter = std::begin(vec);
-  auto finishIter = std::prev(std::end(vec));
-  while (startIter != finishIter) {
-    auto sum = *startIter + *finishIter;
+  auto start_iter = std::cbegin(vec);
+  auto finish_iter = std::prev(std::cend(vec));
+  while (start_iter != finish_iter) {
+    auto sum = *start_iter + *finish_iter;
     if (sum < target) {
-      std::advance(startIter, 1);
+      std::advance(start_iter, 1);
     } else if (sum > target) {
-      std::advance(finishIter, -1);
+      std::advance(finish_iter, -1);
     } else {
       break;
     }
   }
   return std::make_pair(
-      static_cast<std::size_t>(std::distance(std::begin(vec), startIter)),
-      static_cast<std::size_t>(std::distance(std::begin(vec), finishIter)));
+      static_cast<std::size_t>(std::distance(std::cbegin(vec), start_iter)),
+      static_cast<std::size_t>(std::distance(std::cbegin(vec), finish_iter)));
 }
 }  // namespace

@@ -27,17 +27,17 @@ namespace arrays {
 int64_t ArrayManipulation(int n, std::vector<std::vector<int>> queries) {
   std::vector<int64_t> vec(n + 1, 0);  // TODO(kbhat): wasted space
   for (auto &&query : queries) {
-    auto startIdx = query[0] - 1;
-    auto finishIdx = query[1];
-    vec[startIdx] += query[2];
-    vec[finishIdx] -= query[2];
+    auto start_idx = query[0] - 1;
+    auto finish_idx = query[1];
+    vec[start_idx] += query[2];
+    vec[finish_idx] -= query[2];
   }
-  auto maxSum = vec[0];
+  auto max_sum = vec[0];
 
   for (auto idx : boost::irange<std::size_t>(1u, vec.size())) {
     vec[idx] += vec[idx - 1u];
-    maxSum = std::max(maxSum, vec[idx]);
+    max_sum = std::max(max_sum, vec[idx]);
   }
-  return maxSum;
+  return max_sum;
 }
 }  // namespace arrays

@@ -34,7 +34,7 @@ template <typename T>
 using size_type = typename std::vector<T>::size_type;
 
 template <typename T>
-std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(
+std::pair<size_type<T>, size_type<T>> FindUnsortedSubarray(
     const std::vector<T> &vec) noexcept {
   if (vec.empty()) {
     return std::make_pair(std::numeric_limits<size_type<T>>::max(),
@@ -61,15 +61,15 @@ std::pair<size_type<T>, size_type<T>> findUnsortedSubarray(
   }
 
   assert(i <= j);
-  auto subrangeMinMaxIters = std::minmax_element(
+  auto subrange_min_max_iters = std::minmax_element(
       std::begin(vec) + diff_t<T>(i), std::begin(vec) + diff_t<T>(j) + 1);
-  auto subrangeMinElement = *subrangeMinMaxIters.first;
-  auto subrangeMaxElement = *subrangeMinMaxIters.second;
-  while (i > 0 && vec[i - 1] > subrangeMinElement) {
+  auto subrange_min_element = *subrange_min_max_iters.first;
+  auto subrange_max_element = *subrange_min_max_iters.second;
+  while (i > 0 && vec[i - 1] > subrange_min_element) {
     --i;
   }
 
-  while (j + 1 < vec.size() && vec[j + 1] < subrangeMaxElement) {
+  while (j + 1 < vec.size() && vec[j + 1] < subrange_max_element) {
     ++j;
   }
 
