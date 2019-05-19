@@ -39,7 +39,7 @@ T GetMaximumContiguousSum(std::vector<T> &vec) noexcept {
   }
 
   auto current_maximum = std::max(0, vec[0]);
-  for (auto idx = 1; idx < vec.size(); ++idx) {
+  for (auto idx : boost::irange<std::size_t>(1u, vec.size())) {
     vec[idx] = std::max(vec[idx - 1] + vec[idx], 0);
     current_maximum = std::max(current_maximum, vec[idx]);
   }
@@ -103,7 +103,7 @@ std::pair<std::size_t, std::size_t> GetMaximumContiguousSumTargetZero(
   }
 
   std::unordered_map<int, std::size_t> common_diff_map;
-  for (auto i : boost::irange<std::size_t>(vec.size())) {
+  for (auto i : boost::irange<std::size_t>(0u, vec.size())) {
     auto iter = common_diff_map.find(vec[i]);
     if (iter == std::cend(common_diff_map)) {
       common_diff_map[vec[i]] = i;

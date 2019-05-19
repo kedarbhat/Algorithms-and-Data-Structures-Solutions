@@ -1,9 +1,0 @@
-extraction:
-  cpp:
-     prepare:
-        packages: 
-          - libboost-all-dev
-     configure:
-        command:
-        - ./bootstrap
-        - ./configure --with-modules="" --without-lua

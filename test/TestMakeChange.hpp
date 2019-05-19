@@ -35,7 +35,7 @@ TEST(TestMakeChange, NormalAmounts) {
       {0, 1, 2, 3, 4, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 2, 3,
        4, 5, 6, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 2, 3, 4, 5,
        6, 2, 3, 4, 5, 6, 3, 4, 5, 6, 7, 3, 4, 5, 6, 7, 2}};
-  for (auto value : boost::irange(51)) {
+  for (auto value : boost::irange(0, 51)) {
     ASSERT_EQ(MakeChangeRecursive(value), num_coins[value]);
     ASSERT_EQ(MakeChangeDynamic(value), num_coins[value]);
   }

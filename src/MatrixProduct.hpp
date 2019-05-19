@@ -39,8 +39,8 @@ int MatrixProduct(const matrix_type& matrix) {
   matrix_type max_product_matrix(num_rows, row_type(num_columns));
   matrix_type min_product_matrix(num_rows, row_type(num_columns));
 
-  for (auto i : boost::irange<std::size_t>(num_rows)) {
-    for (auto j : boost::irange<std::size_t>(num_columns)) {
+  for (auto i : boost::irange<std::size_t>(0u, num_rows)) {
+    for (auto j : boost::irange<std::size_t>(0u, num_columns)) {
       auto max_value_ij =
           i == 0 && j == 0 ? matrix[i][j] : std::numeric_limits<int>::lowest();
       auto min_value_ij =
