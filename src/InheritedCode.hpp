@@ -45,8 +45,10 @@ class StringLengthChecker final {
     if (n < min_length_) {
       throw BadLengthException(n);
     }
-    for (auto i : boost::irange<std::size_t>(0u, n - 1)) {
-      if (s[i] == 'w' && s[i + 1] == 'w') {
+    for (auto iter = std::cbegin(s);
+         std::distance(std::next(iter), std::cend(s)) > 0;
+         std::advance(iter, 1)) {
+      if (*iter == 'w' && *std::next(iter) == 'w') {
         is_valid = false;
       }
     }
