@@ -26,10 +26,7 @@ namespace abstract_classes {
 
 struct BadLengthException : std::exception {
   explicit BadLengthException(std::size_t n) : n_(std::to_string(n)) {}
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCInconsistentNamingInspection"
   const char *what() const noexcept override { return n_.c_str(); }
-#pragma clang diagnostic pop
   std::string n_;
 };
 
@@ -48,7 +45,7 @@ class StringLengthChecker final {
     if (n < min_length_) {
       throw BadLengthException(n);
     }
-    for (std::size_t i = 0; i + 1 < n; ++i) {
+    for (auto i : boost::irange<std::size_t>(0u, n - 1)) {
       if (s[i] == 'w' && s[i + 1] == 'w') {
         is_valid = false;
       }

@@ -23,7 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace arrays {
 std::vector<int> ReverseArray(std::vector<int> a) {
-  for (std::size_t idx = 0; 2 * idx < a.size(); ++idx) {
+  for (auto idx : boost::irange<std::size_t>(0u, a.size() / 2)) {
     std::swap(a[idx], a[a.size() - 1 - idx]);
   }
   return a;

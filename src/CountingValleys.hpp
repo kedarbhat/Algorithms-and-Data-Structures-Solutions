@@ -26,15 +26,20 @@ unsigned CountingValleys(const std::string &s) {
   int current_depth = 0;
   unsigned num_valleys = 0;
   for (auto step : s) {
-    if (step == 'D') {
-      if (current_depth == 0) {
-        ++num_valleys;
+    switch (step) {
+      case 'D': {
+        if (current_depth == 0) {
+          ++num_valleys;
+        }
+        --current_depth;
+        break;
       }
-      --current_depth;
-    } else if (step == 'U') {
-      ++current_depth;
-    } else {
-      throw std::invalid_argument(std::addressof(step));
+      case 'U': {
+        ++current_depth;
+        break;
+      }
+      default:
+        throw std::invalid_argument(std::addressof(step));
     }
   }
   return num_valleys;

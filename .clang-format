@@ -94,12 +94,12 @@ PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
 RawStringFormats:
   - Language: TextProto
-      Delimiters:
-        - 'pb'
-        - 'proto'
-      EnclosingFunctions:
-        - 'PARSE_TEXT_PROTO'
-      BasedOnStyle: google
+    Delimiters:
+      - 'pb'
+      - 'proto'
+    EnclosingFunctions:
+      - 'PARSE_TEXT_PROTO'
+    BasedOnStyle: google
 ReflowComments:  true
 SortIncludes:    true
 SortUsingDeclarations: true
