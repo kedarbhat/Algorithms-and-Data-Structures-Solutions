@@ -40,7 +40,6 @@ class StringLengthChecker final {
 
  private:
   bool CheckStringLength(const std::string &s) {
-    bool is_valid = true;
     auto n = s.length();
     if (n < min_length_) {
       throw BadLengthException(n);
@@ -49,10 +48,10 @@ class StringLengthChecker final {
          std::distance(std::next(iter), std::cend(s)) > 0;
          std::advance(iter, 1)) {
       if (*iter == 'w' && *std::next(iter) == 'w') {
-        is_valid = false;
+        return false;
       }
     }
-    return is_valid;
+    return true;
   }
 
   std::size_t min_length_;
