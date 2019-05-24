@@ -16,6 +16,7 @@
 #include "TestReverseArrayTraversal.hpp"
 #include "TestReverseContainer.hpp"
 #include "TestReverseSentence.hpp"
+#include "TestReverseStringInPlace.hpp"
 #include "TestSortThreeEnumArrays.hpp"
 #include "TestTemplateSpecialization.hpp"
 #include "TestTwoSumInwardIteration.hpp"
