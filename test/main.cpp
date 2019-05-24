@@ -10,6 +10,7 @@
 #include "TestMakeChange.hpp"
 #include "TestMatrixProduct.hpp"
 #include "TestMaximumContiguousSum.hpp"
+#include "TestMergeMeetings.hpp"
 #include "TestMinSwapsArray.hpp"
 #include "TestMoveAllZerosToTheEnd.hpp"
 #include "TestReverseArrayTraversal.hpp"
