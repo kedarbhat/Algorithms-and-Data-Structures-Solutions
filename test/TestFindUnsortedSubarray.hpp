@@ -21,43 +21,43 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "FindUnsortedSubarray.hpp"
 
 namespace {
-using pair_t =
-    std::pair<size_type<std::vector<int>>, size_type<std::vector<int>>>;
+using PairT =
+    std::pair<SizeType<std::vector<int>>, SizeType<std::vector<int>>>;
 
 TEST(TestFindUnsortedSubarray, EmptyArray) {
   std::vector<int> vec;
-  pair_t expected = {std::numeric_limits<size_type<int>>::max(),
-                     std::numeric_limits<size_type<int>>::max()};
+  PairT expected = {std::numeric_limits<SizeType<int>>::max(),
+                     std::numeric_limits<SizeType<int>>::max()};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 
 TEST(TestFindUnsortedSubarray, NormalArray) {
   std::vector<int> vec{0, 2, 5, 3, 1, 8, 6, 9};
-  pair_t expected = {1, 6};
+  PairT expected = {1, 6};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 
 TEST(TestFindUnsortedSubarray, NormalArray2) {
   std::vector<int> vec{1, 3, 5, 2, 6, 4, 7, 8, 9};
-  pair_t expected = {1, 5};
+  PairT expected = {1, 5};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 
 TEST(TestFindUnsortedSubarray, SortedBeginningArray) {
   std::vector<int> vec{1, 2, 3, 4, 10, 9, 8, 7, 6, 5};
-  pair_t expected = {4, 9};
+  PairT expected = {4, 9};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 
 TEST(TestFindUnsortedSubarray, SortedEndArray) {
   std::vector<int> vec{1, 2, 4, 5, 3, 5, 6, 7, 9};
-  pair_t expected = {2, 4};
+  PairT expected = {2, 4};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 
 TEST(TestFindUnsortedSubarray, SortedArray) {
   std::vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-  pair_t expected = {vec.size() - 1, 0};
+  PairT expected = {vec.size() - 1, 0};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 }  // namespace

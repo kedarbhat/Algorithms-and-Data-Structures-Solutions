@@ -22,21 +22,21 @@ namespace {
 TEST(TestReverseStringInPlace, empty_string) {
   const std::string expected;
   std::string actual;
-  reverse_string_inplace::reverse(actual);
+  reverse_string_inplace::Reverse(actual);
   ASSERT_EQ(actual, expected);
 }
 
 TEST(TestReverseStringInPlace, single_character_string) {
   const std::string expected("A");
   std::string actual("A");
-  reverse_string_inplace::reverse(actual);
+  reverse_string_inplace::Reverse(actual);
   ASSERT_EQ(actual, expected);
 }
 
 TEST(TestReverseStringInPlace, longer_string) {
   const std::string expected("EDCBA");
   std::string actual("ABCDE");
-  reverse_string_inplace::reverse(actual);
+  reverse_string_inplace::Reverse(actual);
   ASSERT_EQ(actual, expected);
 }
 }  // namespace

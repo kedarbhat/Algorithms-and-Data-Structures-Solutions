@@ -25,10 +25,10 @@ namespace {
 // TODO(kbhat): Replace two dimensional container for a single type (wrapping a
 // std::array), using striding to emulate 2-dimensions
 
-using row_type = std::vector<int>;
-using matrix_type = std::vector<row_type>;
+using RowType = std::vector<int>;
+using MatrixType = std::vector<RowType>;
 
-int MatrixProduct(const matrix_type& matrix) {
+int MatrixProduct(const MatrixType& matrix) {
   if (matrix.empty() || matrix.front().empty()) {
     throw std::invalid_argument("Matrix must have valid dimensions!");
   }
@@ -36,8 +36,8 @@ int MatrixProduct(const matrix_type& matrix) {
   const auto num_rows = matrix.size();
   const auto num_columns = matrix.front().size();
 
-  matrix_type max_product_matrix(num_rows, row_type(num_columns));
-  matrix_type min_product_matrix(num_rows, row_type(num_columns));
+  MatrixType max_product_matrix(num_rows, RowType(num_columns));
+  MatrixType min_product_matrix(num_rows, RowType(num_columns));
 
   for (auto i : boost::irange<std::size_t>(0u, num_rows)) {
     for (auto j : boost::irange<std::size_t>(0u, num_columns)) {

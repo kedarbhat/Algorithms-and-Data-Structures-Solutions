@@ -19,11 +19,11 @@ namespace {
 enum Colors { RED = 0, WHITE = 1, BLUE = 2 };
 
 void SortThreeEnumArrays(std::vector<Colors>& vec) {
-  using size_type = typename std::vector<Colors>::size_type;
+  using SizeType = typename std::vector<Colors>::size_type;
   auto pivot = Colors::WHITE;
 
-  auto low_idx = size_type(0);
-  auto mid_idx = size_type(0);
+  auto low_idx = SizeType(0);
+  auto mid_idx = SizeType(0);
   auto high_idx = vec.size();
   while (mid_idx < high_idx) {
     auto current = vec[mid_idx];

@@ -28,20 +28,20 @@ namespace {
 // result is the subarray [2,5,3,1,8,6]
 
 template <typename T>
-using diff_t = typename std::vector<T>::difference_type;
+using DiffT = typename std::vector<T>::difference_type;
 
 template <typename T>
-using size_type = typename std::vector<T>::size_type;
+using SizeType = typename std::vector<T>::size_type;
 
 template <typename T>
-std::pair<size_type<T>, size_type<T>> FindUnsortedSubarray(
+std::pair<SizeType<T>, SizeType<T>> FindUnsortedSubarray(
     const std::vector<T> &vec) noexcept {
   if (vec.empty()) {
-    return std::make_pair(std::numeric_limits<size_type<T>>::max(),
-                          std::numeric_limits<size_type<T>>::max());
+    return std::make_pair(std::numeric_limits<SizeType<T>>::max(),
+                          std::numeric_limits<SizeType<T>>::max());
   }
 
-  auto i = size_type<T>(0);
+  auto i = SizeType<T>(0);
   auto j = vec.size() - 1;
   assert(i <= j);
 
@@ -62,7 +62,7 @@ std::pair<size_type<T>, size_type<T>> FindUnsortedSubarray(
 
   assert(i <= j);
   auto subrange_min_max_iters = std::minmax_element(
-      std::begin(vec) + diff_t<T>(i), std::begin(vec) + diff_t<T>(j) + 1);
+      std::begin(vec) + DiffT<T>(i), std::begin(vec) + DiffT<T>(j) + 1);
   auto subrange_min_element = *subrange_min_max_iters.first;
   auto subrange_max_element = *subrange_min_max_iters.second;
   while (i > 0 && vec[i - 1] > subrange_min_element) {

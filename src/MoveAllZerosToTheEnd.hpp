@@ -17,8 +17,8 @@
 
 namespace {
 void MoveAllZerosToTheEnd(std::vector<int>& vec) {
-  using size_type = typename std::vector<int>::size_type;
-  auto low_idx = size_type(0);
+  using SizeType = typename std::vector<int>::size_type;
+  auto low_idx = SizeType(0);
   auto high_idx = vec.size();
   while (low_idx < high_idx) {
     auto current = vec[low_idx];

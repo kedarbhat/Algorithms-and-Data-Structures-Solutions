@@ -20,7 +20,7 @@
 namespace {
 // index magic to achieve better performance than the canonical O(n**2) solution
 // (O(n*log(n)))
-int longestIncreasingSubsequence(const std::vector<int>& arr) {
+int LongestIncreasingSubsequence(const std::vector<int>& arr) {
   std::vector<int> tails(arr.size());
   auto longest_subsequence_length = 0;
   for (auto n : arr) {

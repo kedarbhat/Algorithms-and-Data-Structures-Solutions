@@ -54,13 +54,13 @@ static int64_t NumberOfEvenNumbers(const std::vector<T> &vec) noexcept {
 template <typename T,
           typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
 void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
-  using diff_t = typename std::vector<T>::difference_type;
-  using size_type = typename std::vector<T>::size_type;
+  using DiffT = typename std::vector<T>::difference_type;
+  using SizeType = typename std::vector<T>::size_type;
 
-  auto original_size = static_cast<diff_t>(vec.size());
+  auto original_size = static_cast<DiffT>(vec.size());
   auto num_even_numbers = NumberOfEvenNumbers(vec);
-  auto needed_capacity = num_even_numbers + static_cast<diff_t>(vec.size()) -
-                         static_cast<diff_t>(vec.capacity());
+  auto needed_capacity = num_even_numbers + static_cast<DiffT>(vec.size()) -
+                         static_cast<DiffT>(vec.capacity());
   if (needed_capacity == 0) {
     IsEvenT is_even_t;
     assert(std::none_of(std::begin(vec), std::end(vec), is_even_t));
@@ -68,7 +68,7 @@ void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
   }
 
   if (needed_capacity > 0) {
-    vec.resize(vec.capacity() + static_cast<size_type>(needed_capacity));
+    vec.resize(vec.capacity() + static_cast<SizeType>(needed_capacity));
   }
 
   auto write_iter = std::rbegin(vec);
@@ -78,8 +78,8 @@ void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
     assert(std::distance(write_iter, read_iter) >= 0);
     *write_iter = *read_iter;
     std::advance(write_iter, 1);
-    IsEvenT is_even_t;
-    if (write_iter != std::rend(vec) && is_even_t(*read_iter)) {
+    IsEvenT is_even;
+    if (write_iter != std::rend(vec) && is_even(*read_iter)) {
       *write_iter = *read_iter;
       std::advance(write_iter, 1);
     }

@@ -21,14 +21,14 @@
 #include <vector>
 
 namespace {
-int minimumSwaps(const std::vector<int>& arr) {
+std::size_t MinimumSwaps(const std::vector<std::size_t>& arr) {
   std::vector<bool> seen(arr.size());
-  std::vector<int> elements(arr.size());
+  std::vector<std::size_t> elements(arr.size());
   for (auto idx : boost::irange<std::size_t>(0u, arr.size())) {
     elements[arr[idx] - 1] = idx;
   }
 
-  auto num_swaps = 0;
+  std::size_t num_swaps = 0;
   for (auto current_element : boost::irange<std::size_t>(0u, elements.size())) {
     const auto actual_idx = elements[current_element];
     if (!(seen[current_element] || current_element == actual_idx)) {

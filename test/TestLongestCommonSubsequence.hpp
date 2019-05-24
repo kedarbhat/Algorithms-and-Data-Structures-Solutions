@@ -19,46 +19,46 @@
 #include "LongestCommonSubsequence.hpp"
 namespace {
 TEST(TestLongestCommonSubsequence, EmptySequences) {
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{}, std::vector<int>{}),
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{}, std::vector<int>{}),
             std::vector<int>{});
   ASSERT_EQ(
-      longestCommonSubsequence(std::vector<int>{}, std::vector<int>{1, 2, 3}),
+      LongestCommonSubsequence(std::vector<int>{}, std::vector<int>{1, 2, 3}),
       std::vector<int>{});
   ASSERT_EQ(
-      longestCommonSubsequence(std::vector<int>{1, 2, 3}, std::vector<int>{}),
+      LongestCommonSubsequence(std::vector<int>{1, 2, 3}, std::vector<int>{}),
       std::vector<int>{});
 }
 
 TEST(TestLongestCommonSubsequence, OneElementSequences) {
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{1}, std::vector<int>{2}),
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{1}, std::vector<int>{2}),
             std::vector<int>{});
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{2}, std::vector<int>{2}),
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{2}, std::vector<int>{2}),
             std::vector<int>{2});
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{2}, std::vector<int>{1}),
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{2}, std::vector<int>{1}),
             std::vector<int>{});
 }
 
 TEST(TestLongestCommonSubsequence, IdenticalSequences) {
   ASSERT_EQ(
-      longestCommonSubsequence(std::vector<int>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+      LongestCommonSubsequence(std::vector<int>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
                                std::vector<int>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}),
       ((std::vector<int>{1, 2, 3, 4, 5, 6, 7, 8, 9, 10})));
 }
 
 TEST(TestLongestCommonSubsequence, ShorterFirstSequence) {
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{1, 2, 3, 4, 1},
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{1, 2, 3, 4, 1},
                                      std::vector<int>{3, 4, 1, 2, 1, 3}),
             ((std::vector<int>{1, 2, 3})));
 }
 
 TEST(TestLongestCommonSubsequence, LongerFirstSequence) {
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{3, 4, 1, 2, 1, 3},
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{3, 4, 1, 2, 1, 3},
                                      std::vector<int>{1, 2, 3, 4, 1}),
             ((std::vector<int>{1, 2, 3})));
 }
 
 TEST(TestLongestCommonSubsequence, EqualLengthSequences) {
-  ASSERT_EQ(longestCommonSubsequence(std::vector<int>{3, 4, 1, 2, 3},
+  ASSERT_EQ(LongestCommonSubsequence(std::vector<int>{3, 4, 1, 2, 3},
                                      std::vector<int>{1, 2, 3, 4, 1}),
             ((std::vector<int>{3, 4, 1})));
 }

@@ -19,7 +19,7 @@
 
 #include <string>
 namespace reverse_string_inplace {
-void reverse(std::string& str) {
+void Reverse(std::string& str) {
   auto fwd_iter = std::begin(str);
   auto bwd_iter = std::prev(std::end(str));
 

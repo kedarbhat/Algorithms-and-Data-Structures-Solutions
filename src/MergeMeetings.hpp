@@ -21,40 +21,40 @@
 
 namespace merge_meetings {
 struct Meeting {
-  unsigned startTime_;
-  unsigned endTime_;
+  unsigned start_time_;
+  unsigned end_time_;
 };
 
 constexpr bool operator==(const Meeting& lhs, const Meeting& rhs) noexcept {
-  return lhs.startTime_ == rhs.startTime_ && lhs.endTime_ == rhs.endTime_;
+  return lhs.start_time_ == rhs.start_time_ && lhs.end_time_ == rhs.end_time_;
 }
-constexpr bool meetingContainsNextMeeting(const Meeting& lhs,
+constexpr bool MeetingContainsNextMeeting(const Meeting& lhs,
                                           const Meeting& rhs) noexcept {
-  return lhs.startTime_ <= rhs.startTime_ && lhs.endTime_ >= rhs.endTime_;
+  return lhs.start_time_ <= rhs.start_time_ && lhs.end_time_ >= rhs.end_time_;
 }
 
-constexpr bool meetingsOverlap(const Meeting& lhs,
+constexpr bool MeetingsOverlap(const Meeting& lhs,
                                const Meeting& rhs) noexcept {
-  return lhs.startTime_ <= rhs.endTime_ && lhs.endTime_ >= rhs.startTime_;
+  return lhs.start_time_ <= rhs.end_time_ && lhs.end_time_ >= rhs.start_time_;
 }
 
-std::vector<Meeting> mergeRanges(const std::vector<Meeting>& meetings) {
+std::vector<Meeting> MergeRanges(const std::vector<Meeting>& meetings) {
   std::vector<Meeting> result{std::cbegin(meetings), std::cend(meetings)};
   std::sort(std::begin(result), std::end(result), [](auto&& lhs, auto&& rhs) {
-    return lhs.startTime_ <= rhs.startTime_;
+    return lhs.start_time_ <= rhs.start_time_;
   });
   for (auto iter = std::begin(result);
        std::distance(iter, std::end(result)) > 1;) {
     const auto& curr_meeting = *iter;
     const auto& next_meeting = *std::next(iter);
-    if (meetingContainsNextMeeting(curr_meeting, next_meeting)) {
+    if (MeetingContainsNextMeeting(curr_meeting, next_meeting)) {
       // erase next meeting, don't advance the iterator
       result.erase(std::next(iter));
-    } else if (meetingsOverlap(curr_meeting, next_meeting)) {
+    } else if (MeetingsOverlap(curr_meeting, next_meeting)) {
       // overwrite current iterator, erase next element
       *iter =
-          Meeting{std::min(curr_meeting.startTime_, next_meeting.startTime_),
-                  std::max(curr_meeting.endTime_, next_meeting.endTime_)};
+          Meeting{std::min(curr_meeting.start_time_, next_meeting.start_time_),
+                  std::max(curr_meeting.end_time_, next_meeting.end_time_)};
       result.erase(std::next(iter));
     } else {
       // meetings are separate, advance the iterator

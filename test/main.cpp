@@ -11,6 +11,7 @@
 #include "TestMatrixProduct.hpp"
 #include "TestMaximumContiguousSum.hpp"
 #include "TestMergeMeetings.hpp"
+#include "TestMergeVectors.hpp"
 #include "TestMinSwapsArray.hpp"
 #include "TestMoveAllZerosToTheEnd.hpp"
 #include "TestReverseArrayTraversal.hpp"

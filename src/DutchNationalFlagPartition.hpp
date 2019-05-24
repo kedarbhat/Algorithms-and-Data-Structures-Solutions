@@ -17,19 +17,19 @@
 
 namespace {
 template <typename T>
-using diff_t = typename std::vector<T>::difference_type;
+using DiffT = typename std::vector<T>::difference_type;
 
 template <typename T>
-using size_type = typename std::vector<T>::size_type;
+using SizeType = typename std::vector<T>::size_type;
 
-void DnfPartition(std::vector<int>& vec, size_type<int> pivot_idx) {
+void DnfPartition(std::vector<int>& vec, SizeType<int> pivot_idx) {
   if (vec.empty() || pivot_idx >= vec.size()) {
     return;
   }
 
   auto pivot = vec[pivot_idx];
-  auto low_idx = size_type<int>(0);
-  auto mid_idx = size_type<int>(0);
+  auto low_idx = SizeType<int>(0);
+  auto mid_idx = SizeType<int>(0);
   auto high_idx = vec.size();
   while (mid_idx < high_idx) {
     auto current_element = vec[mid_idx];
@@ -46,12 +46,12 @@ void DnfPartition(std::vector<int>& vec, size_type<int> pivot_idx) {
       assert(vec[mid_idx] == pivot);
       ++mid_idx;
     }
-    assert(std::all_of(std::begin(vec), std::begin(vec) + diff_t<int>(low_idx),
+    assert(std::all_of(std::begin(vec), std::begin(vec) + DiffT<int>(low_idx),
                        [pivot](auto&& i) { return i < pivot; }));
-    assert(std::all_of(std::begin(vec) + diff_t<int>(low_idx),
-                       std::begin(vec) + diff_t<int>(mid_idx),
+    assert(std::all_of(std::begin(vec) + DiffT<int>(low_idx),
+                       std::begin(vec) + DiffT<int>(mid_idx),
                        [pivot](auto&& i) { return i == pivot; }));
-    assert(std::all_of(std::begin(vec) + diff_t<int>(high_idx), std::end(vec),
+    assert(std::all_of(std::begin(vec) + DiffT<int>(high_idx), std::end(vec),
                        [pivot](auto&& i) { return i > pivot; }));
   }
 }

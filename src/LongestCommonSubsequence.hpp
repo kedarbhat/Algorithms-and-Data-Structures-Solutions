@@ -17,7 +17,7 @@
 #include <boost/range/irange.hpp>
 #include <cmath>
 #include <vector>
-std::vector<int> longestCommonSubsequence(const std::vector<int>& a,
+std::vector<int> LongestCommonSubsequence(const std::vector<int>& a,
                                           const std::vector<int>& b) {
   // minimize number of rows
   const std::vector<int>& lhs = a.size() > b.size() ? b : a;
