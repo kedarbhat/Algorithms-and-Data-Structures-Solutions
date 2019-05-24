@@ -16,28 +16,26 @@
 // https://www.interviewcake.com/question/cpp/merging-ranges?course=fc1&section=array-and-string-manipulation
 #pragma once
 
-#include <vector>
 #include <cmath>
+#include <vector>
 
 namespace merge_meetings {
 struct Meeting {
   unsigned startTime_;
   unsigned endTime_;
 };
- 
-constexpr bool operator==(const Meeting& lhs, const Meeting& rhs) noexcept {   
-  return lhs.startTime_ == rhs.startTime_  && lhs.endTime_ == rhs.endTime_;
+
+constexpr bool operator==(const Meeting& lhs, const Meeting& rhs) noexcept {
+  return lhs.startTime_ == rhs.startTime_ && lhs.endTime_ == rhs.endTime_;
 }
 constexpr bool meetingContainsNextMeeting(const Meeting& lhs,
                                           const Meeting& rhs) noexcept {
-  return lhs.startTime_ <= rhs.startTime_ &&
-         lhs.endTime_ >= rhs.endTime_;
+  return lhs.startTime_ <= rhs.startTime_ && lhs.endTime_ >= rhs.endTime_;
 }
 
 constexpr bool meetingsOverlap(const Meeting& lhs,
                                const Meeting& rhs) noexcept {
-  return lhs.startTime_ <= rhs.endTime_ &&
-         lhs.endTime_ >= rhs.startTime_;
+  return lhs.startTime_ <= rhs.endTime_ && lhs.endTime_ >= rhs.startTime_;
 }
 
 std::vector<Meeting> mergeRanges(const std::vector<Meeting>& meetings) {
@@ -54,9 +52,9 @@ std::vector<Meeting> mergeRanges(const std::vector<Meeting>& meetings) {
       result.erase(std::next(iter));
     } else if (meetingsOverlap(curr_meeting, next_meeting)) {
       // overwrite current iterator, erase next element
-      *iter = Meeting{
-          std::min(curr_meeting.startTime_, next_meeting.startTime_),
-          std::max(curr_meeting.endTime_, next_meeting.endTime_)};
+      *iter =
+          Meeting{std::min(curr_meeting.startTime_, next_meeting.startTime_),
+                  std::max(curr_meeting.endTime_, next_meeting.endTime_)};
       result.erase(std::next(iter));
     } else {
       // meetings are separate, advance the iterator
@@ -67,4 +65,4 @@ std::vector<Meeting> mergeRanges(const std::vector<Meeting>& meetings) {
   return result;
 }
 
-}
+}  // namespace merge_meetings
