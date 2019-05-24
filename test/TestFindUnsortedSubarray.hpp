@@ -21,13 +21,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include "FindUnsortedSubarray.hpp"
 
 namespace {
-using PairT =
-    std::pair<SizeType<std::vector<int>>, SizeType<std::vector<int>>>;
+using PairT = std::pair<SizeType<std::vector<int>>, SizeType<std::vector<int>>>;
 
 TEST(TestFindUnsortedSubarray, EmptyArray) {
   std::vector<int> vec;
   PairT expected = {std::numeric_limits<SizeType<int>>::max(),
-                     std::numeric_limits<SizeType<int>>::max()};
+                    std::numeric_limits<SizeType<int>>::max()};
   EXPECT_EQ(FindUnsortedSubarray(vec), expected);
 }
 
