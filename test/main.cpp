@@ -14,6 +14,7 @@
 #include "TestMergeVectors.hpp"
 #include "TestMinSwapsArray.hpp"
 #include "TestMoveAllZerosToTheEnd.hpp"
+#include "TestProductsOfAllIntsExceptAtIndex.hpp"
 #include "TestReverseArrayTraversal.hpp"
 #include "TestReverseContainer.hpp"
 #include "TestReverseSentence.hpp"
