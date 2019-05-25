@@ -13,6 +13,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+// https://www.interviewcake.com/question/cpp/product-of-other-numbers?course=fc1&section=greedy
+
 #pragma once
 
 #include <boost/range/irange.hpp>

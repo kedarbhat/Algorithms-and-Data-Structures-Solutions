@@ -1,5 +1,6 @@
 #include "TestArraysSolutions.hpp"
 #include "TestBitArray.hpp"
+#include "TestCanTwoMoviesFillFlight.hpp"
 #include "TestCountingValleys.hpp"
 #include "TestDutchNationalFlag.hpp"
 #include "TestFindUnsortedSubarray.hpp"
