@@ -20,6 +20,7 @@
 #include "TestReverseContainer.hpp"
 #include "TestReverseSentence.hpp"
 #include "TestReverseStringInPlace.hpp"
+#include "TestReverseWords.hpp"
 #include "TestSortThreeEnumArrays.hpp"
 #include "TestTemplateSpecialization.hpp"
 #include "TestTwoSumInwardIteration.hpp"
