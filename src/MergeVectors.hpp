@@ -17,6 +17,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <vector>
 
 namespace merge_vectors {
