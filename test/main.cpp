@@ -21,9 +21,11 @@
 #include "TestReverseSentence.hpp"
 #include "TestReverseStringInPlace.hpp"
 #include "TestReverseWords.hpp"
+#include "TestSortScores.hpp"
 #include "TestSortThreeEnumArrays.hpp"
 #include "TestTemplateSpecialization.hpp"
 #include "TestTwoSumInwardIteration.hpp"
+#include "TestWordCloud.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
