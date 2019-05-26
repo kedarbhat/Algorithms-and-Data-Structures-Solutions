@@ -92,7 +92,6 @@ std::pair<std::size_t, std::size_t> GetMaximumContiguousSumTargetZero(
     return std::make_pair(std::size_t{0}, std::size_t{0});
   }
 
-  auto max_sum = vec[0];
   for (auto i : boost::irange<std::size_t>(1u, vec.size())) {
     vec[i] += vec[i - 1];
   }
