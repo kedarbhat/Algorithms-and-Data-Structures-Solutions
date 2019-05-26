@@ -24,7 +24,7 @@ namespace arrays {
 std::pair<std::size_t, std::size_t> TwoSumInwardIteration(
     const std::vector<int>& vec, const int target) noexcept {
   assert(std::is_sorted(std::cbegin(vec), std::cend(vec)));
-  if (vec.size() < 2) {
+  if (vec.size() < 2u) {
     return std::make_pair(vec.size(), vec.size());
   }
 
