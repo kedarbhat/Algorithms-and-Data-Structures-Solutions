@@ -15,7 +15,7 @@
 
 #pragma once
 
-namespace {
+namespace arrays {
 enum Colors { RED = 0, WHITE = 1, BLUE = 2 };
 
 void SortThreeEnumArrays(std::vector<Colors>& vec) {
@@ -41,4 +41,4 @@ void SortThreeEnumArrays(std::vector<Colors>& vec) {
     }
   }
 }
-}  // namespace
+}  // namespace arrays

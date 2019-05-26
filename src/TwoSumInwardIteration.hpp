@@ -17,7 +17,7 @@
 
 #include <iterator>
 
-namespace {
+namespace arrays {
 // 2 Sum Problem: Given a sorted array of integers, find two numbers in the
 // array that sum to an integer X.For example, given a=[1,2,3,5,6,7] and X=11,
 // the answer would be 5 and 6, which sum to 11.
@@ -44,4 +44,4 @@ std::pair<std::size_t, std::size_t> TwoSumInwardIteration(
       static_cast<std::size_t>(std::distance(std::cbegin(vec), start_iter)),
       static_cast<std::size_t>(std::distance(std::cbegin(vec), finish_iter)));
 }
-}  // namespace
+}  // namespace arrays

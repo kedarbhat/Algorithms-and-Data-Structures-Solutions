@@ -22,31 +22,31 @@ namespace {
 TEST(TestTwoSumInwardIteration, EmptyArray) {
   std::vector<int> vec;
   const auto& expected = std::make_pair(vec.size(), vec.size());
-  ASSERT_EQ(TwoSumInwardIteration(vec, 0), expected);
+  ASSERT_EQ(arrays::TwoSumInwardIteration(vec, 0), expected);
 }
 
 TEST(TestTwoSumInwardIteration, OneElementArray) {
   std::vector<int> vec{1};
   const auto& expected = std::make_pair(vec.size(), vec.size());
-  ASSERT_EQ(TwoSumInwardIteration(vec, vec[0]), expected);
+  ASSERT_EQ(arrays::TwoSumInwardIteration(vec, vec[0]), expected);
 }
 
 TEST(TestTwoSumInwardIteration, TwoElementsWithSum) {
   std::vector<int> vec{1, 2};
   const auto& expected = std::make_pair(std::size_t{0}, std::size_t{1});
-  ASSERT_EQ(TwoSumInwardIteration(vec, 3), expected);
+  ASSERT_EQ(arrays::TwoSumInwardIteration(vec, 3), expected);
 }
 
 TEST(TestTwoSumInwardIteration, TwoElementsWithoutSum) {
   std::vector<int> vec{1, 2};
   const auto& expected = std::make_pair(std::size_t{1}, std::size_t{1});
-  ASSERT_EQ(TwoSumInwardIteration(vec, 4), expected);
+  ASSERT_EQ(arrays::TwoSumInwardIteration(vec, 4), expected);
 }
 
 TEST(TestTwoSumInwardIteration, NormalArray) {
   std::vector<int> vec{1, 2, 3, 4, 5, 6, 7};
   const auto& expected = std::make_pair(std::size_t{3}, std::size_t{6});
-  ASSERT_EQ(TwoSumInwardIteration(vec, 11), expected);
+  ASSERT_EQ(arrays::TwoSumInwardIteration(vec, 11), expected);
 }
 
 }  // namespace

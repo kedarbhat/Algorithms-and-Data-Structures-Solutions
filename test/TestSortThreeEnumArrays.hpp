@@ -19,30 +19,34 @@
 
 namespace {
 TEST(TestSortThreeEnumArrays, EmptyArray) {
-  std::vector<Colors> vec;
-  std::vector<Colors> expected;
+  std::vector<arrays::Colors> vec;
+  std::vector<arrays::Colors> expected;
   SortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestSortThreeEnumArrays, NormalArray) {
-  std::vector<Colors> vec{Colors::WHITE, Colors::RED,   Colors::WHITE,
-                          Colors::BLUE,  Colors::WHITE, Colors::RED,
-                          Colors::WHITE, Colors::BLUE};
-  std::vector<Colors> expected{Colors::RED,   Colors::RED,   Colors::WHITE,
-                               Colors::WHITE, Colors::WHITE, Colors::WHITE,
-                               Colors::BLUE,  Colors::BLUE};
+  std::vector<arrays::Colors> vec{arrays::Colors::WHITE, arrays::Colors::RED,
+                                  arrays::Colors::WHITE, arrays::Colors::BLUE,
+                                  arrays::Colors::WHITE, arrays::Colors::RED,
+                                  arrays::Colors::WHITE, arrays::Colors::BLUE};
+  std::vector<arrays::Colors> expected{
+      arrays::Colors::RED,   arrays::Colors::RED,   arrays::Colors::WHITE,
+      arrays::Colors::WHITE, arrays::Colors::WHITE, arrays::Colors::WHITE,
+      arrays::Colors::BLUE,  arrays::Colors::BLUE};
   SortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestSortThreeEnumArrays, SortedArray) {
-  std::vector<Colors> vec{Colors::RED,   Colors::RED,   Colors::WHITE,
-                          Colors::WHITE, Colors::WHITE, Colors::WHITE,
-                          Colors::BLUE,  Colors::BLUE};
-  std::vector<Colors> expected{Colors::RED,   Colors::RED,   Colors::WHITE,
-                               Colors::WHITE, Colors::WHITE, Colors::WHITE,
-                               Colors::BLUE,  Colors::BLUE};
+  std::vector<arrays::Colors> vec{arrays::Colors::RED,   arrays::Colors::RED,
+                                  arrays::Colors::WHITE, arrays::Colors::WHITE,
+                                  arrays::Colors::WHITE, arrays::Colors::WHITE,
+                                  arrays::Colors::BLUE,  arrays::Colors::BLUE};
+  std::vector<arrays::Colors> expected{
+      arrays::Colors::RED,   arrays::Colors::RED,   arrays::Colors::WHITE,
+      arrays::Colors::WHITE, arrays::Colors::WHITE, arrays::Colors::WHITE,
+      arrays::Colors::BLUE,  arrays::Colors::BLUE};
   SortThreeEnumArrays(vec);
   EXPECT_EQ(vec, expected);
 }
