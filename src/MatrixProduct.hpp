@@ -16,14 +16,13 @@
 #pragma once
 
 #include <algorithm>
-#include <boost/range/irange.hpp>
 #include <exception>
 
-namespace {
+#include <boost/range/irange.hpp>
+
+namespace matrix_product {
 // Compute maximum product of matrix elements by moving only "down" and "to the
 // right".
-// TODO(kbhat): Replace two dimensional container for a single type (wrapping a
-// std::array), using striding to emulate 2-dimensions
 
 using RowType = std::vector<int>;
 using MatrixType = std::vector<RowType>;
@@ -74,4 +73,4 @@ int MatrixProduct(const MatrixType& matrix) {
 
   return max_product_matrix.back().back();
 }
-}  // namespace
+}  // namespace matrix_product

@@ -19,15 +19,18 @@
 
 namespace {
 TEST(TestLongestIncreasingSubsequence, EmptySequence) {
-  ASSERT_EQ(LongestIncreasingSubsequence(std::vector<int>{}), 0);
+  ASSERT_EQ(
+      dynamic_programming::LongestIncreasingSubsequence(std::vector<int>{}), 0);
 }
 
 TEST(TestLongestIncreasingSubsequence, SingleElementSequence) {
-  ASSERT_EQ(LongestIncreasingSubsequence(std::vector<int>{15}), 1);
+  ASSERT_EQ(
+      dynamic_programming::LongestIncreasingSubsequence(std::vector<int>{15}),
+      1);
 }
 
 TEST(TestLongestIncreasingSubsequence, RegularSequence) {
-  ASSERT_EQ(LongestIncreasingSubsequence(
+  ASSERT_EQ(dynamic_programming::LongestIncreasingSubsequence(
                 std::vector<int>{15, 27, 14, 38, 26, 55, 46, 65, 85}),
             6);
 }

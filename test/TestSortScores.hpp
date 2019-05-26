@@ -19,7 +19,7 @@
 #include "SortScores.hpp"
 
 namespace {
-
+using interview_cake::SortScores;
 TEST(TestSortScores, no_scores) {
   const std::vector<int> scores;
   const std::vector<int> expected;

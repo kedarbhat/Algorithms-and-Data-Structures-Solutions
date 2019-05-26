@@ -18,6 +18,7 @@
 #include "WordCloud.hpp"
 
 namespace {
+using WordCloudData = interview_cake::WordCloudData;
 TEST(TestWordCloud, simple_sentence) {
   const std::string text = "I like cake";
   const std::unordered_map<std::string, size_t> expected{

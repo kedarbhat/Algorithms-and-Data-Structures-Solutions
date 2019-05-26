@@ -25,15 +25,15 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <vector>
 
 namespace arrays {
-int HourglassSum(const std::vector<std::vector<int>>& arr,
-                 const std::pair<std::size_t, std::size_t>& center) {
+inline int HourglassSum(const std::vector<std::vector<int>>& arr,
+                        const std::pair<std::size_t, std::size_t>& center) {
   auto x = center.first;
   auto y = center.second;
   return arr[x - 1][y - 1] + arr[x - 1][y] + arr[x - 1][y + 1] + arr[x][y] +
          arr[x + 1][y - 1] + arr[x + 1][y] + arr[x + 1][y + 1];
 }
 
-int HourglassSum(const std::vector<std::vector<int>>& arr) {
+inline int HourglassSum(const std::vector<std::vector<int>>& arr) {
   auto max_sum = std::numeric_limits<int>::lowest();
   for (std::size_t x = 1; x + 1 < arr.size(); ++x) {
     for (std::size_t y = 1; y + 1 < arr[x].size(); ++y) {

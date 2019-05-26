@@ -15,7 +15,7 @@
 
 #pragma once
 
-namespace {
+namespace djikstra_partition {
 void MoveAllZerosToTheEnd(std::vector<int>& vec) {
   using SizeType = typename std::vector<int>::size_type;
   auto low_idx = SizeType(0);
@@ -32,4 +32,4 @@ void MoveAllZerosToTheEnd(std::vector<int>& vec) {
     }
   }
 }
-}  // namespace
+}  // namespace djikstra_partition

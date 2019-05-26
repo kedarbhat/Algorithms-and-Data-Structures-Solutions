@@ -17,11 +17,13 @@
 
 #include <algorithm>
 #include <array>
-#include <boost/range/adaptor/filtered.hpp>
-#include <boost/range/irange.hpp>
+#include <cassert>
 #include <vector>
 
-namespace {
+#include <boost/range/adaptor/filtered.hpp>
+#include <boost/range/irange.hpp>
+
+namespace make_change {
 
 // Problem: Return the minimum number of coins which sum to a given value
 
@@ -77,4 +79,4 @@ int MakeChangeDynamic(const int total_value) noexcept {
   return min_coins_by_value[total_value];
 }
 
-}  // namespace
+}  // namespace make_change

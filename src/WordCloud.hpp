@@ -22,7 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace {
+namespace interview_cake {
 class WordCloudData {
  private:
   std::unordered_map<std::string, std::size_t> words_to_counts_;
@@ -33,8 +33,8 @@ class WordCloudData {
     std::size_t word_length = 0u;
     for (auto idx = 0u; idx < input_string.size(); ++idx) {
       auto c = input_string[idx];
-      if (std::isalpha(c) || c == '\'' ||
-          (c == '-' && idx > 0 && std::isalpha(input_string[idx - 1]))) {
+      if ((std::isalpha(c) != 0) || c == '\'' ||
+          (c == '-' && idx > 0 && (std::isalpha(input_string[idx - 1]) != 0))) {
         if (word_length == 0u) {
           // no letters yet
           word_starting_idx = idx;
@@ -60,7 +60,7 @@ class WordCloudData {
     for (const auto& token : tokens) {
       auto key = token;
       for (auto& c : key) {
-        if (std::isalpha(c)) {
+        if (std::isalpha(c) != 0) {
           c = static_cast<char>(std::tolower(c));
         }
       }
@@ -82,4 +82,4 @@ class WordCloudData {
   }
 };
 
-}  // namespace
+}  // namespace interview_cake

@@ -23,7 +23,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <vector>
 
 namespace arrays {
-std::vector<int> RotateLeft(std::vector<int> arr, int64_t rotations) {
+inline std::vector<int> RotateLeft(std::vector<int> arr, int64_t rotations) {
   std::reverse(std::begin(arr), std::begin(arr) + rotations);
   std::reverse(std::begin(arr) + rotations, std::end(arr));
   std::reverse(std::begin(arr), std::end(arr));

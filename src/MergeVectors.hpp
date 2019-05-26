@@ -21,8 +21,8 @@
 #include <vector>
 
 namespace merge_vectors {
-std::vector<int> MergeVectors(const std::vector<int>& my_vector,
-                              const std::vector<int>& alices_vector) {
+inline std::vector<int> MergeVectors(const std::vector<int>& my_vector,
+                                     const std::vector<int>& alices_vector) {
   std::vector<int> result;
   result.reserve(my_vector.size() + alices_vector.size());
   auto my_iter = std::cbegin(my_vector);

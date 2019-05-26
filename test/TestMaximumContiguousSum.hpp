@@ -19,6 +19,9 @@
 #include "MaximumContiguousSum.hpp"
 
 namespace {
+using maximum_contiguous_sum::GetMaximumContiguousSum;
+using maximum_contiguous_sum::GetMaximumContiguousSumTargetZero;
+
 TEST(TestMaximumContiguousSum, EmptyArray) {
   std::vector<int> vec;
   EXPECT_EQ(GetMaximumContiguousSum(vec), 0);

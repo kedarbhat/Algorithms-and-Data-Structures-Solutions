@@ -19,7 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <algorithm>
 #include <string>
-namespace {
+namespace strings {
 
 /**
  * Given a sentence, reverse the words of the sentence. For example, "i live in
@@ -42,4 +42,4 @@ void ReverseString(std::string &str) noexcept {
   }
   std::reverse(std::begin(str), std::end(str));
 }
-}  // namespace
+}  // namespace strings

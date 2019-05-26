@@ -18,6 +18,8 @@
 
 #include "DutchNationalFlagPartition.hpp"
 namespace {
+using djikstra_partition::DnfPartition;
+
 TEST(TestDutchNationalFlag, EmptyArray) {
   std::vector<int> vec;
   std::vector<int> expected;

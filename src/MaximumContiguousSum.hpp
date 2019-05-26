@@ -18,9 +18,10 @@
 #include <algorithm>
 #include <numeric>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
-namespace {
+namespace maximum_contiguous_sum {
 
 // Given an array of integers that can be both +ve and -ve, find the contiguous
 // subarray with the largest sum.e.g, [1,2,-1,2,-3,2,-5]  -> the first 4
@@ -28,12 +29,13 @@ namespace {
 
 template <typename T>
 T GetMaximumContiguousSum(std::vector<T> &vec) noexcept {
+  using SizeType = typename std::vector<T>::size_type;
   if (vec.empty()) {
     return 0;
   }
 
-  auto num_negative_elements = std::count_if(std::begin(vec), std::end(vec),
-                                             [](auto &&i) { return i < 0; });
+  auto num_negative_elements = static_cast<SizeType>(std::count_if(
+      std::begin(vec), std::end(vec), [](auto &&i) { return i < 0; }));
   if (num_negative_elements == vec.size()) {
     return *std::max_element(std::begin(vec), std::end(vec));
   }
@@ -113,4 +115,4 @@ std::pair<std::size_t, std::size_t> GetMaximumContiguousSumTargetZero(
   }
   return std::make_pair(vec.size(), vec.size() + 1u);
 }
-}  // namespace
+}  // namespace maximum_contiguous_sum

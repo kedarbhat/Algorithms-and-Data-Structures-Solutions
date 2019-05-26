@@ -18,7 +18,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #pragma once
 #include <boost/type_traits/is_nothrow_swappable.hpp>
 #include <type_traits>
-namespace {
+namespace arrays {
 /**
  * Given an array, reverse the order of its elements. For
  * example,[3,5,2,5,2,3,9] --> [9,3,2,5,2,5,3]["hello", "world"] --> ["world",
@@ -36,4 +36,4 @@ void ReverseContainer(std::vector<T> &vec) noexcept {
     std::advance(rev_iter, -1);
   }
 }
-}  // namespace
+}  // namespace arrays

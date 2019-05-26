@@ -15,7 +15,7 @@
 
 #pragma once
 
-namespace {
+namespace djikstra_partition {
 template <typename T>
 using DiffT = typename std::vector<T>::difference_type;
 
@@ -55,4 +55,4 @@ void DnfPartition(std::vector<int>& vec, SizeType<int> pivot_idx) {
                        [pivot](auto&& i) { return i > pivot; }));
   }
 }
-}  // namespace
+}  // namespace djikstra_partition

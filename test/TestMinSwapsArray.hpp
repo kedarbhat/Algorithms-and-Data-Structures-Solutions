@@ -19,10 +19,16 @@
 #include "MinSwapsArray.hpp"
 namespace {
 TEST(TestMinSwapsArray, HackerRankTestCases) {
-  ASSERT_EQ(MinimumSwaps(std::vector<std::size_t>{}), 0);
-  ASSERT_EQ(MinimumSwaps(std::vector<std::size_t>{4, 3, 1, 2}), 3);
-  ASSERT_EQ(MinimumSwaps(std::vector<std::size_t>{2, 3, 4, 1, 5}), 3);
-  ASSERT_EQ(MinimumSwaps(std::vector<std::size_t>{1, 2, 3, 4, 5, 6}), 0);
-  ASSERT_EQ(MinimumSwaps(std::vector<std::size_t>{6, 5, 4, 3, 2, 1}), 3);
+  ASSERT_EQ(minimum_swaps::MinimumSwaps(std::vector<std::size_t>{}), 0);
+  ASSERT_EQ(minimum_swaps::MinimumSwaps(std::vector<std::size_t>{4, 3, 1, 2}),
+            3);
+  ASSERT_EQ(
+      minimum_swaps::MinimumSwaps(std::vector<std::size_t>{2, 3, 4, 1, 5}), 3);
+  ASSERT_EQ(
+      minimum_swaps::MinimumSwaps(std::vector<std::size_t>{1, 2, 3, 4, 5, 6}),
+      0);
+  ASSERT_EQ(
+      minimum_swaps::MinimumSwaps(std::vector<std::size_t>{6, 5, 4, 3, 2, 1}),
+      3);
 }
 }  // namespace

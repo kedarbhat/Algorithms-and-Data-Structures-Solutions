@@ -20,7 +20,7 @@
 #include <boost/range/irange.hpp>
 #include <vector>
 
-namespace {
+namespace minimum_swaps {
 std::size_t MinimumSwaps(const std::vector<std::size_t>& arr) {
   std::vector<bool> seen(arr.size());
   std::vector<std::size_t> elements(arr.size());
@@ -43,4 +43,4 @@ std::size_t MinimumSwaps(const std::vector<std::size_t>& arr) {
   }
   return num_swaps;
 }
-}  // namespace
+}  // namespace minimum_swaps

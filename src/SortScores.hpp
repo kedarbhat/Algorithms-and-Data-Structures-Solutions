@@ -18,7 +18,7 @@
 #pragma once
 #include <vector>
 
-namespace {
+namespace interview_cake {
 std::vector<int> SortScores(const std::vector<int>& unordered_scores,
                             int highest_possible_score) {
   if (std::is_sorted(std::cbegin(unordered_scores), std::cend(unordered_scores),
@@ -48,4 +48,4 @@ std::vector<int> SortScores(const std::vector<int>& unordered_scores,
 
   return {std::crbegin(result), std::crend(result)};
 }
-}  // namespace
+}  // namespace interview_cake

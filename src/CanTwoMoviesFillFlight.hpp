@@ -19,7 +19,7 @@
 #include <unordered_set>
 #include <vector>
 
-namespace {
+namespace interview_cake {
 bool CanTwoMoviesFillFlight(const std::vector<int>& movie_lengths,
                             int flight_length) {
   std::unordered_set<int> movie_lengths_set{};
@@ -38,4 +38,4 @@ bool CanTwoMoviesFillFlight(const std::vector<int>& movie_lengths,
 
   return false;
 }
-}  // namespace
+}  // namespace interview_cake

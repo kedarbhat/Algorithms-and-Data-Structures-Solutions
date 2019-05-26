@@ -21,28 +21,28 @@ namespace {
 TEST(TestMoveAllZerosToTheEnd, EmptyArray) {
   std::vector<int> vec;
   std::vector<int> expected;
-  MoveAllZerosToTheEnd(vec);
+  djikstra_partition::MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestMoveAllZerosToTheEnd, AllZerosArray) {
   std::vector<int> vec{0, 0, 0, 0, 0};
   std::vector<int> expected{0, 0, 0, 0, 0};
-  MoveAllZerosToTheEnd(vec);
+  djikstra_partition::MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestMoveAllZerosToTheEnd, NoZerosArray) {
   std::vector<int> vec{1, 2, 3, 4, 5, 6, 7, 8};
   const auto expected = vec;
-  MoveAllZerosToTheEnd(vec);
+  djikstra_partition::MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 
 TEST(TestMoveAllZerosToTheEnd, NormalArray) {
   std::vector<int> vec{2, 3, 0, 3, 0, 1, 0};
   std::vector<int> expected{2, 3, 1, 3, 0, 0, 0};
-  MoveAllZerosToTheEnd(vec);
+  djikstra_partition::MoveAllZerosToTheEnd(vec);
   EXPECT_EQ(vec, expected);
 }
 }  // namespace

@@ -17,33 +17,33 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-namespace {
+#include <algorithm>
+#include <functional>
+
+namespace arrays {
 // Given an array of numbers, replace each even number with two of the same
 // number. e.g, [1,2,5,6,8, , , ,] -> [1,2,2,5,6,6,8,8]
 
+namespace detail {
 /**
- * Function object used to determine if a given integral value is even or not
+ * lambda accepting an integral and returning true if the argument is even,
+ * otherwise it returns false.
  */
-struct IsEvenT {
-  template <typename T, typename = std::enable_if_t<
-                            std::is_integral<std::decay_t<T>>::value>>
-  constexpr bool operator()(T &&i) noexcept {
-    return std::forward<T>(i) % 2 == 0;
-  }
+const auto IsEven = [](auto &&x) -> bool {
+  assert(std::is_integral<std::decay_t<decltype(x)>>::value);
+  return x % 2 == 0;
 };
 
 /**
- *
  * \tparam T
  * \param vec vector of integral types
  * \return the number of \param vec elements that are even
  */
-template <typename T,
-          typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
+template <typename T>
 static int64_t NumberOfEvenNumbers(const std::vector<T> &vec) noexcept {
-  IsEvenT is_even;
-  return std::count_if(std::begin(vec), std::end(vec), is_even);
+  return std::count_if(std::cbegin(vec), std::cend(vec), IsEven);
 }
+}  // namespace detail
 
 /**
  *
@@ -51,19 +51,18 @@ static int64_t NumberOfEvenNumbers(const std::vector<T> &vec) noexcept {
  * \param vec Vector of integral values
  * \return void
  */
-template <typename T,
-          typename = std::enable_if_t<std::is_integral<std::decay_t<T>>::value>>
-void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
+template <typename T>
+std::enable_if_t<std::is_integral<std::decay_t<T>>::value>
+ReverseArrayTraversal(std::vector<T> &vec) noexcept {
   using DiffT = typename std::vector<T>::difference_type;
   using SizeType = typename std::vector<T>::size_type;
 
   auto original_size = static_cast<DiffT>(vec.size());
-  auto num_even_numbers = NumberOfEvenNumbers(vec);
+  auto num_even_numbers = detail::NumberOfEvenNumbers(vec);
   auto needed_capacity = num_even_numbers + static_cast<DiffT>(vec.size()) -
                          static_cast<DiffT>(vec.capacity());
   if (needed_capacity == 0) {
-    IsEvenT is_even_t;
-    assert(std::none_of(std::begin(vec), std::end(vec), is_even_t));
+    assert(std::none_of(std::cbegin(vec), std::cend(vec), detail::IsEven));
     return;
   }
 
@@ -78,8 +77,7 @@ void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
     assert(std::distance(write_iter, read_iter) >= 0);
     *write_iter = *read_iter;
     std::advance(write_iter, 1);
-    IsEvenT is_even;
-    if (write_iter != std::rend(vec) && is_even(*read_iter)) {
+    if (write_iter != std::rend(vec) && detail::IsEven(*read_iter)) {
       *write_iter = *read_iter;
       std::advance(write_iter, 1);
     }
@@ -87,4 +85,4 @@ void ReverseArrayTraversal(std::vector<T> &vec) noexcept {
   }
 }
 
-}  // namespace
+}  // namespace arrays

@@ -17,10 +17,10 @@
 
 #include <vector>
 
-namespace {
+namespace dynamic_programming {
 // index magic to achieve better performance than the canonical O(n**2) solution
 // (O(n*log(n)))
-int LongestIncreasingSubsequence(const std::vector<int>& arr) {
+inline int LongestIncreasingSubsequence(const std::vector<int>& arr) {
   std::vector<int> tails(arr.size());
   auto longest_subsequence_length = 0;
   for (auto n : arr) {
@@ -38,4 +38,4 @@ int LongestIncreasingSubsequence(const std::vector<int>& arr) {
   }
   return longest_subsequence_length;
 }
-}  // namespace
+}  // namespace dynamic_programming

@@ -18,13 +18,15 @@
 #include "MakeChange.hpp"
 
 namespace {
+using make_change::MakeChangeDynamic;
+using make_change::MakeChangeRecursive;
 TEST(TestMakeChange, ZeroCoins) {
   ASSERT_EQ(MakeChangeRecursive(0), 0);
   ASSERT_EQ(MakeChangeDynamic(0), 0);
 }
 
 TEST(TestMakeChange, SingleCoins) {
-  for (auto denomination : s_denominations) {
+  for (auto denomination : make_change::s_denominations) {
     ASSERT_EQ(MakeChangeRecursive(denomination), 1);
     ASSERT_EQ(MakeChangeDynamic(denomination), 1);
   }

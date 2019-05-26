@@ -19,6 +19,8 @@
 #include "MaxProfit.hpp"
 
 namespace {
+using interview_cake::GetMaxProfit;
+
 TEST(TestMaxProfit, price_goes_up_then_down) {
   const int actual = GetMaxProfit({1, 5, 3, 2});
   const int expected = 4;

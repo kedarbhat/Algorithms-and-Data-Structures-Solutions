@@ -20,7 +20,7 @@
 #include <cassert>
 #include <string>
 
-namespace {
+namespace interview_cake {
 void ReverseWords(std::string& message) {
   using DiffType = typename std::string::difference_type;
   using SizeType = typename std::string::size_type;
@@ -50,4 +50,4 @@ void ReverseWords(std::string& message) {
   }
 }
 
-}  // namespace
+}  // namespace interview_cake

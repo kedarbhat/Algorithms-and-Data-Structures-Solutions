@@ -20,28 +20,29 @@
 
 namespace {
 TEST(TestMatrixProduct, EmptyMatrix) {
-  MatrixType matrix;
-  ASSERT_THROW(MatrixProduct(matrix), std::invalid_argument);
+  matrix_product::MatrixType matrix;
+  ASSERT_THROW(matrix_product::MatrixProduct(matrix), std::invalid_argument);
 }
 
 TEST(TestMatrixProduct, AllPositiveCells) {
-  MatrixType matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-  ASSERT_EQ(MatrixProduct(matrix), 2016);
+  matrix_product::MatrixType matrix{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  ASSERT_EQ(matrix_product::MatrixProduct(matrix), 2016);
 }
 
 TEST(TestMatrixProduct, OneNegativeCell) {
-  MatrixType matrix{{-1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-  ASSERT_EQ(MatrixProduct(matrix), -324);
+  matrix_product::MatrixType matrix{{-1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+  ASSERT_EQ(matrix_product::MatrixProduct(matrix), -324);
 }
 
 TEST(TestMatrixProduct, TwoNegativeCells) {
-  MatrixType matrix{{-1, 2, 3}, {4, 5, -6}, {7, 8, 9}};
-  ASSERT_EQ(MatrixProduct(matrix), 1080);
+  matrix_product::MatrixType matrix{{-1, 2, 3}, {4, 5, -6}, {7, 8, 9}};
+  ASSERT_EQ(matrix_product::MatrixProduct(matrix), 1080);
 }
 
 TEST(TestMatrixProduct, AllNegativeCells) {
-  MatrixType matrix{{-1, -2, -3, -4}, {-5, -6, -7, -8}, {-9, -10, -11, -12}};
-  ASSERT_EQ(MatrixProduct(matrix), 59400);
+  matrix_product::MatrixType matrix{
+      {-1, -2, -3, -4}, {-5, -6, -7, -8}, {-9, -10, -11, -12}};
+  ASSERT_EQ(matrix_product::MatrixProduct(matrix), 59400);
 }
 
 }  // namespace

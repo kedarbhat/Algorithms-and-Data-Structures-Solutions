@@ -22,8 +22,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <vector>
 
 namespace arrays {
-std::vector<int> DynamicArray(std::size_t n,
-                              const std::vector<std::vector<int>> &queries) {
+inline std::vector<int> DynamicArray(
+    std::size_t n, const std::vector<std::vector<int>> &queries) {
   std::vector<int> result;
   std::vector<std::vector<int>> seq_list(n);
   int last_answer = 0;

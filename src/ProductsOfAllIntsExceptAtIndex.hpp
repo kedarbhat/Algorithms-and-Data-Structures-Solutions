@@ -23,7 +23,7 @@
 #include <numeric>
 #include <vector>
 
-namespace {
+namespace interview_cake {
 std::vector<int> ProductsOfAllIntsExceptAtIndex(const std::vector<int>& input) {
   if (input.size() < 2u) {
     throw std::invalid_argument("Vector must have at least 2 elements");
@@ -57,4 +57,4 @@ std::vector<int> ProductsOfAllIntsExceptAtIndex(const std::vector<int>& input) {
 
   return cumulative_product_ex_idx;
 }
-}  // namespace
+}  // namespace interview_cake

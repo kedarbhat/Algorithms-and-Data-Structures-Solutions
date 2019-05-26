@@ -20,7 +20,7 @@ namespace {
 TEST(TestReverseContainer, EmptyContainer) {
   std::vector<int> vec;
   const auto expected = vec;
-  ReverseContainer(vec);
+  arrays::ReverseContainer(vec);
   EXPECT_EQ(vec, expected);
 }
 
@@ -28,7 +28,7 @@ TEST(TestReverseContainer, ContainerOfStrings) {
   std::vector<std::string> vec{"Hello", "world"};
   auto expected = vec;
   std::reverse(std::begin(expected), std::end(expected));
-  ReverseContainer(vec);
+  arrays::ReverseContainer(vec);
   EXPECT_EQ(vec, expected);
 }
 
@@ -36,7 +36,7 @@ TEST(TestReverseContainer, ContainerOfInts) {
   std::vector<int> vec{3, 5, 2, 5, 2, 3, 9};
   auto expected = vec;
   std::reverse(std::begin(expected), std::end(expected));
-  ReverseContainer(vec);
+  arrays::ReverseContainer(vec);
   EXPECT_EQ(vec, expected);
 }
 

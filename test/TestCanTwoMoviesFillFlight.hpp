@@ -19,6 +19,8 @@
 #include "CanTwoMoviesFillFlight.hpp"
 
 namespace {
+using interview_cake::CanTwoMoviesFillFlight;
+
 TEST(TestCanTwoMoviesFillFlight, short_flight) {
   const std::vector<int> movieLengths{2, 4};
   ASSERT_FALSE(CanTwoMoviesFillFlight(movieLengths, 1));

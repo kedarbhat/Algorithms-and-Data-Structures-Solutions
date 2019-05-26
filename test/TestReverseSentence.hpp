@@ -21,38 +21,38 @@ namespace {
 TEST(TestReverseSentence, EmptyString) {
   std::string str;
   EXPECT_TRUE(str.empty());
-  ReverseString(str);
+  strings::ReverseString(str);
   EXPECT_EQ(str, std::string{});
 }
 
 TEST(TestReverseSentence, SingleSpace) {
   std::string str = " ";
-  ReverseString(str);
+  strings::ReverseString(str);
   EXPECT_EQ(str, " ");
 }
 
 TEST(TestReverseSentence, SingleLetter) {
   std::string str = "a";
-  ReverseString(str);
+  strings::ReverseString(str);
   EXPECT_EQ(str, "a");
 }
 
 TEST(TestReverseSentence, BeginsWithASpace) {
   std::string str = " a";
-  ReverseString(str);
+  strings::ReverseString(str);
   EXPECT_EQ(str, "a ");
 }
 
 TEST(TestReverseSentence, EndsWithASpace) {
   std::string str = "a ";
-  ReverseString(str);
+  strings::ReverseString(str);
   EXPECT_EQ(str, " a");
 }
 
 TEST(TestReverseSentence, NormalSentence) {
   std::string str = "i live in a house";
   auto expected = "house a in live i";
-  ReverseString(str);
+  strings::ReverseString(str);
   EXPECT_EQ(str, expected);
 }
 

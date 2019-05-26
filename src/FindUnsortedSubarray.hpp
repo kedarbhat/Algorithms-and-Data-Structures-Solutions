@@ -22,7 +22,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #include <iterator>
 #include <vector>
 
-namespace {
+namespace arrays {
 // Given an array of integers, find the continuous subarray, which when sorted,
 // results in the entire array being sorted. For example: A = [0,2,5,3,1,8,6,9],
 // result is the subarray [2,5,3,1,8,6]
@@ -76,4 +76,4 @@ std::pair<SizeType<T>, SizeType<T>> FindUnsortedSubarray(
   return std::make_pair(i, j);
 }
 
-}  // namespace
+}  // namespace arrays

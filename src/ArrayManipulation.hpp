@@ -25,7 +25,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 namespace arrays {
 int64_t ArrayManipulation(int n, std::vector<std::vector<int>> queries) {
-  std::vector<int64_t> vec(n + 1, 0);  // TODO(kbhat): wasted space
+  std::vector<int64_t> vec(n + 1, 0);
   for (auto &&query : queries) {
     auto start_idx = query[0] - 1;
     auto finish_idx = query[1];

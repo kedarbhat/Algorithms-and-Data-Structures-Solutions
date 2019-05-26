@@ -20,7 +20,7 @@
 #include <exception>
 #include <vector>
 
-namespace {
+namespace interview_cake {
 int GetMaxProfit(const std::vector<int>& stock_prices) {
   if (stock_prices.size() < 2u) {
     throw std::invalid_argument(
@@ -37,4 +37,4 @@ int GetMaxProfit(const std::vector<int>& stock_prices) {
 
   return max_profit_so_far;
 }
-}  // namespace
+}  // namespace interview_cake
