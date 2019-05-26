@@ -10,6 +10,7 @@
 #include "TestLongestIncreasingSubsequence.hpp"
 #include "TestMakeChange.hpp"
 #include "TestMatrixProduct.hpp"
+#include "TestMaxProfit.hpp"
 #include "TestMaximumContiguousSum.hpp"
 #include "TestMergeMeetings.hpp"
 #include "TestMergeVectors.hpp"
