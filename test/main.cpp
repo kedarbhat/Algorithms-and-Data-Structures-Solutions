@@ -3,6 +3,7 @@
 #include "TestCanTwoMoviesFillFlight.hpp"
 #include "TestCountingValleys.hpp"
 #include "TestDutchNationalFlag.hpp"
+#include "TestFindRepeatedElement.hpp"
 #include "TestFindUnsortedSubarray.hpp"
 #include "TestInheritedCode.hpp"
 #include "TestLinkedListSolutions.hpp"
