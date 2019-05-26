@@ -35,10 +35,10 @@ unsigned int FindRepeat(const std::vector<unsigned int>& the_vector) {
     auto low_range = RangeType{low_idx, mid_idx};
     auto high_range = RangeType{mid_idx + 1, high_idx};
 
-    auto low_range_count = std::count_if(
+    auto low_range_count = static_cast<unsigned>(std::count_if(
         std::begin(the_vector), std::end(the_vector), [low_range](auto&& x) {
           return x >= low_range.start_ && x <= low_range.finish_;
-        });
+        }));
 
     auto maximum_unique_low_range_ints =
         low_range.finish_ - low_range.start_ + 1;
